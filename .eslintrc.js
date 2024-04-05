@@ -1,41 +1,39 @@
-import path from 'path';
-
-const config = {
-  parser: '@typescript-eslint/parser',
+module.exports = {
+  root: true,
   env: {
     browser: true,
-    es2021: true
+    es2020: true,
+    node: true
   },
   extends: [
-    "airbnb-base",
-    "airbnb-typescript/base",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
   ],
-  overrides: [
-  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
     ecmaVersion: 'latest',
-    tsconfigRootDir: __dirname,
-    sourceType: "module",
-    project: path.join(__dirname, "tsconfig.json"),
+    sourceType: "script"
   },
+  plugins: ['react-refresh', '@typescript-eslint', 'react-hooks'],
   rules: {
-    '@typescript-eslint/no-explicit-any': 2,
-    "prettier/prettier": "error",
-    "class-methods-use-this": "off",
-    "no-debugger": "off",
-    "no-console": 0,
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'comma-dangle': ['error', 'only-multiline'],
   },
-  plugins: [
-    '@typescript-eslint',
-    "prettier", 
-    "import",
-  ],
-  ignorePatterns: [".eslintrc.js"],
-};
-
-export default config;
+}
