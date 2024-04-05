@@ -10,7 +10,7 @@ export default class ErrorBoundary extends Component<
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError() {
     console.log('here get Derived');
     return { hasError: true };
   }

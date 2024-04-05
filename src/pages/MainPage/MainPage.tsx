@@ -1,12 +1,19 @@
-import Search from "../../components/react-components/Search/Search";
+import FilmList from '../../components/react-components/FilmList/FilmList';
+import Pagination from '../../components/react-components/Pagination/Pagination';
+import Search from '../../components/react-components/Search/Search';
 
 const MainPage = () => {
   return (
     <div>
-      Main page
       <Search />
+      <main>
+          <div className="search-result__container">
+            <FilmList />
+          </div>
+          <Pagination />
+        </main>
     </div>
-  )
-}
+  );
+};
 
 export default MainPage;

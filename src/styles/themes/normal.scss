@@ -1,7 +1,16 @@
 .app.normal {
-  --bg-color: #e8e8ea;
+  --bg-color: green;
 
   --primary-color: #041c65;
   --secondary-color: #0449e0;
 
+  --button-hover-color: rgba(1, 1, 1, 0.038);  
+  --button-hover-text-color: white;
+  --button-active-color: yellow;
+  --button-color: blue;
+  --button-text-color: black;
+
+  --bg-color-contrast: green;
+  --bg-color-secondary: rgb(97, 149, 97);
+  --bg-color-light: white;
 }

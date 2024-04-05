@@ -1,0 +1,33 @@
+.no-results {
+  font-size: 34px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 71vh;
+  background-color: var(--bg-color-light);
+}
+
+.search-result__container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 2vh 10px;
+  background-color: var(--bg-color-light);
+  overflow-x: hidden;
+}
+
+.film-list {
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.search-results.with-details {
+  width: 70vw;
+}

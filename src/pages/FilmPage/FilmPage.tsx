@@ -1,9 +1,5 @@
 const FilmPage = () => {
-  return (
-    <div>
-      Film page
-    </div>
-  )
-}
+  return <div>Film page</div>;
+};
 
 export default FilmPage;
