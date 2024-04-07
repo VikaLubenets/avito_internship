@@ -1,6 +1,7 @@
 @import 'variables/global.scss';
 @import 'themes/normal.scss';
 @import 'reset.scss';
+@import '~bootstrap/scss/bootstrap';
 
 .app {
   font: var(--font-m);
@@ -9,4 +10,12 @@
   color: var(--primary-color);
 
   min-height: 100vh;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }

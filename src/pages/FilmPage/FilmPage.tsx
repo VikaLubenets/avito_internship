@@ -1,7 +1,7 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useGetFilmDataByIdQuery } from "../../api/api";
-import Loader from "../../components/react-components/Loader/Loader";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useGetFilmDataByIdQuery } from '../../api/api';
+import Loader from '../../components/react-components/Loader/Loader';
 
 const FilmPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,14 +18,15 @@ const FilmPage = () => {
     return <div className="no-results">No such film</div>;
   }
 
-  const { 
-    name, 
-    description, 
+  const {
+    name,
+    description,
     rating,
-    persons, 
-    seasonsInfo, 
-    reviewInfo, 
-    poster } = filmData;
+    persons,
+    seasonsInfo,
+    reviewInfo,
+    poster,
+  } = filmData;
 
   return (
     <React.Fragment>
@@ -41,16 +42,16 @@ const FilmPage = () => {
       <h2>Seasons and Episodes:</h2>
       <ul>
         {seasonsInfo.map((season) => (
-          <li key={season.number}>Season {season.number}: {season.episodesCount} episodes</li>
+          <li key={season.number}>
+            Season {season.number}: {season.episodesCount} episodes
+          </li>
         ))}
       </ul>
       <h2>User Reviews:</h2>
       <p>Count: {reviewInfo.count}</p>
       <h2>Posters:</h2>
       <div className="carousel">
-        {poster && (
-          <img src={poster.url} alt={name} />
-        )}
+        {poster && <img src={poster.url} alt={name} />}
       </div>
     </React.Fragment>
   );

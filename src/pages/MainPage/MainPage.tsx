@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useGetFilmDataQuery } from '../../api/api';
+import { useGetAllFilmsAndSeriesQuery } from '../../api/api';
 import FilmList from '../../components/react-components/FilmList/FilmList';
 import Loader from '../../components/react-components/Loader/Loader';
 import Pagination from '../../components/react-components/Pagination/Pagination';
@@ -14,10 +14,9 @@ const MainPage = () => {
   const savedTerm = useAppSelector((state) => state.films.savedTerm);
   const currentPage = useAppSelector((state) => state.films.currentPage);
   const limitPerPage = useAppSelector((state) => state.films.limitPerPage);
-  const { data: searchResults, isLoading } = useGetFilmDataQuery({
+  const { data: films, isLoading } = useGetAllFilmsAndSeriesQuery({
     page: currentPage,
     limit: limitPerPage,
-    selectFields: savedTerm ? `title:${savedTerm}` : '',
   });
 
   useEffect(() => {
@@ -33,32 +32,38 @@ const MainPage = () => {
         limit: String(limitPerPage),
       });
     }
-  }, [searchParams, currentPage, limitPerPage, savedTerm]);
+  }, [searchParams, currentPage, limitPerPage, savedTerm, setSearchParams]);
 
   useEffect(() => {
-    if (searchResults) {
-      dispatch(filmsSlice.actions.setSearchResults(searchResults));
-      dispatch(filmsSlice.actions.setTotalCount(searchResults.total));
+    if (films) {
+      dispatch(filmsSlice.actions.setFilms(films.docs));
+      dispatch(filmsSlice.actions.setTotalCount(films.total));
+      dispatch(filmsSlice.actions.setTotalPages(films.pages));
     }
-  }, [searchResults]);
-
-
+  }, [films]);
 
   return (
-    <div>
+    <main className='main-container'>
       <Search />
       {isLoading ? (
         <Loader />
-      ) :
-      (      
-      <main>
-        <div className="search-result__container">
-          <FilmList />
-        </div>
-        <Pagination />
-      </main>
+      ) : (
+        <>
+          {films && films.docs && films.docs.length > 0 ? (
+            <>
+              <div className="search-result__container">
+                <FilmList films={films.docs} total={films.total || 0} />
+              </div>
+              <Pagination />
+            </>
+          ) : (
+            <div className='no-results'>
+              No results
+            </div>
+          )}
+        </>
       )}
-    </div>
+    </main>
   );
 };
 

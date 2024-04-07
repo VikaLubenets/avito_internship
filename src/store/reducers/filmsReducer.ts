@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppDispatch, FilmSearchResponse, filmsState } from '../types';
+import { AllGenresResponse, AppDispatch, FilmSearchResponse, filmsState, IFilm } from '../types';
 
 const initialState: filmsState = {
-  searchResults: {} as FilmSearchResponse,
+  films: {} as IFilm[],
   savedTerm: '',
   totalCount: 10,
   currentPage: 1,
   limitPerPage: 10,
   totalPages: 1,
   error: null,
+  genres: [],
 };
 
 export const initializeSavedTerm = () => (dispatch: AppDispatch) => {
@@ -25,8 +26,8 @@ export const filmsSlice = createSlice({
     setSavedTerm(state, action: PayloadAction<string>) {
       state.savedTerm = action.payload;
     },
-    setSearchResults(state, action: PayloadAction<FilmSearchResponse>) {
-      state.searchResults = action.payload;
+    setFilms(state, action: PayloadAction<IFilm[]>) {
+      state.films = action.payload;
     },
     setTotalCount(state, action: PayloadAction<number>) {
       state.totalCount = action.payload;
@@ -39,6 +40,9 @@ export const filmsSlice = createSlice({
     },
     setTotalPages(state, action: PayloadAction<number>) {
       state.totalPages = action.payload;
+    },
+    setGenres(state, action: PayloadAction<AllGenresResponse>) {
+      state.genres = action.payload;
     },
   },
 });

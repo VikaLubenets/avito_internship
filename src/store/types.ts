@@ -4,19 +4,19 @@ export type FilmNameType = {
   name: string;
   language: string;
   type: string;
-}
+};
 
 export type ExternalIdType = {
   kpHD: string;
   imdb: string;
   tmdb: number;
-}
+};
 
 export type FilmFactsType = {
   value: string;
   type: string;
   spoiler: boolean;
-}
+};
 
 export type FilmRatingType = {
   kp: number;
@@ -25,7 +25,7 @@ export type FilmRatingType = {
   filmCritics: number;
   russianFilmCritics: number;
   await: number;
-}
+};
 
 export type FilmVotesType = {
   kp: string;
@@ -34,21 +34,21 @@ export type FilmVotesType = {
   filmCritics: number;
   russianFilmCritics: number;
   await: number;
-}
+};
 
 export type FilmLogoType = {
   url: string;
-}
+};
 
-export type FilmPosterType = { 
+export type FilmPosterType = {
   url: string;
   previewUrl: string;
-}
+};
 
 export type FilmBackdropType = {
   url: string;
   previewUrl: string;
-}
+};
 
 export type FilmTrailerType = {
   url: string;
@@ -56,7 +56,7 @@ export type FilmTrailerType = {
   site: string;
   size: number;
   type: string;
-}
+};
 
 export type FilmPersonType = {
   id: number;
@@ -66,7 +66,7 @@ export type FilmPersonType = {
   description: string;
   profession: string;
   enProfession: string;
-}
+};
 
 export interface IFilm {
   id: number;
@@ -211,7 +211,7 @@ export interface IFilm {
   };
   updatedAt: string;
   createdAt: string;
-};
+}
 
 export interface FilmSearchResponse {
   docs: IFilm[];
@@ -226,14 +226,23 @@ export interface ActionType {
   payload: FilmSearchResponse;
 }
 
+export interface Genre {
+  name: string;
+  slug: string;
+  title: string;
+}
+
+export type AllGenresResponse = Genre[];
+
 export interface filmsState {
-  searchResults: FilmSearchResponse;
+  films: IFilm[];
   savedTerm: string;
   totalCount: number;
   currentPage: number;
   limitPerPage: number;
   totalPages: number;
   error: null | string;
+  genres: AllGenresResponse;
 }
 
 export interface RootState {

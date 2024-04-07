@@ -1,0 +1,21 @@
+.film-container{
+  border: 2px black solid;
+  width: max-content;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-img{
+  width: 150px;
+  height: 200px;
+}
+
+.film-name{
+  font: var(--font-l);
+  max-width: 150px;
+}

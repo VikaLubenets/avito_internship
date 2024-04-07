@@ -1,24 +1,22 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks/redux';
-import Card from './Card';
+import { IFilm } from '../../../store/types';
+import Card from './Card/Card';
 import './FilmList.scss';
 
-const FilmList = () => {
-  const dispatch = useAppDispatch();
-  const location = useLocation();
-  const searchResults = useAppSelector((state) => state.films.searchResults.docs);
+type Props = {
+  films: IFilm[];
+  total: number;
+};
 
+const FilmList = ({ films, total }: Props) => {
   return (
-    <React.Fragment>
-      {!searchResults || !searchResults.length ? (
-        <div className="no-results">No results</div>
-      ) : (
-        searchResults.map((result, index) => (
-          <Card key={result.id} result={result} index={index} />
-        ))
-      )}
-    </React.Fragment>
+    <>
+        <h2>Всего у нас для вас есть {total} фильмов и сериалов</h2>
+        <div className='film-list'>
+          {films.map((film, index) => (
+            <Card film={film} key={index} />
+          ))}
+      </div>
+    </>
   );
 };
 
