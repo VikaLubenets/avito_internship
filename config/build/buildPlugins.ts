@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 import webpack from 'webpack';
 
 export function buildPlugins(
@@ -19,5 +20,6 @@ export function buildPlugins(
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
     }),
+    new NodePolyfillPlugin(),
   ];
 }

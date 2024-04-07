@@ -1,22 +1,24 @@
-import { ChangeEvent } from "react";
-import { Button } from "../../ui/button";
+import { ChangeEvent } from 'react';
+import { Button } from '../../ui/button';
 import './Search.scss';
 
 const Search = () => {
   return (
     <div className="search-line">
-        <input
+      <input
         type="search"
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {}}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          return event.target;
+        }} // update func with real code
       />
-      <Button 
-        type={"button"} 
-        title={"Search"} 
-        className={"search-button"} 
-        onClick={() => {}} 
+      <Button
+        type={'button'}
+        title={'Search'}
+        className={'search-button'}
+        onClick={() => {}}
       />
     </div>
-    )
+  );
 };
 
 export default Search;

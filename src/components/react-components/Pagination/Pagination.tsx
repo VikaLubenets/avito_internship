@@ -4,7 +4,7 @@ export default function Pagination() {
   const currentPage = 1;
   const handlePageClick = (num: number) => {
     console.log(num);
-  }
+  };
 
   return (
     <div className="pagination" data-testid="pagination">

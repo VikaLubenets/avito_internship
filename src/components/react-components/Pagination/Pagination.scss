@@ -4,7 +4,7 @@
   align-items: center;
   padding: 20px;
   font-size: 20px;
-  background-color: var( --bg-color-contrast);
+  background-color: var(--bg-color-contrast);
   gap: 5px;
 }
 
@@ -16,10 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(  --bg-color-light);
+  background-color: var(--bg-color-light);
 }
 
 .pagination-item.current {
-  background-color: var(  --button-active-color);
+  background-color: var(--button-active-color);
   cursor: default;
 }
