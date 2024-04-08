@@ -1,29 +1,36 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks/redux';
 import { filmsSlice } from '../../../store/reducers/filmsReducer';
 import Pagination from 'react-bootstrap/Pagination';
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const CustomPagination = () => {
   const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = useAppSelector((state) => state.films.currentPage);
   const totalPages = useAppSelector((state) => state.films.totalPages);
 
-  const handlePageClick = (pageNumber: number) => {
-    dispatch(filmsSlice.actions.setCurrentPage(pageNumber));
-  };
+  const handlePageClick = useCallback(
+		(value: string) => {
+			setSearchParams((prev) => ({
+				...Object.fromEntries(prev),
+				page: value,
+			}))
+      dispatch(filmsSlice.actions.setCurrentPage(Number(value)));
+		},
+		[searchParams],
+	)
 
   const renderPaginationItems = () => {
     const items = [];
 
     items.push(
-      <Pagination.First
-        key="first"
-        onClick={() => handlePageClick(1)}
-      />
+      <Pagination.First key="first" onClick={() => handlePageClick('1')} />
     );
     items.push(
       <Pagination.Prev
         key="prev"
-        onClick={() => handlePageClick(currentPage - 1)}
+        onClick={() => handlePageClick(`${currentPage - 1}`)}
         disabled={currentPage === 1}
       />
     );
@@ -40,9 +47,7 @@ const CustomPagination = () => {
     }
 
     if (startPage > 1) {
-      items.push(
-        <Pagination.Ellipsis key="leftEllipsis" />
-      );
+      items.push(<Pagination.Ellipsis key="leftEllipsis" />);
     }
 
     for (let number = startPage; number <= endPage; number++) {
@@ -50,7 +55,7 @@ const CustomPagination = () => {
         <Pagination.Item
           key={number}
           active={number === currentPage}
-          onClick={() => handlePageClick(number)}
+          onClick={() => handlePageClick(String(number))}
         >
           {number}
         </Pagination.Item>
@@ -58,31 +63,26 @@ const CustomPagination = () => {
     }
 
     if (endPage < totalPages) {
-      items.push(
-        <Pagination.Ellipsis key="rightEllipsis" />
-      );
+      items.push(<Pagination.Ellipsis key="rightEllipsis" />);
     }
 
     items.push(
       <Pagination.Next
         key="next"
-        onClick={() => handlePageClick(currentPage + 1)}
+        onClick={() => handlePageClick(`${currentPage + 1}`)}
         disabled={currentPage === totalPages}
       />
     );
 
     items.push(
-      <Pagination.Last
-        key="last"
-        onClick={() => handlePageClick(totalPages)}
-      />
+      <Pagination.Last key="last" onClick={() => handlePageClick(String(totalPages))} />
     );
 
     return items;
   };
 
   return (
-    <Pagination size="lg" className='pagination'>
+    <Pagination size="lg" className="pagination">
       {renderPaginationItems()}
     </Pagination>
   );

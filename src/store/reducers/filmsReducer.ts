@@ -1,31 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AllGenresResponse, AppDispatch, FilmSearchResponse, filmsState, IFilm } from '../types';
+import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../utils/constants';
+import { filmsState, FilterString, IFilm } from '../types';
 
 const initialState: filmsState = {
   films: {} as IFilm[],
-  savedTerm: '',
   totalCount: 10,
   currentPage: 1,
-  limitPerPage: 10,
+  limitPerPage: DEFAULT_LIMIT_FILMS_PER_PAGE,
   totalPages: 1,
+  search: '',
+  year: '',
+  country: '',
+  ageRating: '',
+  filter: '',
+  isLoading: false,
   error: null,
-  genres: [],
 };
 
-export const initializeSavedTerm = () => (dispatch: AppDispatch) => {
-  const initialSavedTerm = localStorage.getItem('savedTerm');
-  if (initialSavedTerm) {
-    dispatch(filmsSlice.actions.setSavedTerm(initialSavedTerm));
-  }
-};
 
 export const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
-    setSavedTerm(state, action: PayloadAction<string>) {
-      state.savedTerm = action.payload;
-    },
     setFilms(state, action: PayloadAction<IFilm[]>) {
       state.films = action.payload;
     },
@@ -41,8 +37,23 @@ export const filmsSlice = createSlice({
     setTotalPages(state, action: PayloadAction<number>) {
       state.totalPages = action.payload;
     },
-    setGenres(state, action: PayloadAction<AllGenresResponse>) {
-      state.genres = action.payload;
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
+    },
+    setYear(state, action: PayloadAction<string>) {
+      state.year = action.payload;
+    },
+    setCountry(state, action: PayloadAction<string>) {
+      state.country = action.payload;
+    },
+    setAgeRating(state, action: PayloadAction<string>) {
+      state.ageRating = action.payload;
+    },
+    setFilter(state, action: PayloadAction<FilterString>) {
+      state.filter = action.payload;
+    },
+    setIsLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
     },
   },
 });

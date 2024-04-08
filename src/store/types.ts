@@ -232,17 +232,21 @@ export interface Genre {
   title: string;
 }
 
-export type AllGenresResponse = Genre[];
+export type FilterString = 'year' | 'country' | 'ageRating' | '';
 
 export interface filmsState {
   films: IFilm[];
-  savedTerm: string;
   totalCount: number;
   currentPage: number;
   limitPerPage: number;
   totalPages: number;
+  search: string;
+  year: string;
+  country: string;
+  ageRating: string;
+  filter: FilterString;
+  isLoading: boolean;
   error: null | string;
-  genres: AllGenresResponse;
 }
 
 export interface RootState {

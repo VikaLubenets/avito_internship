@@ -10,11 +10,11 @@ type Props = {
 const FilmList = ({ films, total }: Props) => {
   return (
     <>
-        <h2>Всего у нас для вас есть {total} фильмов и сериалов</h2>
-        <div className='film-list'>
-          {films.map((film, index) => (
-            <Card film={film} key={index} />
-          ))}
+      <h2>Всего у нас для вас есть {total} фильмов и сериалов</h2>
+      <div className="film-list">
+        {films.map((film, index) => (
+          <Card film={film} key={index} />
+        ))}
       </div>
     </>
   );

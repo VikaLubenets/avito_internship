@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL } from '../utils/constants';
-import { AllGenresResponse, FilmSearchResponse, IFilm } from '../store/types';
+import { BASE_URL, DEFAULT_LIMIT_FILMS_PER_PAGE, DEFAULT_PAGE } from '../utils/constants';
+import { FilmSearchResponse, IFilm } from '../store/types';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,12 +10,14 @@ export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
-    paramsSerializer: params => {
+    paramsSerializer: (params) => {
       const queryString = Object.keys(params)
-        .map(key => {
+        .map((key) => {
           const value = params[key];
           if (Array.isArray(value)) {
-            return value.map(val => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`).join('&');
+            return value
+              .map((val) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+              .join('&');
           }
           return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
         })
@@ -34,32 +36,35 @@ export const api = createApi({
         url: `/v1.4/movie/${itemId}`,
       }),
     }),
-    getAllFilmsAndSeries: builder.query<
-      FilmSearchResponse,
-      { limit: number; page: number;}
-    >({
-      query: ({ limit = 10, page = 1 }) => {
+    getAllFilmsAndSeries: builder.query<FilmSearchResponse, {
+      limit: number;
+      page: number;
+      params?: Record<string, string>;
+    }>({
+      query: ({ limit = DEFAULT_LIMIT_FILMS_PER_PAGE, page = DEFAULT_PAGE, params }) => {
         return {
           url: '/v1.4/movie',
           params: {
             page,
             limit,
-            type: ['movie', 'tv-series']
+            type: ['movie', 'tv-series'],
+            ...params,
           },
-        }
-      }
+        };
+      },
     }),
-    getFilmDataByGenre: builder.query<
-      FilmSearchResponse,
-      { limit: number; genre: string; type?: string }
-    >({
-      query: ({ limit = 10, genre }) => {
+    getSearchFilms: builder.query<FilmSearchResponse, {
+      limit: number;
+      page: number;
+      query: string;
+    }>({
+      query: ({ limit = DEFAULT_LIMIT_FILMS_PER_PAGE, page = DEFAULT_PAGE, query }) => {
         return {
-          url: '/v1.4/movie',
+          url: `/v1.4/movie/search`,
           params: {
-            page: 1,
+            page,
             limit,
-            "genres.name": genre,
+            query,
           },
         };
       },
@@ -67,8 +72,8 @@ export const api = createApi({
   }),
 });
 
-export const { 
-  useGetFilmDataByIdQuery, 
+export const {
+  useGetFilmDataByIdQuery,
   useGetAllFilmsAndSeriesQuery,
-  useGetFilmDataByGenreQuery,
- } = api;
+  useGetSearchFilmsQuery,
+} = api;

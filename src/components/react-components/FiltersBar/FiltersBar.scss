@@ -1,0 +1,14 @@
+.filters-bar{
+  display: flex;
+  gap: 7px;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+
+  select{
+    border: 1px blue solid;
+    padding: 4px;
+    font: var(--font-l);
+  }
+}
+

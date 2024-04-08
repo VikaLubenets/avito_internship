@@ -1,5 +1,12 @@
+import { Loader } from 'lucide-react';
 import './Loader.scss';
 
-export default function Loader() {
-  return <div className="loader">Loading...</div>;
-}
+const Loading = () => {
+  return (
+    <div className='loader'>
+      <Loader className="spinner" />
+    </div>
+  );
+};
+
+export default Loading;

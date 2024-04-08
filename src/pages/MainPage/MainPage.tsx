@@ -1,65 +1,62 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useGetAllFilmsAndSeriesQuery } from '../../api/api';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useGetAllFilmsAndSeriesQuery, useGetSearchFilmsQuery } from '../../api/api';
 import FilmList from '../../components/react-components/FilmList/FilmList';
-import Loader from '../../components/react-components/Loader/Loader';
-import Pagination from '../../components/react-components/Pagination/Pagination';
-import Search from '../../components/react-components/Search/Search';
+import Header from '../../components/react-components/Header/Header';
+import Loading from '../../components/react-components/Loader/Loader';
+import CustomPagination from '../../components/react-components/Pagination/Pagination';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { filmsSlice } from '../../store/reducers/filmsReducer';
+import { DEFAULT_LIMIT_FILMS_PER_PAGE, DEFAULT_PAGE } from '../../utils/constants';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const savedTerm = useAppSelector((state) => state.films.savedTerm);
   const currentPage = useAppSelector((state) => state.films.currentPage);
   const limitPerPage = useAppSelector((state) => state.films.limitPerPage);
-  const { data: films, isLoading } = useGetAllFilmsAndSeriesQuery({
-    page: currentPage,
-    limit: limitPerPage,
-  });
+  const search = useAppSelector((state) => state.films.search);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const {data: films, isLoading} = search 
+    ? useGetSearchFilmsQuery({
+      page: DEFAULT_PAGE,
+      limit: DEFAULT_LIMIT_FILMS_PER_PAGE,
+      query: search,
+    }) 
+    : useGetAllFilmsAndSeriesQuery({
+      page: currentPage,
+      limit: limitPerPage,
+        ...searchParams.entries(),
+      })
 
-  useEffect(() => {
-    if (savedTerm) {
-      setSearchParams({
-        search: savedTerm,
-        page: String(currentPage),
-        limit: String(limitPerPage),
-      });
-    } else {
-      setSearchParams({
-        page: String(currentPage),
-        limit: String(limitPerPage),
-      });
-    }
-  }, [searchParams, currentPage, limitPerPage, savedTerm, setSearchParams]);
-
-  useEffect(() => {
-    if (films) {
-      dispatch(filmsSlice.actions.setFilms(films.docs));
-      dispatch(filmsSlice.actions.setTotalCount(films.total));
-      dispatch(filmsSlice.actions.setTotalPages(films.pages));
-    }
-  }, [films]);
+    useEffect(() => {
+      setSearchParams((prev) => ({
+        ...Object.fromEntries(prev),
+        page: String(DEFAULT_PAGE),
+        limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE)
+      }))
+    }, [])
+    
+    useEffect(() => {
+        if (films) {
+          dispatch(filmsSlice.actions.setFilms(films.docs));
+          dispatch(filmsSlice.actions.setTotalCount(films.total));
+          dispatch(filmsSlice.actions.setTotalPages(films.pages));
+        }
+      }, [films, dispatch]);
 
   return (
-    <main className='main-container'>
-      <Search />
+    <main className="main-container">
+      <Header />
       {isLoading ? (
-        <Loader />
+        <Loading />
       ) : (
         <>
           {films && films.docs && films.docs.length > 0 ? (
             <>
-              <div className="search-result__container">
-                <FilmList films={films.docs} total={films.total || 0} />
-              </div>
-              <Pagination />
+              <FilmList films={films.docs} total={films.total || 0} />
+              <CustomPagination />
             </>
           ) : (
-            <div className='no-results'>
-              No results
-            </div>
+            <div className="no-results">No results</div>
           )}
         </>
       )}

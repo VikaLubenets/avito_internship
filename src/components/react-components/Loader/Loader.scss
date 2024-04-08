@@ -1,8 +1,16 @@
 .loader {
-  font-size: var(--font-l);
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: var(--bg-color-secondary);
-  height: 85vh;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
