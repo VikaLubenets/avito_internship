@@ -1,10 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL, DEFAULT_LIMIT_FILMS_PER_PAGE, DEFAULT_PAGE } from '../utils/constants';
-import { FilmSearchResponse, IFilm } from '../store/types';
+import {
+  BASE_URL,
+  DEFAULT_LIMIT_FILMS_PER_PAGE,
+  DEFAULT_PAGE,
+  DEFAULT_POSTERS_PER_PAGE,
+  DEFAULT_REVIEWS_PER_PAGE,
+  DEFAULT_SEASONS_PER_PAGE,
+} from '../utils/constants';
+import { FilmSearchResponse, IFilm, PostersResponse, ReviewResponse, SeasonsResponse } from '../store/types';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const token = process.env.TOKEN || '';
+const token = process.env.TOKEN || 'WF76VQQ-HQB4P5G-JFJH8DF-CRKDP1M';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -16,7 +23,9 @@ export const api = createApi({
           const value = params[key];
           if (Array.isArray(value)) {
             return value
-              .map((val) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+              .map(
+                (val) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`
+              )
               .join('&');
           }
           return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
@@ -30,35 +39,50 @@ export const api = createApi({
       'Content-Type': 'application/json',
     },
   }),
+  refetchOnReconnect: true,
   endpoints: (builder) => ({
     getFilmDataById: builder.query<IFilm, number>({
       query: (itemId) => ({
         url: `/v1.4/movie/${itemId}`,
       }),
     }),
-    getAllFilmsAndSeries: builder.query<FilmSearchResponse, {
-      limit: number;
-      page: number;
-      params?: Record<string, string>;
-    }>({
-      query: ({ limit = DEFAULT_LIMIT_FILMS_PER_PAGE, page = DEFAULT_PAGE, params }) => {
+    getAllFilmsAndSeries: builder.query<
+      FilmSearchResponse,
+      {
+        limit: number;
+        page: number;
+        params?: Record<string, string>;
+      }
+    >({
+      query: ({
+        limit = DEFAULT_LIMIT_FILMS_PER_PAGE,
+        page = DEFAULT_PAGE,
+        params
+      }) => {
         return {
           url: '/v1.4/movie',
           params: {
             page,
             limit,
             type: ['movie', 'tv-series'],
-            ...params,
+            ...params
           },
         };
       },
     }),
-    getSearchFilms: builder.query<FilmSearchResponse, {
-      limit: number;
-      page: number;
-      query: string;
-    }>({
-      query: ({ limit = DEFAULT_LIMIT_FILMS_PER_PAGE, page = DEFAULT_PAGE, query }) => {
+    getSearchFilms: builder.query<
+      FilmSearchResponse,
+      {
+        query: string;
+        limit?: number;
+        page?: number;
+      }
+    >({
+      query: ({
+        query,
+        page = DEFAULT_PAGE,
+        limit = DEFAULT_LIMIT_FILMS_PER_PAGE,
+      }) => {
         return {
           url: `/v1.4/movie/search`,
           params: {
@@ -69,6 +93,75 @@ export const api = createApi({
         };
       },
     }),
+    getReviews: builder.query<
+      ReviewResponse,
+      {
+        page?: number;
+        limit?: number;
+        movieId: string;
+      }
+    >({
+      query: ({
+        page = DEFAULT_PAGE,
+        limit = DEFAULT_REVIEWS_PER_PAGE,
+        movieId
+      }) => {
+        return {
+          url: `v1.4/review`,
+          params: {
+            page,
+            limit,
+            movieId,
+          },
+        };
+      },
+    }),   
+    getPosters: builder.query<
+      PostersResponse,
+      {
+        page?: number;
+        limit?: number;
+        movieId: string;
+      }
+    >({
+      query: ({
+        page = DEFAULT_PAGE,
+        limit = DEFAULT_POSTERS_PER_PAGE,
+        movieId
+      }) => {
+        return {
+          url: `v1.4/image`,
+          params: {
+            page,
+            limit,
+            movieId,
+          },
+        };
+      },
+    }),  
+    getSeasons: builder.query<
+      SeasonsResponse,
+      {
+        page?: number;
+        limit?: number;
+        movieId: string;
+      }
+    >({
+      query: ({
+        page = DEFAULT_PAGE,
+        limit = DEFAULT_SEASONS_PER_PAGE,
+        movieId
+      }) => {
+        return {
+          url: `v1.4/season`,
+          params: {
+            page,
+            limit,
+            movieId,
+          },
+        };
+      },
+    }),  
   }),
 });
 
@@ -76,4 +169,7 @@ export const {
   useGetFilmDataByIdQuery,
   useGetAllFilmsAndSeriesQuery,
   useGetSearchFilmsQuery,
+  useGetReviewsQuery,
+  useGetPostersQuery,
+  useGetSeasonsQuery,
 } = api;

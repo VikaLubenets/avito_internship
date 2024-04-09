@@ -1,954 +1,954 @@
 export const countries = [
   {
-    "name": "Австралия",
-    "slug": "Avstraliya"
+    name: 'Австралия',
+    slug: 'Avstraliya',
   },
   {
-    "name": "Австрия",
-    "slug": "Avstriya"
+    name: 'Австрия',
+    slug: 'Avstriya',
   },
   {
-    "name": "Азербайджан",
-    "slug": "Azerbaydzhan"
+    name: 'Азербайджан',
+    slug: 'Azerbaydzhan',
   },
   {
-    "name": "Албания",
-    "slug": "Albaniya"
+    name: 'Албания',
+    slug: 'Albaniya',
   },
   {
-    "name": "Алжир",
-    "slug": "Alzhir"
+    name: 'Алжир',
+    slug: 'Alzhir',
   },
   {
-    "name": "Американские Виргинские острова",
-    "slug": "Amerikanskie-Virginskie-ostrova"
+    name: 'Американские Виргинские острова',
+    slug: 'Amerikanskie-Virginskie-ostrova',
   },
   {
-    "name": "Американское Самоа",
-    "slug": "Amerikanskoe-Samoa"
+    name: 'Американское Самоа',
+    slug: 'Amerikanskoe-Samoa',
   },
   {
-    "name": "Ангола",
-    "slug": "Angola"
+    name: 'Ангола',
+    slug: 'Angola',
   },
   {
-    "name": "Андорра",
-    "slug": "Andorra"
+    name: 'Андорра',
+    slug: 'Andorra',
   },
   {
-    "name": "Антарктида",
-    "slug": "Antarktida"
+    name: 'Антарктида',
+    slug: 'Antarktida',
   },
   {
-    "name": "Антигуа и Барбуда",
-    "slug": "Antigua-i-Barbuda"
+    name: 'Антигуа и Барбуда',
+    slug: 'Antigua-i-Barbuda',
   },
   {
-    "name": "Антильские Острова",
-    "slug": "Antilskie-Ostrova"
+    name: 'Антильские Острова',
+    slug: 'Antilskie-Ostrova',
   },
   {
-    "name": "Аргентина",
-    "slug": "Argentina"
+    name: 'Аргентина',
+    slug: 'Argentina',
   },
   {
-    "name": "Армения",
-    "slug": "Armeniya"
+    name: 'Армения',
+    slug: 'Armeniya',
   },
   {
-    "name": "Аруба",
-    "slug": "Aruba"
+    name: 'Аруба',
+    slug: 'Aruba',
   },
   {
-    "name": "Афганистан",
-    "slug": "Afganistan"
+    name: 'Афганистан',
+    slug: 'Afganistan',
   },
   {
-    "name": "Багамы",
-    "slug": "Bagamy"
+    name: 'Багамы',
+    slug: 'Bagamy',
   },
   {
-    "name": "Бангладеш",
-    "slug": "Bangladesh"
+    name: 'Бангладеш',
+    slug: 'Bangladesh',
   },
   {
-    "name": "Барбадос",
-    "slug": "Barbados"
+    name: 'Барбадос',
+    slug: 'Barbados',
   },
   {
-    "name": "Бахрейн",
-    "slug": "Bahreyn"
+    name: 'Бахрейн',
+    slug: 'Bahreyn',
   },
   {
-    "name": "Беларусь",
-    "slug": "Belarus"
+    name: 'Беларусь',
+    slug: 'Belarus',
   },
   {
-    "name": "Белиз",
-    "slug": "Beliz"
+    name: 'Белиз',
+    slug: 'Beliz',
   },
   {
-    "name": "Бельгия",
-    "slug": "Belgiya"
+    name: 'Бельгия',
+    slug: 'Belgiya',
   },
   {
-    "name": "Бенин",
-    "slug": "Benin"
+    name: 'Бенин',
+    slug: 'Benin',
   },
   {
-    "name": "Берег Слоновой кости",
-    "slug": "Bereg-Slonovoy-kosti"
+    name: 'Берег Слоновой кости',
+    slug: 'Bereg-Slonovoy-kosti',
   },
   {
-    "name": "Бермуды",
-    "slug": "Bermudy"
+    name: 'Бермуды',
+    slug: 'Bermudy',
   },
   {
-    "name": "Бирма",
-    "slug": "Birma"
+    name: 'Бирма',
+    slug: 'Birma',
   },
   {
-    "name": "Болгария",
-    "slug": "Bolgariya"
+    name: 'Болгария',
+    slug: 'Bolgariya',
   },
   {
-    "name": "Боливия",
-    "slug": "Boliviya"
+    name: 'Боливия',
+    slug: 'Boliviya',
   },
   {
-    "name": "Босния",
-    "slug": "Bosniya"
+    name: 'Босния',
+    slug: 'Bosniya',
   },
   {
-    "name": "Босния и Герцеговина",
-    "slug": "Bosniya-i-Gercegovina"
+    name: 'Босния и Герцеговина',
+    slug: 'Bosniya-i-Gercegovina',
   },
   {
-    "name": "Ботсвана",
-    "slug": "Botsvana"
+    name: 'Ботсвана',
+    slug: 'Botsvana',
   },
   {
-    "name": "Бразилия",
-    "slug": "Braziliya"
+    name: 'Бразилия',
+    slug: 'Braziliya',
   },
   {
-    "name": "Бруней-Даруссалам",
-    "slug": "Bruney-Darussalam"
+    name: 'Бруней-Даруссалам',
+    slug: 'Bruney-Darussalam',
   },
   {
-    "name": "Буркина-Фасо",
-    "slug": "Burkina-Faso"
+    name: 'Буркина-Фасо',
+    slug: 'Burkina-Faso',
   },
   {
-    "name": "Бурунди",
-    "slug": "Burundi"
+    name: 'Бурунди',
+    slug: 'Burundi',
   },
   {
-    "name": "Бутан",
-    "slug": "Butan"
+    name: 'Бутан',
+    slug: 'Butan',
   },
   {
-    "name": "Вануату",
-    "slug": "Vanuatu"
+    name: 'Вануату',
+    slug: 'Vanuatu',
   },
   {
-    "name": "Ватикан",
-    "slug": "Vatikan"
+    name: 'Ватикан',
+    slug: 'Vatikan',
   },
   {
-    "name": "Великобритания",
-    "slug": "Velikobritaniya"
+    name: 'Великобритания',
+    slug: 'Velikobritaniya',
   },
   {
-    "name": "Венгрия",
-    "slug": "Vengriya"
+    name: 'Венгрия',
+    slug: 'Vengriya',
   },
   {
-    "name": "Венесуэла",
-    "slug": "Venesuela"
+    name: 'Венесуэла',
+    slug: 'Venesuela',
   },
   {
-    "name": "Виргинские Острова",
-    "slug": "Virginskie-Ostrova"
+    name: 'Виргинские Острова',
+    slug: 'Virginskie-Ostrova',
   },
   {
-    "name": "Внешние малые острова США",
-    "slug": "Vneshnie-malye-ostrova-SShA"
+    name: 'Внешние малые острова США',
+    slug: 'Vneshnie-malye-ostrova-SShA',
   },
   {
-    "name": "Вьетнам",
-    "slug": "Vetnam"
+    name: 'Вьетнам',
+    slug: 'Vetnam',
   },
   {
-    "name": "Вьетнам Северный",
-    "slug": "Vetnam-Severnyy"
+    name: 'Вьетнам Северный',
+    slug: 'Vetnam-Severnyy',
   },
   {
-    "name": "Габон",
-    "slug": "Gabon"
+    name: 'Габон',
+    slug: 'Gabon',
   },
   {
-    "name": "Гаити",
-    "slug": "Gaiti"
+    name: 'Гаити',
+    slug: 'Gaiti',
   },
   {
-    "name": "Гайана",
-    "slug": "Gayana"
+    name: 'Гайана',
+    slug: 'Gayana',
   },
   {
-    "name": "Гамбия",
-    "slug": "Gambiya"
+    name: 'Гамбия',
+    slug: 'Gambiya',
   },
   {
-    "name": "Гана",
-    "slug": "Gana"
+    name: 'Гана',
+    slug: 'Gana',
   },
   {
-    "name": "Гваделупа",
-    "slug": "Gvadelupa"
+    name: 'Гваделупа',
+    slug: 'Gvadelupa',
   },
   {
-    "name": "Гватемала",
-    "slug": "Gvatemala"
+    name: 'Гватемала',
+    slug: 'Gvatemala',
   },
   {
-    "name": "Гвинея",
-    "slug": "Gvineya"
+    name: 'Гвинея',
+    slug: 'Gvineya',
   },
   {
-    "name": "Гвинея-Бисау",
-    "slug": "Gvineya-Bisau"
+    name: 'Гвинея-Бисау',
+    slug: 'Gvineya-Bisau',
   },
   {
-    "name": "Германия",
-    "slug": "Germaniya"
+    name: 'Германия',
+    slug: 'Germaniya',
   },
   {
-    "name": "Германия (ГДР)",
-    "slug": "Germaniya-(GDR)"
+    name: 'Германия (ГДР)',
+    slug: 'Germaniya-(GDR)',
   },
   {
-    "name": "Германия (ФРГ)",
-    "slug": "Germaniya-(FRG)"
+    name: 'Германия (ФРГ)',
+    slug: 'Germaniya-(FRG)',
   },
   {
-    "name": "Гибралтар",
-    "slug": "Gibraltar"
+    name: 'Гибралтар',
+    slug: 'Gibraltar',
   },
   {
-    "name": "Гондурас",
-    "slug": "Gonduras"
+    name: 'Гондурас',
+    slug: 'Gonduras',
   },
   {
-    "name": "Гонконг",
-    "slug": "Gonkong"
+    name: 'Гонконг',
+    slug: 'Gonkong',
   },
   {
-    "name": "Гренада",
-    "slug": "Grenada"
+    name: 'Гренада',
+    slug: 'Grenada',
   },
   {
-    "name": "Гренландия",
-    "slug": "Grenlandiya"
+    name: 'Гренландия',
+    slug: 'Grenlandiya',
   },
   {
-    "name": "Греция",
-    "slug": "Greciya"
+    name: 'Греция',
+    slug: 'Greciya',
   },
   {
-    "name": "Грузия",
-    "slug": "Gruziya"
+    name: 'Грузия',
+    slug: 'Gruziya',
   },
   {
-    "name": "Гуам",
-    "slug": "Guam"
+    name: 'Гуам',
+    slug: 'Guam',
   },
   {
-    "name": "Дания",
-    "slug": "Daniya"
+    name: 'Дания',
+    slug: 'Daniya',
   },
   {
-    "name": "Джибути",
-    "slug": "Dzhibuti"
+    name: 'Джибути',
+    slug: 'Dzhibuti',
   },
   {
-    "name": "Доминика",
-    "slug": "Dominika"
+    name: 'Доминика',
+    slug: 'Dominika',
   },
   {
-    "name": "Доминикана",
-    "slug": "Dominikana"
+    name: 'Доминикана',
+    slug: 'Dominikana',
   },
   {
-    "name": "Египет",
-    "slug": "Egipet"
+    name: 'Египет',
+    slug: 'Egipet',
   },
   {
-    "name": "Заир",
-    "slug": "Zair"
+    name: 'Заир',
+    slug: 'Zair',
   },
   {
-    "name": "Замбия",
-    "slug": "Zambiya"
+    name: 'Замбия',
+    slug: 'Zambiya',
   },
   {
-    "name": "Западная Сахара",
-    "slug": "Zapadnaya-Sahara"
+    name: 'Западная Сахара',
+    slug: 'Zapadnaya-Sahara',
   },
   {
-    "name": "Зимбабве",
-    "slug": "Zimbabve"
+    name: 'Зимбабве',
+    slug: 'Zimbabve',
   },
   {
-    "name": "Израиль",
-    "slug": "Izrail"
+    name: 'Израиль',
+    slug: 'Izrail',
   },
   {
-    "name": "Индия",
-    "slug": "Indiya"
+    name: 'Индия',
+    slug: 'Indiya',
   },
   {
-    "name": "Индонезия",
-    "slug": "Indoneziya"
+    name: 'Индонезия',
+    slug: 'Indoneziya',
   },
   {
-    "name": "Иордания",
-    "slug": "Iordaniya"
+    name: 'Иордания',
+    slug: 'Iordaniya',
   },
   {
-    "name": "Ирак",
-    "slug": "Irak"
+    name: 'Ирак',
+    slug: 'Irak',
   },
   {
-    "name": "Иран",
-    "slug": "Iran"
+    name: 'Иран',
+    slug: 'Iran',
   },
   {
-    "name": "Ирландия",
-    "slug": "Irlandiya"
+    name: 'Ирландия',
+    slug: 'Irlandiya',
   },
   {
-    "name": "Исландия",
-    "slug": "Islandiya"
+    name: 'Исландия',
+    slug: 'Islandiya',
   },
   {
-    "name": "Испания",
-    "slug": "Ispaniya"
+    name: 'Испания',
+    slug: 'Ispaniya',
   },
   {
-    "name": "Италия",
-    "slug": "Italiya"
+    name: 'Италия',
+    slug: 'Italiya',
   },
   {
-    "name": "Йемен",
-    "slug": "Yemen"
+    name: 'Йемен',
+    slug: 'Yemen',
   },
   {
-    "name": "Кабо-Верде",
-    "slug": "Kabo-Verde"
+    name: 'Кабо-Верде',
+    slug: 'Kabo-Verde',
   },
   {
-    "name": "Казахстан",
-    "slug": "Kazahstan"
+    name: 'Казахстан',
+    slug: 'Kazahstan',
   },
   {
-    "name": "Каймановы острова",
-    "slug": "Kaymanovy-ostrova"
+    name: 'Каймановы острова',
+    slug: 'Kaymanovy-ostrova',
   },
   {
-    "name": "Камбоджа",
-    "slug": "Kambodzha"
+    name: 'Камбоджа',
+    slug: 'Kambodzha',
   },
   {
-    "name": "Камерун",
-    "slug": "Kamerun"
+    name: 'Камерун',
+    slug: 'Kamerun',
   },
   {
-    "name": "Канада",
-    "slug": "Kanada"
+    name: 'Канада',
+    slug: 'Kanada',
   },
   {
-    "name": "Катар",
-    "slug": "Katar"
+    name: 'Катар',
+    slug: 'Katar',
   },
   {
-    "name": "Кения",
-    "slug": "Keniya"
+    name: 'Кения',
+    slug: 'Keniya',
   },
   {
-    "name": "Кипр",
-    "slug": "Kipr"
+    name: 'Кипр',
+    slug: 'Kipr',
   },
   {
-    "name": "Кирибати",
-    "slug": "Kiribati"
+    name: 'Кирибати',
+    slug: 'Kiribati',
   },
   {
-    "name": "Китай",
-    "slug": "Kitay"
+    name: 'Китай',
+    slug: 'Kitay',
   },
   {
-    "name": "Колумбия",
-    "slug": "Kolumbiya"
+    name: 'Колумбия',
+    slug: 'Kolumbiya',
   },
   {
-    "name": "Коморы",
-    "slug": "Komory"
+    name: 'Коморы',
+    slug: 'Komory',
   },
   {
-    "name": "Конго",
-    "slug": "Kongo"
+    name: 'Конго',
+    slug: 'Kongo',
   },
   {
-    "name": "Конго (ДРК)",
-    "slug": "Kongo-(DRK)"
+    name: 'Конго (ДРК)',
+    slug: 'Kongo-(DRK)',
   },
   {
-    "name": "Корея",
-    "slug": "Koreya"
+    name: 'Корея',
+    slug: 'Koreya',
   },
   {
-    "name": "Корея Северная",
-    "slug": "Koreya-Severnaya"
+    name: 'Корея Северная',
+    slug: 'Koreya-Severnaya',
   },
   {
-    "name": "Корея Южная",
-    "slug": "Koreya-Yuzhnaya"
+    name: 'Корея Южная',
+    slug: 'Koreya-Yuzhnaya',
   },
   {
-    "name": "Косово",
-    "slug": "Kosovo"
+    name: 'Косово',
+    slug: 'Kosovo',
   },
   {
-    "name": "Коста-Рика",
-    "slug": "Kosta-Rika"
+    name: 'Коста-Рика',
+    slug: 'Kosta-Rika',
   },
   {
-    "name": "Кот-д’Ивуар",
-    "slug": "Kot-d'Ivuar"
+    name: 'Кот-д’Ивуар',
+    slug: "Kot-d'Ivuar",
   },
   {
-    "name": "Куба",
-    "slug": "Kuba"
+    name: 'Куба',
+    slug: 'Kuba',
   },
   {
-    "name": "Кувейт",
-    "slug": "Kuveyt"
+    name: 'Кувейт',
+    slug: 'Kuveyt',
   },
   {
-    "name": "Кыргызстан",
-    "slug": "Kyrgyzstan"
+    name: 'Кыргызстан',
+    slug: 'Kyrgyzstan',
   },
   {
-    "name": "Лаос",
-    "slug": "Laos"
+    name: 'Лаос',
+    slug: 'Laos',
   },
   {
-    "name": "Латвия",
-    "slug": "Latviya"
+    name: 'Латвия',
+    slug: 'Latviya',
   },
   {
-    "name": "Лесото",
-    "slug": "Lesoto"
+    name: 'Лесото',
+    slug: 'Lesoto',
   },
   {
-    "name": "Либерия",
-    "slug": "Liberiya"
+    name: 'Либерия',
+    slug: 'Liberiya',
   },
   {
-    "name": "Ливан",
-    "slug": "Livan"
+    name: 'Ливан',
+    slug: 'Livan',
   },
   {
-    "name": "Ливия",
-    "slug": "Liviya"
+    name: 'Ливия',
+    slug: 'Liviya',
   },
   {
-    "name": "Литва",
-    "slug": "Litva"
+    name: 'Литва',
+    slug: 'Litva',
   },
   {
-    "name": "Лихтенштейн",
-    "slug": "Lihtenshteyn"
+    name: 'Лихтенштейн',
+    slug: 'Lihtenshteyn',
   },
   {
-    "name": "Люксембург",
-    "slug": "Lyuksemburg"
+    name: 'Люксембург',
+    slug: 'Lyuksemburg',
   },
   {
-    "name": "Маврикий",
-    "slug": "Mavrikiy"
+    name: 'Маврикий',
+    slug: 'Mavrikiy',
   },
   {
-    "name": "Мавритания",
-    "slug": "Mavritaniya"
+    name: 'Мавритания',
+    slug: 'Mavritaniya',
   },
   {
-    "name": "Мадагаскар",
-    "slug": "Madagaskar"
+    name: 'Мадагаскар',
+    slug: 'Madagaskar',
   },
   {
-    "name": "Макао",
-    "slug": "Makao"
+    name: 'Макао',
+    slug: 'Makao',
   },
   {
-    "name": "Македония",
-    "slug": "Makedoniya"
+    name: 'Македония',
+    slug: 'Makedoniya',
   },
   {
-    "name": "Малави",
-    "slug": "Malavi"
+    name: 'Малави',
+    slug: 'Malavi',
   },
   {
-    "name": "Малайзия",
-    "slug": "Malayziya"
+    name: 'Малайзия',
+    slug: 'Malayziya',
   },
   {
-    "name": "Мали",
-    "slug": "Mali"
+    name: 'Мали',
+    slug: 'Mali',
   },
   {
-    "name": "Мальдивы",
-    "slug": "Maldivy"
+    name: 'Мальдивы',
+    slug: 'Maldivy',
   },
   {
-    "name": "Мальта",
-    "slug": "Malta"
+    name: 'Мальта',
+    slug: 'Malta',
   },
   {
-    "name": "Марокко",
-    "slug": "Marokko"
+    name: 'Марокко',
+    slug: 'Marokko',
   },
   {
-    "name": "Мартиника",
-    "slug": "Martinika"
+    name: 'Мартиника',
+    slug: 'Martinika',
   },
   {
-    "name": "Маршалловы острова",
-    "slug": "Marshallovy-ostrova"
+    name: 'Маршалловы острова',
+    slug: 'Marshallovy-ostrova',
   },
   {
-    "name": "Мексика",
-    "slug": "Meksika"
+    name: 'Мексика',
+    slug: 'Meksika',
   },
   {
-    "name": "Мозамбик",
-    "slug": "Mozambik"
+    name: 'Мозамбик',
+    slug: 'Mozambik',
   },
   {
-    "name": "Молдова",
-    "slug": "Moldova"
+    name: 'Молдова',
+    slug: 'Moldova',
   },
   {
-    "name": "Монако",
-    "slug": "Monako"
+    name: 'Монако',
+    slug: 'Monako',
   },
   {
-    "name": "Монголия",
-    "slug": "Mongoliya"
+    name: 'Монголия',
+    slug: 'Mongoliya',
   },
   {
-    "name": "Монтсеррат",
-    "slug": "Montserrat"
+    name: 'Монтсеррат',
+    slug: 'Montserrat',
   },
   {
-    "name": "Мьянма",
-    "slug": "Myanma"
+    name: 'Мьянма',
+    slug: 'Myanma',
   },
   {
-    "name": "Намибия",
-    "slug": "Namibiya"
+    name: 'Намибия',
+    slug: 'Namibiya',
   },
   {
-    "name": "Непал",
-    "slug": "Nepal"
+    name: 'Непал',
+    slug: 'Nepal',
   },
   {
-    "name": "Нигер",
-    "slug": "Niger"
+    name: 'Нигер',
+    slug: 'Niger',
   },
   {
-    "name": "Нигерия",
-    "slug": "Nigeriya"
+    name: 'Нигерия',
+    slug: 'Nigeriya',
   },
   {
-    "name": "Нидерланды",
-    "slug": "Niderlandy"
+    name: 'Нидерланды',
+    slug: 'Niderlandy',
   },
   {
-    "name": "Никарагуа",
-    "slug": "Nikaragua"
+    name: 'Никарагуа',
+    slug: 'Nikaragua',
   },
   {
-    "name": "Новая Зеландия",
-    "slug": "Novaya-Zelandiya"
+    name: 'Новая Зеландия',
+    slug: 'Novaya-Zelandiya',
   },
   {
-    "name": "Новая Каледония",
-    "slug": "Novaya-Kaledoniya"
+    name: 'Новая Каледония',
+    slug: 'Novaya-Kaledoniya',
   },
   {
-    "name": "Норвегия",
-    "slug": "Norvegiya"
+    name: 'Норвегия',
+    slug: 'Norvegiya',
   },
   {
-    "name": "ОАЭ",
-    "slug": "OAE"
+    name: 'ОАЭ',
+    slug: 'OAE',
   },
   {
-    "name": "Оккупированная Палестинская территория",
-    "slug": "Okkupirovannaya-Palestinskaya-territoriya"
+    name: 'Оккупированная Палестинская территория',
+    slug: 'Okkupirovannaya-Palestinskaya-territoriya',
   },
   {
-    "name": "Оман",
-    "slug": "Oman"
+    name: 'Оман',
+    slug: 'Oman',
   },
   {
-    "name": "Остров Мэн",
-    "slug": "Ostrov-Men"
+    name: 'Остров Мэн',
+    slug: 'Ostrov-Men',
   },
   {
-    "name": "Острова Кука",
-    "slug": "Ostrova-Kuka"
+    name: 'Острова Кука',
+    slug: 'Ostrova-Kuka',
   },
   {
-    "name": "Пакистан",
-    "slug": "Pakistan"
+    name: 'Пакистан',
+    slug: 'Pakistan',
   },
   {
-    "name": "Палау",
-    "slug": "Palau"
+    name: 'Палау',
+    slug: 'Palau',
   },
   {
-    "name": "Палестина",
-    "slug": "Palestina"
+    name: 'Палестина',
+    slug: 'Palestina',
   },
   {
-    "name": "Панама",
-    "slug": "Panama"
+    name: 'Панама',
+    slug: 'Panama',
   },
   {
-    "name": "Папуа - Новая Гвинея",
-    "slug": "Papua---Novaya-Gvineya"
+    name: 'Папуа - Новая Гвинея',
+    slug: 'Papua---Novaya-Gvineya',
   },
   {
-    "name": "Парагвай",
-    "slug": "Paragvay"
+    name: 'Парагвай',
+    slug: 'Paragvay',
   },
   {
-    "name": "Перу",
-    "slug": "Peru"
+    name: 'Перу',
+    slug: 'Peru',
   },
   {
-    "name": "Польша",
-    "slug": "Polsha"
+    name: 'Польша',
+    slug: 'Polsha',
   },
   {
-    "name": "Португалия",
-    "slug": "Portugaliya"
+    name: 'Португалия',
+    slug: 'Portugaliya',
   },
   {
-    "name": "Пуэрто Рико",
-    "slug": "Puerto-Riko"
+    name: 'Пуэрто Рико',
+    slug: 'Puerto-Riko',
   },
   {
-    "name": "Реюньон",
-    "slug": "Reyunon"
+    name: 'Реюньон',
+    slug: 'Reyunon',
   },
   {
-    "name": "Российская империя",
-    "slug": "Rossiyskaya-imperiya"
+    name: 'Российская империя',
+    slug: 'Rossiyskaya-imperiya',
   },
   {
-    "name": "Россия",
-    "slug": "Rossiya"
+    name: 'Россия',
+    slug: 'Rossiya',
   },
   {
-    "name": "Руанда",
-    "slug": "Ruanda"
+    name: 'Руанда',
+    slug: 'Ruanda',
   },
   {
-    "name": "Румыния",
-    "slug": "Rumyniya"
+    name: 'Румыния',
+    slug: 'Rumyniya',
   },
   {
-    "name": "СССР",
-    "slug": "SSSR"
+    name: 'СССР',
+    slug: 'SSSR',
   },
   {
-    "name": "США",
-    "slug": "SShA"
+    name: 'США',
+    slug: 'SShA',
   },
   {
-    "name": "Сальвадор",
-    "slug": "Salvador"
+    name: 'Сальвадор',
+    slug: 'Salvador',
   },
   {
-    "name": "Самоа",
-    "slug": "Samoa"
+    name: 'Самоа',
+    slug: 'Samoa',
   },
   {
-    "name": "Сан-Марино",
-    "slug": "San-Marino"
+    name: 'Сан-Марино',
+    slug: 'San-Marino',
   },
   {
-    "name": "Саудовская Аравия",
-    "slug": "Saudovskaya-Araviya"
+    name: 'Саудовская Аравия',
+    slug: 'Saudovskaya-Araviya',
   },
   {
-    "name": "Свазиленд",
-    "slug": "Svazilend"
+    name: 'Свазиленд',
+    slug: 'Svazilend',
   },
   {
-    "name": "Северная Македония",
-    "slug": "Severnaya-Makedoniya"
+    name: 'Северная Македония',
+    slug: 'Severnaya-Makedoniya',
   },
   {
-    "name": "Сейшельские острова",
-    "slug": "Seyshelskie-ostrova"
+    name: 'Сейшельские острова',
+    slug: 'Seyshelskie-ostrova',
   },
   {
-    "name": "Сенегал",
-    "slug": "Senegal"
+    name: 'Сенегал',
+    slug: 'Senegal',
   },
   {
-    "name": "Сент-Винсент и Гренадины",
-    "slug": "Sent-Vinsent-i-Grenadiny"
+    name: 'Сент-Винсент и Гренадины',
+    slug: 'Sent-Vinsent-i-Grenadiny',
   },
   {
-    "name": "Сент-Китс и Невис",
-    "slug": "Sent-Kits-i-Nevis"
+    name: 'Сент-Китс и Невис',
+    slug: 'Sent-Kits-i-Nevis',
   },
   {
-    "name": "Сент-Люсия ",
-    "slug": "Sent-Lyusiya-"
+    name: 'Сент-Люсия ',
+    slug: 'Sent-Lyusiya-',
   },
   {
-    "name": "Сербия",
-    "slug": "Serbiya"
+    name: 'Сербия',
+    slug: 'Serbiya',
   },
   {
-    "name": "Сербия и Черногория",
-    "slug": "Serbiya-i-Chernogoriya"
+    name: 'Сербия и Черногория',
+    slug: 'Serbiya-i-Chernogoriya',
   },
   {
-    "name": "Сиам",
-    "slug": "Siam"
+    name: 'Сиам',
+    slug: 'Siam',
   },
   {
-    "name": "Сингапур",
-    "slug": "Singapur"
+    name: 'Сингапур',
+    slug: 'Singapur',
   },
   {
-    "name": "Сирия",
-    "slug": "Siriya"
+    name: 'Сирия',
+    slug: 'Siriya',
   },
   {
-    "name": "Словакия",
-    "slug": "Slovakiya"
+    name: 'Словакия',
+    slug: 'Slovakiya',
   },
   {
-    "name": "Словения",
-    "slug": "Sloveniya"
+    name: 'Словения',
+    slug: 'Sloveniya',
   },
   {
-    "name": "Соломоновы Острова",
-    "slug": "Solomonovy-Ostrova"
+    name: 'Соломоновы Острова',
+    slug: 'Solomonovy-Ostrova',
   },
   {
-    "name": "Сомали",
-    "slug": "Somali"
+    name: 'Сомали',
+    slug: 'Somali',
   },
   {
-    "name": "Судан",
-    "slug": "Sudan"
+    name: 'Судан',
+    slug: 'Sudan',
   },
   {
-    "name": "Суринам",
-    "slug": "Surinam"
+    name: 'Суринам',
+    slug: 'Surinam',
   },
   {
-    "name": "Сьерра-Леоне",
-    "slug": "Serra-Leone"
+    name: 'Сьерра-Леоне',
+    slug: 'Serra-Leone',
   },
   {
-    "name": "Таджикистан",
-    "slug": "Tadzhikistan"
+    name: 'Таджикистан',
+    slug: 'Tadzhikistan',
   },
   {
-    "name": "Таиланд",
-    "slug": "Tailand"
+    name: 'Таиланд',
+    slug: 'Tailand',
   },
   {
-    "name": "Тайвань",
-    "slug": "Tayvan"
+    name: 'Тайвань',
+    slug: 'Tayvan',
   },
   {
-    "name": "Танзания",
-    "slug": "Tanzaniya"
+    name: 'Танзания',
+    slug: 'Tanzaniya',
   },
   {
-    "name": "Тимор-Лесте",
-    "slug": "Timor-Leste"
+    name: 'Тимор-Лесте',
+    slug: 'Timor-Leste',
   },
   {
-    "name": "Того",
-    "slug": "Togo"
+    name: 'Того',
+    slug: 'Togo',
   },
   {
-    "name": "Тонга",
-    "slug": "Tonga"
+    name: 'Тонга',
+    slug: 'Tonga',
   },
   {
-    "name": "Тринидад и Тобаго",
-    "slug": "Trinidad-i-Tobago"
+    name: 'Тринидад и Тобаго',
+    slug: 'Trinidad-i-Tobago',
   },
   {
-    "name": "Тувалу",
-    "slug": "Tuvalu"
+    name: 'Тувалу',
+    slug: 'Tuvalu',
   },
   {
-    "name": "Тунис",
-    "slug": "Tunis"
+    name: 'Тунис',
+    slug: 'Tunis',
   },
   {
-    "name": "Туркменистан",
-    "slug": "Turkmenistan"
+    name: 'Туркменистан',
+    slug: 'Turkmenistan',
   },
   {
-    "name": "Турция",
-    "slug": "Turciya"
+    name: 'Турция',
+    slug: 'Turciya',
   },
   {
-    "name": "Уганда",
-    "slug": "Uganda"
+    name: 'Уганда',
+    slug: 'Uganda',
   },
   {
-    "name": "Узбекистан",
-    "slug": "Uzbekistan"
+    name: 'Узбекистан',
+    slug: 'Uzbekistan',
   },
   {
-    "name": "Украина",
-    "slug": "Ukraina"
+    name: 'Украина',
+    slug: 'Ukraina',
   },
   {
-    "name": "Уругвай",
-    "slug": "Urugvay"
+    name: 'Уругвай',
+    slug: 'Urugvay',
   },
   {
-    "name": "Фарерские острова",
-    "slug": "Farerskie-ostrova"
+    name: 'Фарерские острова',
+    slug: 'Farerskie-ostrova',
   },
   {
-    "name": "Федеративные Штаты Микронезии",
-    "slug": "Federativnye-Shtaty-Mikronezii"
+    name: 'Федеративные Штаты Микронезии',
+    slug: 'Federativnye-Shtaty-Mikronezii',
   },
   {
-    "name": "Фиджи",
-    "slug": "Fidzhi"
+    name: 'Фиджи',
+    slug: 'Fidzhi',
   },
   {
-    "name": "Филиппины",
-    "slug": "Filippiny"
+    name: 'Филиппины',
+    slug: 'Filippiny',
   },
   {
-    "name": "Финляндия",
-    "slug": "Finlyandiya"
+    name: 'Финляндия',
+    slug: 'Finlyandiya',
   },
   {
-    "name": "Фолклендские острова",
-    "slug": "Folklendskie-ostrova"
+    name: 'Фолклендские острова',
+    slug: 'Folklendskie-ostrova',
   },
   {
-    "name": "Франция",
-    "slug": "Franciya"
+    name: 'Франция',
+    slug: 'Franciya',
   },
   {
-    "name": "Французская Гвиана",
-    "slug": "Francuzskaya-Gviana"
+    name: 'Французская Гвиана',
+    slug: 'Francuzskaya-Gviana',
   },
   {
-    "name": "Французская Полинезия",
-    "slug": "Francuzskaya-Polineziya"
+    name: 'Французская Полинезия',
+    slug: 'Francuzskaya-Polineziya',
   },
   {
-    "name": "Хорватия",
-    "slug": "Horvatiya"
+    name: 'Хорватия',
+    slug: 'Horvatiya',
   },
   {
-    "name": "ЦАР",
-    "slug": "CAR"
+    name: 'ЦАР',
+    slug: 'CAR',
   },
   {
-    "name": "Чад",
-    "slug": "Chad"
+    name: 'Чад',
+    slug: 'Chad',
   },
   {
-    "name": "Черногория",
-    "slug": "Chernogoriya"
+    name: 'Черногория',
+    slug: 'Chernogoriya',
   },
   {
-    "name": "Чехия",
-    "slug": "Chehiya"
+    name: 'Чехия',
+    slug: 'Chehiya',
   },
   {
-    "name": "Чехословакия",
-    "slug": "Chehoslovakiya"
+    name: 'Чехословакия',
+    slug: 'Chehoslovakiya',
   },
   {
-    "name": "Чили",
-    "slug": "Chili"
+    name: 'Чили',
+    slug: 'Chili',
   },
   {
-    "name": "Швейцария",
-    "slug": "Shveycariya"
+    name: 'Швейцария',
+    slug: 'Shveycariya',
   },
   {
-    "name": "Швеция",
-    "slug": "Shveciya"
+    name: 'Швеция',
+    slug: 'Shveciya',
   },
   {
-    "name": "Шри-Ланка",
-    "slug": "Shri-Lanka"
+    name: 'Шри-Ланка',
+    slug: 'Shri-Lanka',
   },
   {
-    "name": "Эквадор",
-    "slug": "Ekvador"
+    name: 'Эквадор',
+    slug: 'Ekvador',
   },
   {
-    "name": "Экваториальная Гвинея",
-    "slug": "Ekvatorialnaya-Gvineya"
+    name: 'Экваториальная Гвинея',
+    slug: 'Ekvatorialnaya-Gvineya',
   },
   {
-    "name": "Эритрея",
-    "slug": "Eritreya"
+    name: 'Эритрея',
+    slug: 'Eritreya',
   },
   {
-    "name": "Эстония",
-    "slug": "Estoniya"
+    name: 'Эстония',
+    slug: 'Estoniya',
   },
   {
-    "name": "Эфиопия",
-    "slug": "Efiopiya"
+    name: 'Эфиопия',
+    slug: 'Efiopiya',
   },
   {
-    "name": "ЮАР",
-    "slug": "YuAR"
+    name: 'ЮАР',
+    slug: 'YuAR',
   },
   {
-    "name": "Югославия",
-    "slug": "Yugoslaviya"
+    name: 'Югославия',
+    slug: 'Yugoslaviya',
   },
   {
-    "name": "Югославия (ФР)",
-    "slug": "Yugoslaviya-(FR)"
+    name: 'Югославия (ФР)',
+    slug: 'Yugoslaviya-(FR)',
   },
   {
-    "name": "Ямайка",
-    "slug": "Yamayka"
+    name: 'Ямайка',
+    slug: 'Yamayka',
   },
   {
-    "name": "Япония",
-    "slug": "Yaponiya"
-  }
-]
+    name: 'Япония',
+    slug: 'Yaponiya',
+  },
+];

@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 type Props = {
   name: string;
@@ -15,7 +15,6 @@ const Select: React.FC<Props> = ({
   className,
   selectedValue,
 }) => {
-
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     onSelect(selectedValue);
@@ -27,11 +26,15 @@ const Select: React.FC<Props> = ({
       onChange={handleChange}
       className={`select ${className ? className : ''}`}
     >
-        <option key={0} value={''} disabled>
-          {name}
-        </option>
+      <option key={0} value={''} disabled>
+        {name}
+      </option>
       {options.map((option, index) => (
-        <option key={index+1} value={option} selected={option === selectedValue}>
+        <option
+          key={index + 1}
+          value={option}
+          selected={option === selectedValue}
+        >
           {option}
         </option>
       ))}

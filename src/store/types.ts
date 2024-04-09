@@ -232,7 +232,85 @@ export interface Genre {
   title: string;
 }
 
-export type FilterString = 'year' | 'country' | 'ageRating' | '';
+export type ReviewResponse = {
+  docs: IReview[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+
+export type IReview = {
+  id: number;
+  movieId: number;
+  title: string;
+  type: string;
+  review: string;
+  date: string;
+  author: string;
+  userRating: number;
+  authorId: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type PostersResponse = {
+  docs: IPoster[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+
+export interface ISeason {
+  movieId: number;
+  number: number;
+  airDate: string;
+  createdAt: string;
+  description: string;
+  duration: number;
+  enDescription: string;
+  enName: string;
+  episodes: IEpisode[];
+}
+
+export interface IEpisode {
+  number: number;
+  name: string;
+  enName: string;
+  still: {
+    url: string;
+    previewUrl: string;
+  };
+  duration: number;
+  date: string | null;
+  description: string;
+  airDate: string | null;
+  enDescription: string;
+}
+
+export type SeasonsResponse = {
+  docs: ISeason[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+
+export type IPoster = {
+  url: string;
+  createdAt: string;
+  height: number;
+  previewUrl: string;
+  type: string;
+  updatedAt: string;
+  width: number;
+  movieId: number;
+  id: string;
+}
+
+type FilterType = 'year' | 'countries.name' | 'ageRating'
+export type FilterString = Record<FilterType, string> | null;
 
 export interface filmsState {
   films: IFilm[];
@@ -247,6 +325,10 @@ export interface filmsState {
   filter: FilterString;
   isLoading: boolean;
   error: null | string;
+  pageActors: number;
+  pageReviews: number;
+  pageSeasons: number;
+  pagePosters: number;
 }
 
 export interface RootState {

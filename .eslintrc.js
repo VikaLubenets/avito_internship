@@ -35,5 +35,6 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'comma-dangle': ['error', 'only-multiline'],
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 }

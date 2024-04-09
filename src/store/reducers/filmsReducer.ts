@@ -12,11 +12,14 @@ const initialState: filmsState = {
   year: '',
   country: '',
   ageRating: '',
-  filter: '',
+  filter: null,
   isLoading: false,
   error: null,
+  pageActors: 1,
+  pageReviews: 1,
+  pageSeasons: 1,
+  pagePosters: 1,
 };
-
 
 export const filmsSlice = createSlice({
   name: 'films',
@@ -54,6 +57,18 @@ export const filmsSlice = createSlice({
     },
     setIsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
+    },
+    setPageActors(state, action: PayloadAction<number>) {
+      state.pageActors = action.payload;
+    },
+    setPageReviews(state, action: PayloadAction<number>) {
+      state.pageReviews = action.payload;
+    },
+    setPageSeasons(state, action: PayloadAction<number>) {
+      state.pageSeasons = action.payload;
+    },
+    setPagePosters(state, action: PayloadAction<number>) {
+      state.pagePosters = action.payload;
     },
   },
 });

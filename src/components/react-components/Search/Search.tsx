@@ -1,8 +1,11 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks/redux';
+import { useAppDispatch } from '../../../store/hooks/redux';
 import { filmsSlice } from '../../../store/reducers/filmsReducer';
-import { DEFAULT_LIMIT_FILMS_PER_PAGE, DEFAULT_PAGE } from '../../../utils/constants';
+import {
+  DEFAULT_LIMIT_FILMS_PER_PAGE,
+  DEFAULT_PAGE,
+} from '../../../utils/constants';
 import { Button } from '../../ui/button';
 import './Search.scss';
 
@@ -16,25 +19,24 @@ const Search = () => {
   };
 
   const handleSearch = useCallback(
-		(value: string) => {
-      if(value){
+    (value: string) => {
+      if (value) {
         setSearchParams((prev) => ({
           ...Object.fromEntries(prev),
           page: String(DEFAULT_PAGE),
           limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
           query: value,
-        }))
+        }));
       } else {
-        setSearchParams((prev) => ({
-          ...Object.fromEntries(prev),
+        setSearchParams(() => ({
           page: String(DEFAULT_PAGE),
           limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
-        }))
+        }));
       }
       dispatch(filmsSlice.actions.setSearch(value));
-		},
-		[searchParams],
-	)
+    },
+    [dispatch, setSearchParams]
+  );
 
   return (
     <div className="search-line">

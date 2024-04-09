@@ -15,4 +15,4 @@ export const ageRanking = [
     name: '0+',
     ranking: '0-6',
   },
-]
+];

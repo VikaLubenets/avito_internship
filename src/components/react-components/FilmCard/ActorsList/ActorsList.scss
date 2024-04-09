@@ -1,0 +1,15 @@
+.actors-container{
+  display: flex;
+  gap: 15px;
+}
+
+.actor-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actors-image{
+  width: 50px;
+  height: 75px;
+}

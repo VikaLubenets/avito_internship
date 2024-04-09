@@ -1,14 +1,25 @@
-.filters-bar{
+.filters-bar {
   display: flex;
   gap: 7px;
   justify-content: space-between;
   align-items: center;
-  width: 50vw;
+  width: 55vw;
+  flex-wrap: wrap;
 
-  select{
+  select {
     border: 1px blue solid;
     padding: 4px;
     font: var(--font-l);
   }
-}
 
+  .no-filter{
+    color: green;
+    font: var(--font-l);
+    cursor: pointer;
+  }
+
+  .no-filter:hover,
+  .no-filter:active{
+    color: black;
+  }
+}

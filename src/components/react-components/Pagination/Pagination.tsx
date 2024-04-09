@@ -4,33 +4,56 @@ import Pagination from 'react-bootstrap/Pagination';
 import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const CustomPagination = () => {
+type Props = {
+  totalPages: number;
+}
+const CustomPagination = ({totalPages}: Props) => {
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = useAppSelector((state) => state.films.currentPage);
-  const totalPages = useAppSelector((state) => state.films.totalPages);
 
-  const handlePageClick = useCallback(
-		(value: string) => {
-			setSearchParams((prev) => ({
-				...Object.fromEntries(prev),
-				page: value,
-			}))
-      dispatch(filmsSlice.actions.setCurrentPage(Number(value)));
-		},
-		[searchParams],
-	)
+  const renderPaginationItems = useRenderPaginationItems({
+    currentPage,
+    totalPages,
+    onPageClick: (page: number) => {
+      setSearchParams((prev) => ({
+        ...Object.fromEntries(prev),
+        page: String(page),
+      }));
+      dispatch(filmsSlice.actions.setCurrentPage(page));
+    },
+  });
 
-  const renderPaginationItems = () => {
+  return (
+    <Pagination size="lg" className="pagination">
+      {renderPaginationItems()}
+    </Pagination>
+  );
+};
+
+export default CustomPagination;
+
+
+type RenderPaginationItemsProps = {
+  currentPage: number;
+  totalPages: number;
+  onPageClick: (page: number) => void;
+};
+
+export const useRenderPaginationItems = ({
+  currentPage,
+  totalPages,
+  onPageClick,
+}: RenderPaginationItemsProps) => {
+
+  const renderPaginationItems = useCallback(() => {
     const items = [];
 
-    items.push(
-      <Pagination.First key="first" onClick={() => handlePageClick('1')} />
-    );
+    items.push(<Pagination.First key="first" onClick={() => onPageClick(1)} />);
     items.push(
       <Pagination.Prev
         key="prev"
-        onClick={() => handlePageClick(`${currentPage - 1}`)}
+        onClick={() => onPageClick(currentPage - 1)}
         disabled={currentPage === 1}
       />
     );
@@ -55,7 +78,7 @@ const CustomPagination = () => {
         <Pagination.Item
           key={number}
           active={number === currentPage}
-          onClick={() => handlePageClick(String(number))}
+          onClick={() => onPageClick(number)}
         >
           {number}
         </Pagination.Item>
@@ -69,23 +92,20 @@ const CustomPagination = () => {
     items.push(
       <Pagination.Next
         key="next"
-        onClick={() => handlePageClick(`${currentPage + 1}`)}
+        onClick={() => onPageClick(currentPage + 1)}
         disabled={currentPage === totalPages}
       />
     );
 
     items.push(
-      <Pagination.Last key="last" onClick={() => handlePageClick(String(totalPages))} />
+      <Pagination.Last
+        key="last"
+        onClick={() => onPageClick(totalPages)}
+      />
     );
 
     return items;
-  };
+  }, [currentPage, totalPages, onPageClick]);
 
-  return (
-    <Pagination size="lg" className="pagination">
-      {renderPaginationItems()}
-    </Pagination>
-  );
+  return renderPaginationItems;
 };
-
-export default CustomPagination;
