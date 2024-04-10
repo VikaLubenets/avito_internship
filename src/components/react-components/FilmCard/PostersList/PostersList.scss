@@ -1,12 +1,16 @@
-.posters-images-line{
+.posters-images-line {
   display: flex;
   gap: 10px;
 }
 
-.posters-container{
+.posters-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+
+.posters-row{
+  display: flex;
 }

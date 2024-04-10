@@ -1,15 +1,31 @@
-.actors-container{
+.actors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actors-row{
   display: flex;
   gap: 15px;
 }
 
-.actor-container{
+.actor-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+  max-width: 100px;
+  font: var(--font-s);
 }
 
-.actors-image{
-  width: 50px;
-  height: 75px;
+.actors-image {
+  width: 100px;
+  height: 150px;
+}
+
+.actor-name{
+  text-align: center;
 }

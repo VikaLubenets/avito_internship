@@ -1,0 +1,13 @@
+.review-item{
+  font: var(--font-s);
+  border: 1px var(--bg-header-color) solid;
+  color: var(--dark-text-color);
+  padding: 10px;
+}
+
+.review-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

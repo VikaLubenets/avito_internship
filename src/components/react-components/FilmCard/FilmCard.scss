@@ -1,23 +1,23 @@
-.film-card-container{
+.film-card-container {
   margin: 30px;
 
-  .first-row-film-container{
+  .first-row-film-container {
     display: flex;
-    gap: 30px;
-  
-    .film-image{
+    gap: 40px;
+
+    .film-image {
       width: 300px;
       height: 400px;
     }
-  
-    .text-container{
+
+    .text-container {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
   }
-  
-  .sub-title{
+
+  .sub-title {
     font-weight: bold;
     font: var(--font-l);
   }

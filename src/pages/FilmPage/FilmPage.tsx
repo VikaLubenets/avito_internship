@@ -28,10 +28,10 @@ const FilmPage = () => {
 
   return (
     <React.Fragment>
-      <Link to={'/'}>
+      <main className='main-container'>
+        <Link to={'/'}>
           <Button type={'button'} title={'На главную'} className={''} />
-      </Link>
-      <main>
+        </Link>
         <FilmCard data={filmData} />
       </main>
     </React.Fragment>

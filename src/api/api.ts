@@ -7,11 +7,17 @@ import {
   DEFAULT_REVIEWS_PER_PAGE,
   DEFAULT_SEASONS_PER_PAGE,
 } from '../utils/constants';
-import { FilmSearchResponse, IFilm, PostersResponse, ReviewResponse, SeasonsResponse } from '../store/types';
+import {
+  FilmSearchResponse,
+  IFilm,
+  PostersResponse,
+  ReviewResponse,
+  SeasonsResponse,
+} from '../store/types';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const token = process.env.TOKEN || 'WF76VQQ-HQB4P5G-JFJH8DF-CRKDP1M';
+const token = process.env.TOKEN || '';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -49,21 +55,15 @@ export const api = createApi({
     getAllFilmsAndSeries: builder.query<
       FilmSearchResponse,
       {
-        limit: number;
-        page: number;
-        params?: Record<string, string>;
+        params?: {[key: string]: string},
       }
     >({
       query: ({
-        limit = DEFAULT_LIMIT_FILMS_PER_PAGE,
-        page = DEFAULT_PAGE,
         params
       }) => {
         return {
           url: '/v1.4/movie',
           params: {
-            page,
-            limit,
             type: ['movie', 'tv-series'],
             ...params
           },
@@ -104,7 +104,7 @@ export const api = createApi({
       query: ({
         page = DEFAULT_PAGE,
         limit = DEFAULT_REVIEWS_PER_PAGE,
-        movieId
+        movieId,
       }) => {
         return {
           url: `v1.4/review`,
@@ -115,7 +115,7 @@ export const api = createApi({
           },
         };
       },
-    }),   
+    }),
     getPosters: builder.query<
       PostersResponse,
       {
@@ -127,7 +127,7 @@ export const api = createApi({
       query: ({
         page = DEFAULT_PAGE,
         limit = DEFAULT_POSTERS_PER_PAGE,
-        movieId
+        movieId,
       }) => {
         return {
           url: `v1.4/image`,
@@ -138,7 +138,7 @@ export const api = createApi({
           },
         };
       },
-    }),  
+    }),
     getSeasons: builder.query<
       SeasonsResponse,
       {
@@ -150,7 +150,7 @@ export const api = createApi({
       query: ({
         page = DEFAULT_PAGE,
         limit = DEFAULT_SEASONS_PER_PAGE,
-        movieId
+        movieId,
       }) => {
         return {
           url: `v1.4/season`,
@@ -161,7 +161,7 @@ export const api = createApi({
           },
         };
       },
-    }),  
+    }),
   }),
 });
 

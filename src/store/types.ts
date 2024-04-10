@@ -68,6 +68,27 @@ export type FilmPersonType = {
   enProfession: string;
 };
 
+export type ISimilarMovie = {
+  id: number;
+  name: string;
+  enName: string;
+  alternativeName: string;
+  type: string;
+  poster: {
+    url: string;
+    previewUrl: string;
+  };
+  rating: {
+    kp: number;
+    imdb: number;
+    tmdb: number;
+    filmCritics: number;
+    russianFilmCritics: number;
+    await: number;
+  };
+  year: number;
+};
+
 export interface IFilm {
   id: number;
   externalId: ExternalIdType;
@@ -137,26 +158,7 @@ export interface IFilm {
     bluray: string;
     dvd: string;
   };
-  similarMovies: {
-    id: number;
-    name: string;
-    enName: string;
-    alternativeName: string;
-    type: string;
-    poster: {
-      url: string;
-      previewUrl: string;
-    };
-    rating: {
-      kp: number;
-      imdb: number;
-      tmdb: number;
-      filmCritics: number;
-      russianFilmCritics: number;
-      await: number;
-    };
-    year: number;
-  }[];
+  similarMovies: ISimilarMovie[];
   sequelsAndPrequels: {
     id: number;
     name: string;
@@ -238,7 +240,7 @@ export type ReviewResponse = {
   limit: number;
   page: number;
   pages: number;
-}
+};
 
 export type IReview = {
   id: number;
@@ -260,7 +262,7 @@ export type PostersResponse = {
   limit: number;
   page: number;
   pages: number;
-}
+};
 
 export interface ISeason {
   movieId: number;
@@ -272,6 +274,10 @@ export interface ISeason {
   enDescription: string;
   enName: string;
   episodes: IEpisode[];
+  poster: {
+    url:string | null;
+    previewUrl: string | null
+  }
 }
 
 export interface IEpisode {
@@ -295,7 +301,7 @@ export type SeasonsResponse = {
   limit: number;
   page: number;
   pages: number;
-}
+};
 
 export type IPoster = {
   url: string;
@@ -307,9 +313,16 @@ export type IPoster = {
   width: number;
   movieId: number;
   id: string;
-}
+};
 
-type FilterType = 'year' | 'countries.name' | 'ageRating'
+export type FilterPayload = {
+  type: FilterType;
+  value: FilterString;
+};
+
+export type FilterState = FilterPayload[] | [];
+
+export type FilterType = 'year' | 'countries.name' | 'ageRating';
 export type FilterString = Record<FilterType, string> | null;
 
 export interface filmsState {
@@ -319,10 +332,10 @@ export interface filmsState {
   limitPerPage: number;
   totalPages: number;
   search: string;
-  year: string;
-  country: string;
-  ageRating: string;
-  filter: FilterString;
+  year: FilterString;
+  country: FilterString;
+  ageRating: FilterString;
+  filters: FilterState;
   isLoading: boolean;
   error: null | string;
   pageActors: number;

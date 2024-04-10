@@ -1,53 +1,54 @@
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Pagination from 'react-bootstrap/Pagination';
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks/redux";
-import { filmsSlice } from "../../../../store/reducers/filmsReducer";
+import { chunkArray } from '../../../../helpers/chunkArray';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
+import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 import type { PostersResponse } from '../../../../store/types';
-import { DEFAULT_POSTERS_PER_PAGE } from "../../../../utils/constants";
-import { useRenderPaginationItems } from "../../Pagination/Pagination";
+import { DEFAULT_ITEMS_PER_CAROUSEL, DEFAULT_POSTERS_PER_PAGE } from '../../../../utils/constants';
+import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import './PostersList.scss';
 
 type Props = {
   posters: PostersResponse;
-}
+};
 
 const PostersList = ({ posters }: Props) => {
-  const itemsPerPage = DEFAULT_POSTERS_PER_PAGE;
-
-  const dispatch = useAppDispatch();
-  const currentPage = useAppSelector((state) => state.films.pagePosters);
-
-  const renderPaginationItems = useRenderPaginationItems({
-    currentPage: currentPage,
-    totalPages: Math.ceil(posters.docs.length / itemsPerPage),
-    onPageClick: (page: number) => {
-      dispatch(filmsSlice.actions.setPagePosters(page));
-    },
-  });
-
+  const [isPending, startTransition] = useTransition();
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex: number) => {
-    setIndex(selectedIndex);
+    if (isPending) return;
+
+    startTransition(() => {
+      setIndex(selectedIndex)
+    });
   };
+
+  const chunkedPosters = chunkArray(posters.docs, DEFAULT_ITEMS_PER_CAROUSEL);
 
   return (
     <div className="posters-container">
-        <div className="posters-images-line">
-          <Carousel activeIndex={index} onSelect={handleSelect}>
-            {posters.docs.map((poster, index) => (
-              <Carousel.Item>
-                <div key={index} className="poster-item">
-                  <img src={poster.url} className='poster-item' alt={poster.type} width={poster.width} height={poster.height}/>
-                </div>
-              </Carousel.Item>
-              ))}
-        </Carousel>        
+      <div className="posters-images-line">
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+          {chunkedPosters.map((chunk, chunkIndex) => (
+            <Carousel.Item key={chunkIndex}>
+              <div className='posters-row'>
+                {chunk.map((poster) => (
+                  <div key={poster.id} className="poster-item">
+                    <img
+                      src={poster.url}
+                      className="poster-item"
+                      alt={poster.type}
+                      width={Math.ceil(poster.width / 4)}
+                      height={Math.ceil(poster.height / 4)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
-      <Pagination size="sm" className="pagination">
-        {renderPaginationItems()}
-      </Pagination>
     </div>
   );
 };

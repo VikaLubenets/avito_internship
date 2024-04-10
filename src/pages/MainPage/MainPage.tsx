@@ -1,33 +1,36 @@
 import { useEffect, useTransition } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useGetAllFilmsAndSeriesQuery, useGetSearchFilmsQuery } from '../../api/api';
+import { useParams, useSearchParams } from 'react-router-dom';
+import {
+  useGetAllFilmsAndSeriesQuery,
+  useGetSearchFilmsQuery,
+} from '../../api/api';
 import FilmList from '../../components/react-components/FilmList/FilmList';
+import FiltersContainer from '../../components/react-components/FiltersContainer/FiltersContainer';
 import Header from '../../components/react-components/Header/Header';
 import Loading from '../../components/react-components/Loader/Loader';
-import CustomPagination from '../../components/react-components/Pagination/Pagination';
+import CustomPagination from '../../components/react-components/CustomPagination/CustomPagination';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { filmsSlice } from '../../store/reducers/filmsReducer';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
-  const [isPending, startTransition] = useTransition()
   const currentPage = useAppSelector((state) => state.films.currentPage);
   const limitPerPage = useAppSelector((state) => state.films.limitPerPage);
   const search = useAppSelector((state) => state.films.search);
   const isLoading = useAppSelector((state) => state.films.isLoading);
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterOption = useAppSelector((state) => state.films.filter);
-  const { data: films, isLoading: isLoadingAll } = useGetAllFilmsAndSeriesQuery({
-    page: currentPage,
-    limit: limitPerPage,
-    ...(filterOption && { params: filterOption }),
-    }, {
-      skip: 
-      search !== ''
-  });
+  const { data: films, isLoading: isLoadingAll } = useGetAllFilmsAndSeriesQuery(
+    {params: Object.fromEntries(searchParams.entries()),},
+    {skip: search !== ''}
+  );
 
-  const { data: searchResults, isLoading: isLoadingSearch } = useGetSearchFilmsQuery({
-    query: search}, {skip: search === ''});
+  const { data: searchResults, isLoading: isLoadingSearch } =
+    useGetSearchFilmsQuery(
+      {
+        query: search,
+      },
+      { skip: search === '' }
+    );
 
   useEffect(() => {
     setSearchParams((prev) => ({
@@ -35,30 +38,29 @@ const MainPage = () => {
       page: String(currentPage),
       limit: String(limitPerPage),
     }));
-  }, [currentPage, limitPerPage]);
+  }, [currentPage, limitPerPage, setSearchParams]);
 
   useEffect(() => {
-    if(isLoadingAll){
+    if (isLoadingAll) {
       dispatch(filmsSlice.actions.setIsLoading(isLoadingAll));
-    } else if(isLoadingSearch){
+    } else if (isLoadingSearch) {
       dispatch(filmsSlice.actions.setIsLoading(isLoadingSearch));
     } else {
       dispatch(filmsSlice.actions.setIsLoading(false));
     }
-
-  }, [isLoadingAll, isLoadingSearch])
+  }, [isLoadingAll, isLoadingSearch, dispatch]);
 
   useEffect(() => {
-    if(search && searchResults){
+    if (search && searchResults) {
       dispatch(filmsSlice.actions.setFilms(searchResults.docs));
       dispatch(filmsSlice.actions.setTotalCount(searchResults.total));
       dispatch(filmsSlice.actions.setTotalPages(searchResults.pages));
-    } else if (films){
+    } else if (films) {
       dispatch(filmsSlice.actions.setFilms(films.docs));
       dispatch(filmsSlice.actions.setTotalCount(films.total));
       dispatch(filmsSlice.actions.setTotalPages(films.pages));
     }
-  }, [films, searchResults, dispatch]);
+  }, [films, searchResults, dispatch, search]);
 
   return (
     <main className="main-container">
@@ -67,11 +69,17 @@ const MainPage = () => {
         <Loading />
       ) : (
         <>
+          <FiltersContainer />
           {search !== '' ? (
             <>
-              {searchResults && searchResults.docs && searchResults.docs.length > 0 ? (
+              {searchResults &&
+                searchResults.docs &&
+                searchResults.docs.length > 0 ? (
                 <>
-                  <FilmList films={searchResults.docs} total={searchResults.total} />
+                  <FilmList
+                    films={searchResults.docs}
+                    total={searchResults.total}
+                  />
                   <CustomPagination totalPages={searchResults.pages} />
                 </>
               ) : (

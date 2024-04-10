@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../utils/constants';
-import { filmsState, FilterString, IFilm } from '../types';
+import { filmsState, FilterPayload, FilterString, FilterType, IFilm, RootState } from '../types';
 
 const initialState: filmsState = {
   films: {} as IFilm[],
@@ -9,10 +9,10 @@ const initialState: filmsState = {
   limitPerPage: DEFAULT_LIMIT_FILMS_PER_PAGE,
   totalPages: 1,
   search: '',
-  year: '',
-  country: '',
-  ageRating: '',
-  filter: null,
+  year: null,
+  country: null,
+  ageRating: null,
+  filters: [],
   isLoading: false,
   error: null,
   pageActors: 1,
@@ -43,17 +43,14 @@ export const filmsSlice = createSlice({
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
-    setYear(state, action: PayloadAction<string>) {
+    setYear(state, action: PayloadAction<FilterString>) {
       state.year = action.payload;
     },
-    setCountry(state, action: PayloadAction<string>) {
+    setCountry(state, action: PayloadAction<FilterString>) {
       state.country = action.payload;
     },
-    setAgeRating(state, action: PayloadAction<string>) {
+    setAgeRating(state, action: PayloadAction<FilterString>) {
       state.ageRating = action.payload;
-    },
-    setFilter(state, action: PayloadAction<FilterString>) {
-      state.filter = action.payload;
     },
     setIsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
@@ -70,5 +67,29 @@ export const filmsSlice = createSlice({
     setPagePosters(state, action: PayloadAction<number>) {
       state.pagePosters = action.payload;
     },
+    addOrUpdateFilter(state, action: PayloadAction<FilterPayload>) {
+      return { ...state, filters: [...state.filters, action.payload] }
+    },
+    removeFilter(state, action: PayloadAction<FilterType>) {
+      const type = action.payload;
+      return { ...state, filters: [...state.filters.filter(item => item.type !== type)] }
+    },
+    resetFilters(state, action: PayloadAction<[]>) {
+      return {
+        ...state,
+        filters: [],
+      }
+    },
   },
 });
+
+export const selectNormalizedFilterOptions = createSelector(
+  [(state: RootState) => state.films.filters],
+  (filters) => {
+    const paramsArray = filters
+      .filter((option) => option.value !== null)
+      .map((option) => Object.entries(option.value!))
+      .flat();
+    return Object.fromEntries(paramsArray);
+  }
+);

@@ -1,8 +1,8 @@
 @import 'variables/global.scss';
-@import 'themes/normal.scss';
 @import 'reset.scss';
 @import '~bootstrap/scss/bootstrap';
 @import 'react-tooltip/dist/react-tooltip.css';
+@import 'variables/mixins.scss';
 
 .app {
   font: var(--font-m);
@@ -11,6 +11,7 @@
   color: var(--primary-color);
 
   min-height: 100vh;
+  max-width: 1920px;
 }
 
 .main-container {

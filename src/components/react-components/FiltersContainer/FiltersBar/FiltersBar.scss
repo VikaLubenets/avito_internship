@@ -7,19 +7,19 @@
   flex-wrap: wrap;
 
   select {
-    border: 1px blue solid;
+    border: 1px var(--bg-header-color) solid;
     padding: 4px;
     font: var(--font-l);
   }
 
-  .no-filter{
-    color: green;
+  .no-filter {
+    color: var(--bg-header-color);
     font: var(--font-l);
     cursor: pointer;
   }
 
   .no-filter:hover,
-  .no-filter:active{
+  .no-filter:active {
     color: black;
   }
 }

@@ -1,9 +1,11 @@
+import React from 'react';
+import { useState } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
 import { filmsSlice } from '../../../../store/reducers/filmsReducer';
-import { SeasonsResponse } from '../../../../store/types';
+import { IEpisode, SeasonsResponse } from '../../../../store/types';
 import { DEFAULT_SEASONS_PER_PAGE } from '../../../../utils/constants';
-import { useRenderPaginationItems } from '../../Pagination/Pagination';
+import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import './SeasonsList.scss';
 
 type Props = {
@@ -11,14 +13,13 @@ type Props = {
 };
 
 const SeasonsList = ({ seasons }: Props) => {
-  const itemsPerPage = DEFAULT_SEASONS_PER_PAGE;
-  
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((state) => state.films.pageSeasons);
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
 
   const renderPaginationItems = useRenderPaginationItems({
     currentPage: currentPage,
-    totalPages: Math.ceil(seasons.total / itemsPerPage),
+    totalPages: seasons.pages,
     onPageClick: (page: number) => {
       dispatch(filmsSlice.actions.setPageSeasons(page));
     },
@@ -26,16 +27,31 @@ const SeasonsList = ({ seasons }: Props) => {
 
   return (
     <div>
-      <ul className='seasons-list'>
-        {seasons.docs.map((season, index) => (
-          <li key={index} className='season-item'>
-            Season {season.number}: {season.episodes.length} episodes
-          </li>
+      <ul className="seasons-list">
+        {seasons.docs.map((season) => (
+          <React.Fragment key={season.number}>
+            <div className='seasons-header-container'>
+              <h2>Season {season.number + 1}</h2>
+              <Pagination size="sm" className="pagination">
+                {renderPaginationItems()}
+              </Pagination>
+            </div>
+            <div key={season.number} className='seasons-container'>
+              <div>
+                {season.poster.url && <img className='season-poster' src={season.poster.url} alt={season.enName}/>}
+              </div>
+                <ul className='episodes-list'>
+                  {season.episodes.map((episode: IEpisode) => (
+                    <li key={episode.number} className="season-item">
+                      <img className='episode-poster' src={episode.still.url} alt={episode.name} />
+                      {`${episode.number}. ${episode.name}`}
+                    </li>
+                  ))}
+                </ul>
+            </div>
+          </React.Fragment>
         ))}
       </ul>
-      <Pagination size="sm" className="pagination">
-        {renderPaginationItems()}
-      </Pagination>
     </div>
   );
 };

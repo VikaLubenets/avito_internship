@@ -16,10 +16,6 @@ const Card = ({ film }: Props) => {
           alt={film.name}
         />
       </div>
-      <div className="film-info">
-        <h2 className="film-name">{film.names[0].name}</h2>
-        <p className="film-year">{film.year}</p>
-      </div>
     </Link>
   );
 };

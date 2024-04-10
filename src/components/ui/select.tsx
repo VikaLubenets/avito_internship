@@ -22,18 +22,18 @@ const Select: React.FC<Props> = ({
 
   return (
     <select
+      defaultValue={selectedValue}
       name={name}
       onChange={handleChange}
       className={`select ${className ? className : ''}`}
     >
-      <option key={0} value={''} disabled>
+      <option key={'reset'} value={'reset'}>
         {name}
       </option>
-      {options.map((option, index) => (
+      {options.map((option) => (
         <option
-          key={index + 1}
+          key={option}
           value={option}
-          selected={option === selectedValue}
         >
           {option}
         </option>

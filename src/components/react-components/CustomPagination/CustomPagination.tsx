@@ -3,11 +3,12 @@ import { filmsSlice } from '../../../store/reducers/filmsReducer';
 import Pagination from 'react-bootstrap/Pagination';
 import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import './CustomPagination.scss';
 
 type Props = {
   totalPages: number;
-}
-const CustomPagination = ({totalPages}: Props) => {
+};
+const CustomPagination = ({ totalPages }: Props) => {
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = useAppSelector((state) => state.films.currentPage);
@@ -33,7 +34,6 @@ const CustomPagination = ({totalPages}: Props) => {
 
 export default CustomPagination;
 
-
 type RenderPaginationItemsProps = {
   currentPage: number;
   totalPages: number;
@@ -45,7 +45,6 @@ export const useRenderPaginationItems = ({
   totalPages,
   onPageClick,
 }: RenderPaginationItemsProps) => {
-
   const renderPaginationItems = useCallback(() => {
     const items = [];
 
@@ -98,10 +97,7 @@ export const useRenderPaginationItems = ({
     );
 
     items.push(
-      <Pagination.Last
-        key="last"
-        onClick={() => onPageClick(totalPages)}
-      />
+      <Pagination.Last key="last" onClick={() => onPageClick(totalPages)} />
     );
 
     return items;

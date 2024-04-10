@@ -1,10 +1,10 @@
 import { Loader } from 'lucide-react';
-import './Loader.scss';
+import './Loader.module.scss';
 
 const Loading = () => {
   return (
-    <div className="loader">
-      <Loader className="spinner" />
+    <div className='loader'>
+      <Loader className='spinner' />
     </div>
   );
 };
