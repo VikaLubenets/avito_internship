@@ -28,14 +28,6 @@ const Search = () => {
     setSearch(searchValue);
   };
 
-  useEffect(() => {
-    if (debouncedValue) {
-        handleSearch(debouncedValue);
-    } else {
-        handleSearch('');
-    }
-  }, [debouncedValue]);
-
   const handleSuggestionClick = (value: string) => {
     setSearch(value);
     handleSearch(value);
@@ -57,13 +49,13 @@ const Search = () => {
           limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
         }));
       }
-      
+
       dispatch(filmsSlice.actions.setSearch(value));
-      
+
       if (value && !searchHistory.includes(value)) {
         dispatch(filmsSlice.actions.setSearchHistory(value));
       }
-      
+
       const suggestions = searchHistory.filter((item) =>
         item.toLowerCase().includes(value.toLowerCase())
       );
@@ -71,6 +63,12 @@ const Search = () => {
     },
     [dispatch, setSearchParams, searchHistory]
   );
+
+  useEffect(() => {
+    if (debouncedValue) {
+      handleSearch(debouncedValue);
+    }
+  }, [debouncedValue, handleSearch]);
 
   return (
     <div className="search__line">

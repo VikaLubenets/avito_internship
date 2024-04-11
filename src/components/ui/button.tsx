@@ -5,11 +5,12 @@ type Props = {
   title: string;
   className: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 };
 
-export const Button = ({ type, title, className, onClick }: Props) => {
+export const Button = ({ type, title, className, onClick, disabled }: Props) => {
   return (
-    <button type={type} className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick} disabled={disabled}>
       {title}
     </button>
   );

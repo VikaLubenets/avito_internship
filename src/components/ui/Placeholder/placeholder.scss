@@ -1,4 +1,11 @@
-.placeholder {
+.placeholder-text {
   font: var(--font-l);
+  font-weight: bold;
   text-align: center;
+  color: var(--dark-text-color);
+  background-color: white;
+
+  &.error{
+    color: red;
+  }
 }

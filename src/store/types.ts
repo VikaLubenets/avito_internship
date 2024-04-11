@@ -342,11 +342,26 @@ export interface filmsState {
   pagePosters: number;
 }
 
-export interface RootState {
-  films: filmsState;
+export interface LoginState {
+  loginName: string;
+  password: string;
+  isLoading: boolean;
+  error: undefined | string;
 }
 
-export type setupStore = () => Store;
-export type RootReducer = Reducer<RootState>;
-export type AppStore = ReturnType<setupStore>;
-export type AppDispatch = AppStore['dispatch'];
+export interface UserState {
+  authData?: User;
+}
+
+export type User = {
+  username: string;
+  password: string;
+  id: number;
+  age: number;
+  lastWatched: IFilm[];
+}
+
+export type LoginByUserNameProps = {
+  username: string;
+  password: string;
+}

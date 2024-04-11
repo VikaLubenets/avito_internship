@@ -31,7 +31,7 @@ const SeasonsList = ({ seasons }: Props) => {
         {seasons.docs.map((season) => (
           <React.Fragment key={season.number}>
             <div className="seasons-header-container">
-              <h2>Season {season.number + 1}</h2>
+              <h2>Season {season.number}</h2>
               <Pagination size="sm" className="pagination">
                 {renderPaginationItems()}
               </Pagination>

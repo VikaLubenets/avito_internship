@@ -15,3 +15,23 @@
 .logo-text {
   color: var(--light-text-color);
 }
+
+
+.login-button{
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-primery-color);
+  color: var(--light-text-color);
+}
+
+.login-button:hover {
+  background-color: var(--button-hover-color);
+  color: var(--button-hover-text-color);
+}
+
+.login-button:active {
+  background-color: var(--button-active-color);
+  color: var(--button-active-text-color);
+}

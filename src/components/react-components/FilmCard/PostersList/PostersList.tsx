@@ -1,14 +1,11 @@
 import { useState, useTransition } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { chunkArray } from '../../../../helpers/chunkArray';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
-import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 import type { PostersResponse } from '../../../../store/types';
 import {
-  DEFAULT_ITEMS_PER_CAROUSEL,
+  DEFAULT_ITEMS_PER_CAROUSEL_POSTERS,
   DEFAULT_POSTERS_PER_PAGE,
 } from '../../../../utils/constants';
-import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import './PostersList.scss';
 
 type Props = {
@@ -25,16 +22,18 @@ const PostersList = ({ posters }: Props) => {
     startTransition(() => {
       setIndex(selectedIndex);
     });
+    console.log(posters.docs)
+    console.log(chunkedPosters)
   };
 
-  const chunkedPosters = chunkArray(posters.docs, DEFAULT_ITEMS_PER_CAROUSEL);
+  const chunkedPosters = chunkArray(posters.docs, DEFAULT_ITEMS_PER_CAROUSEL_POSTERS);
 
   return (
     <div className="posters-container">
       <div className="posters-images-line">
         <Carousel activeIndex={index} onSelect={handleSelect}>
-          {chunkedPosters.map((chunk, chunkIndex) => (
-            <Carousel.Item key={chunkIndex}>
+          {chunkedPosters.map((chunk) => (
+            <Carousel.Item key={JSON.stringify(chunk)}>
               <div className="posters-row">
                 {chunk.map((poster) => (
                   <div key={poster.id} className="poster-item">

@@ -14,6 +14,7 @@ import SimilarFilms from './SimilarFilms/SimilarFilms';
 import './FilmCard.scss';
 import FilmInfo from './FilmInfo/FilmInfo';
 import Placeholder from '../../ui/Placeholder/placeholder';
+import Loader from '../Loader/Loader';
 
 type Props = {
   data: IFilm;
@@ -31,19 +32,19 @@ const FilmCard = ({ data }: Props) => {
   } = data;
   const { id } = useParams<{ id: string }>();
   const currentPageReviews = useAppSelector((state) => state.films.pageReviews);
-  const { data: filmReviews, isLoading } = useGetReviewsQuery({
+  const { data: filmReviews, isLoading: reviewsLoading } = useGetReviewsQuery({
     page: currentPageReviews,
     movieId: id!,
   });
 
   const currentPagePosters = useAppSelector((state) => state.films.pagePosters);
-  const { data: filmPosters } = useGetPostersQuery({
+  const { data: filmPosters, isLoading: postersLoading  } = useGetPostersQuery({
     page: currentPagePosters,
     movieId: id!,
   });
 
   const currentPageSeasons = useAppSelector((state) => state.films.pageSeasons);
-  const { data: filmSeason } = useGetSeasonsQuery({
+  const { data: filmSeason, isLoading: seasonsLoading } = useGetSeasonsQuery({
     page: currentPageSeasons,
     movieId: id!,
   });
@@ -62,25 +63,43 @@ const FilmCard = ({ data }: Props) => {
       ) : (
         <Placeholder message="Нет информации об актерах" />
       )}
-      {filmReviews ? (
-        <ReviewsList reviews={filmReviews} />
+      {isSeries && seasonsLoading ? (
+        <Loader />
       ) : (
-        <Placeholder message="Нет отзывов" />
+        <>
+          {isSeries && filmSeason ? (
+            <SeasonsList seasons={filmSeason} />
+          ) : (
+            <Placeholder message="Нет информации о сезонах" />
+          )}
+        </>
       )}
-      {filmPosters ? (
-        <PostersList posters={filmPosters} />
+      {reviewsLoading ? (
+              <Loader />
+            ) : (
+              <>
+                {filmReviews ? (
+                  <ReviewsList reviews={filmReviews} />
+                ) : (
+                  <Placeholder message="Нет отзывов" />
+                )}
+              </>
+      )}
+      {postersLoading ? (
+        <Loader />
       ) : (
-        <Placeholder message="Нет постеров" />
+        <>
+          {filmPosters ? (
+            <PostersList posters={filmPosters} />
+          ) : (
+            <Placeholder message="Нет постеров" />
+          )}
+        </>
       )}
       {similarMovies.length > 0 ? (
         <SimilarFilms similarMovies={similarMovies} />
       ) : (
         <Placeholder message="Нет похожих фильмов" />
-      )}
-      {isSeries && filmSeason ? (
-        <SeasonsList seasons={filmSeason} />
-      ) : (
-        <Placeholder message="Нет информации о сезонах" />
       )}
     </div>
   );

@@ -2,12 +2,13 @@ import './placeholder.scss';
 
 type PlaceholderProps = {
   message: string;
+  className?: string;
 };
 
-const Placeholder = ({ message }: PlaceholderProps) => {
+const Placeholder = ({ message, className }: PlaceholderProps) => {
   return (
-    <div className="placeholder">
-      <p>{message}</p>
+    <div className={`placeholder-text ${className}`}>
+      {message}
     </div>
   );
 };
