@@ -30,24 +30,34 @@ const SeasonsList = ({ seasons }: Props) => {
       <ul className="seasons-list">
         {seasons.docs.map((season) => (
           <React.Fragment key={season.number}>
-            <div className='seasons-header-container'>
+            <div className="seasons-header-container">
               <h2>Season {season.number + 1}</h2>
               <Pagination size="sm" className="pagination">
                 {renderPaginationItems()}
               </Pagination>
             </div>
-            <div key={season.number} className='seasons-container'>
+            <div key={season.number} className="seasons-container">
               <div>
-                {season.poster.url && <img className='season-poster' src={season.poster.url} alt={season.enName}/>}
+                {season.poster.url && (
+                  <img
+                    className="season-poster"
+                    src={season.poster.url}
+                    alt={season.enName}
+                  />
+                )}
               </div>
-                <ul className='episodes-list'>
-                  {season.episodes.map((episode: IEpisode) => (
-                    <li key={episode.number} className="season-item">
-                      <img className='episode-poster' src={episode.still.url} alt={episode.name} />
-                      {`${episode.number}. ${episode.name}`}
-                    </li>
-                  ))}
-                </ul>
+              <ul className="episodes-list">
+                {season.episodes.map((episode: IEpisode) => (
+                  <li key={episode.number} className="season-item">
+                    <img
+                      className="episode-poster"
+                      src={episode.still.url}
+                      alt={episode.name}
+                    />
+                    {`${episode.number}. ${episode.name}`}
+                  </li>
+                ))}
+              </ul>
             </div>
           </React.Fragment>
         ))}

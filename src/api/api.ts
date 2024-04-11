@@ -55,17 +55,15 @@ export const api = createApi({
     getAllFilmsAndSeries: builder.query<
       FilmSearchResponse,
       {
-        params?: {[key: string]: string},
+        params?: { [key: string]: string };
       }
     >({
-      query: ({
-        params
-      }) => {
+      query: ({ params }) => {
         return {
           url: '/v1.4/movie',
           params: {
             type: ['movie', 'tv-series'],
-            ...params
+            ...params,
           },
         };
       },

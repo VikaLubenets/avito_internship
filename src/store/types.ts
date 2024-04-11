@@ -275,9 +275,9 @@ export interface ISeason {
   enName: string;
   episodes: IEpisode[];
   poster: {
-    url:string | null;
-    previewUrl: string | null
-  }
+    url: string | null;
+    previewUrl: string | null;
+  };
 }
 
 export interface IEpisode {
@@ -326,18 +326,16 @@ export type FilterType = 'year' | 'countries.name' | 'ageRating';
 export type FilterString = Record<FilterType, string> | null;
 
 export interface filmsState {
-  films: IFilm[];
   totalCount: number;
   currentPage: number;
   limitPerPage: number;
   totalPages: number;
   search: string;
-  year: FilterString;
-  country: FilterString;
-  ageRating: FilterString;
   filters: FilterState;
   isLoading: boolean;
   error: null | string;
+  searchHistory: string[];
+  searchSuggestions: string[];
   pageActors: number;
   pageReviews: number;
   pageSeasons: number;

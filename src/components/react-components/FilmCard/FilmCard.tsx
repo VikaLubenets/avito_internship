@@ -20,7 +20,15 @@ type Props = {
 };
 
 const FilmCard = ({ data }: Props) => {
-  const { name, description, rating, persons, poster, isSeries, similarMovies } = data;
+  const {
+    name,
+    description,
+    rating,
+    persons,
+    poster,
+    isSeries,
+    similarMovies,
+  } = data;
   const { id } = useParams<{ id: string }>();
   const currentPageReviews = useAppSelector((state) => state.films.pageReviews);
   const { data: filmReviews, isLoading } = useGetReviewsQuery({
@@ -42,18 +50,38 @@ const FilmCard = ({ data }: Props) => {
 
   return (
     <div className="film-card-container">
-      <FilmInfo 
-        name={name} 
-        description={description} 
-        rating={rating} 
-        poster={poster} 
-        isSeries={isSeries} 
+      <FilmInfo
+        name={name}
+        description={description}
+        rating={rating}
+        poster={poster}
+        isSeries={isSeries}
       />
-      {persons ? <ActorsList actors={persons} /> : <Placeholder message="Нет информации об актерах" />}
-      {filmReviews ? <ReviewsList reviews={filmReviews} /> : <Placeholder message="Нет отзывов" />}
-      {filmPosters ? <PostersList posters={filmPosters} /> : <Placeholder message="Нет постеров" />}
-      {similarMovies.length > 0 ? <SimilarFilms similarMovies={similarMovies}/> : <Placeholder message="Нет похожих фильмов" />}
-      {isSeries && filmSeason ? <SeasonsList seasons={filmSeason} /> : <Placeholder message="Нет информации о сезонах" />}
+      {persons ? (
+        <ActorsList actors={persons} />
+      ) : (
+        <Placeholder message="Нет информации об актерах" />
+      )}
+      {filmReviews ? (
+        <ReviewsList reviews={filmReviews} />
+      ) : (
+        <Placeholder message="Нет отзывов" />
+      )}
+      {filmPosters ? (
+        <PostersList posters={filmPosters} />
+      ) : (
+        <Placeholder message="Нет постеров" />
+      )}
+      {similarMovies.length > 0 ? (
+        <SimilarFilms similarMovies={similarMovies} />
+      ) : (
+        <Placeholder message="Нет похожих фильмов" />
+      )}
+      {isSeries && filmSeason ? (
+        <SeasonsList seasons={filmSeason} />
+      ) : (
+        <Placeholder message="Нет информации о сезонах" />
+      )}
     </div>
   );
 };

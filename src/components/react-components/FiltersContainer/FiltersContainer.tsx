@@ -1,10 +1,11 @@
-import { useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks/redux";
-import { filmsSlice } from "../../../store/reducers/filmsReducer";
-import Select from "../../ui/select";
-import FiltersBar from "./FiltersBar/FiltersBar";
-import './FiltersContainer.scss'
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks/redux';
+import { filmsSlice } from '../../../store/reducers/filmsReducer';
+import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../../utils/constants';
+import Select from '../../ui/select';
+import FiltersBar from './FiltersBar/FiltersBar';
+import './FiltersContainer.scss';
 
 const FiltersContainer = () => {
   const dispatch = useAppDispatch();
@@ -13,16 +14,26 @@ const FiltersContainer = () => {
 
   const onSelect = useCallback(
     (value: string) => {
-      setSearchParams((prev) => ({
-        ...Object.fromEntries(prev),
-        limit: value,
-      }));
-      dispatch(filmsSlice.actions.setLimitPerPage(Number(value)));
+      if (value === 'reset') {
+          setSearchParams((prev) => ({
+            ...Object.fromEntries(prev),
+            limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
+          }));
+        dispatch(
+          filmsSlice.actions.setLimitPerPage(DEFAULT_LIMIT_FILMS_PER_PAGE)
+        );
+      } else {
+        setSearchParams((prev) => ({
+          ...Object.fromEntries(prev),
+          limit: value,
+        }));
+        dispatch(filmsSlice.actions.setLimitPerPage(Number(value)));
+      }
     },
     [dispatch, setSearchParams]
   );
-  
-  return(
+
+  return (
     <div className="filters-container">
       <FiltersBar />
       <Select
@@ -32,8 +43,8 @@ const FiltersContainer = () => {
         onSelect={onSelect}
         selectedValue={String(selectedQuantity)}
       />
-  </div>
-  )
+    </div>
+  );
 };
 
 export default FiltersContainer;

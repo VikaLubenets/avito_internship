@@ -6,16 +6,10 @@ type Props = {
   description: string;
   rating: FilmRatingType;
   poster: FilmPosterType;
-  isSeries: boolean
-}
+  isSeries: boolean;
+};
 
-const FilmInfo = ({
-  name,
-  description,
-  rating,
-  poster,
-  isSeries
-}: Props) => {
+const FilmInfo = ({ name, description, rating, poster, isSeries }: Props) => {
   return (
     <div className="first-row-film-container">
       {poster && <img src={poster.url} alt={name} className="film-image" />}
@@ -28,7 +22,7 @@ const FilmInfo = ({
         <p>Рейтинг Кинопоиска: {rating.kp}</p>
       </div>
     </div>
-  )
+  );
 };
 
 export default FilmInfo;

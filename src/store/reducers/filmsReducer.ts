@@ -1,20 +1,25 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../utils/constants';
-import { filmsState, FilterPayload, FilterString, FilterType, IFilm, RootState } from '../types';
+import {
+  filmsState,
+  FilterPayload,
+  FilterString,
+  FilterType,
+  IFilm,
+  RootState,
+} from '../types';
 
 const initialState: filmsState = {
-  films: {} as IFilm[],
   totalCount: 10,
   currentPage: 1,
   limitPerPage: DEFAULT_LIMIT_FILMS_PER_PAGE,
   totalPages: 1,
   search: '',
-  year: null,
-  country: null,
-  ageRating: null,
   filters: [],
   isLoading: false,
   error: null,
+  searchHistory: [],
+  searchSuggestions: [],
   pageActors: 1,
   pageReviews: 1,
   pageSeasons: 1,
@@ -25,60 +30,59 @@ export const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
-    setFilms(state, action: PayloadAction<IFilm[]>) {
-      state.films = action.payload;
-    },
     setTotalCount(state, action: PayloadAction<number>) {
-      state.totalCount = action.payload;
+      return { ...state, totalCount: action.payload };
     },
     setCurrentPage(state, action: PayloadAction<number>) {
-      state.currentPage = action.payload;
+      return { ...state, currentPage: action.payload };
     },
     setLimitPerPage(state, action: PayloadAction<number>) {
-      state.limitPerPage = action.payload;
+      return { ...state, limitPerPage: action.payload };
     },
     setTotalPages(state, action: PayloadAction<number>) {
-      state.totalPages = action.payload;
+      return { ...state, totalPages: action.payload };
     },
     setSearch(state, action: PayloadAction<string>) {
-      state.search = action.payload;
-    },
-    setYear(state, action: PayloadAction<FilterString>) {
-      state.year = action.payload;
-    },
-    setCountry(state, action: PayloadAction<FilterString>) {
-      state.country = action.payload;
-    },
-    setAgeRating(state, action: PayloadAction<FilterString>) {
-      state.ageRating = action.payload;
+      return { ...state, search: action.payload };
     },
     setIsLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
+      return { ...state, isLoading: action.payload };
+    },
+    setSearchHistory(state, action: PayloadAction<string>) {
+      const updatedHistory = [...state.searchHistory, action.payload];
+      const limitedHistory = updatedHistory.length > 20 ? updatedHistory.slice(-20) : updatedHistory;
+      return { ...state, searchHistory: limitedHistory };
+    },
+    setSearchSuggestions(state, action: PayloadAction<string[]>) {
+      return { ...state, searchSuggestions: action.payload };
     },
     setPageActors(state, action: PayloadAction<number>) {
-      state.pageActors = action.payload;
+      return { ...state, pageActors: action.payload };
     },
     setPageReviews(state, action: PayloadAction<number>) {
-      state.pageReviews = action.payload;
+      return { ...state, pageReviews: action.payload };
     },
     setPageSeasons(state, action: PayloadAction<number>) {
-      state.pageSeasons = action.payload;
+      return { ...state, pageSeasons: action.payload };
     },
     setPagePosters(state, action: PayloadAction<number>) {
-      state.pagePosters = action.payload;
+      return { ...state, pagePosters: action.payload };
     },
     addOrUpdateFilter(state, action: PayloadAction<FilterPayload>) {
-      return { ...state, filters: [...state.filters, action.payload] }
+      return { ...state, filters: [...state.filters, action.payload] };
     },
     removeFilter(state, action: PayloadAction<FilterType>) {
       const type = action.payload;
-      return { ...state, filters: [...state.filters.filter(item => item.type !== type)] }
+      return {
+        ...state,
+        filters: [...state.filters.filter((item) => item.type !== type)],
+      };
     },
     resetFilters(state, action: PayloadAction<[]>) {
       return {
         ...state,
         filters: [],
-      }
+      };
     },
   },
 });

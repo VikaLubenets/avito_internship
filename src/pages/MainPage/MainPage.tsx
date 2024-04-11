@@ -20,8 +20,8 @@ const MainPage = () => {
   const isLoading = useAppSelector((state) => state.films.isLoading);
   const [searchParams, setSearchParams] = useSearchParams();
   const { data: films, isLoading: isLoadingAll } = useGetAllFilmsAndSeriesQuery(
-    {params: Object.fromEntries(searchParams.entries()),},
-    {skip: search !== ''}
+    { params: Object.fromEntries(searchParams.entries()) },
+    { skip: search !== '' }
   );
 
   const { data: searchResults, isLoading: isLoadingSearch } =
@@ -52,11 +52,9 @@ const MainPage = () => {
 
   useEffect(() => {
     if (search && searchResults) {
-      dispatch(filmsSlice.actions.setFilms(searchResults.docs));
       dispatch(filmsSlice.actions.setTotalCount(searchResults.total));
       dispatch(filmsSlice.actions.setTotalPages(searchResults.pages));
     } else if (films) {
-      dispatch(filmsSlice.actions.setFilms(films.docs));
       dispatch(filmsSlice.actions.setTotalCount(films.total));
       dispatch(filmsSlice.actions.setTotalPages(films.pages));
     }
@@ -73,8 +71,8 @@ const MainPage = () => {
           {search !== '' ? (
             <>
               {searchResults &&
-                searchResults.docs &&
-                searchResults.docs.length > 0 ? (
+              searchResults.docs &&
+              searchResults.docs.length > 0 ? (
                 <>
                   <FilmList
                     films={searchResults.docs}

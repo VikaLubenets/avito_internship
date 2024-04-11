@@ -28,7 +28,7 @@ const FilmPage = () => {
 
   return (
     <React.Fragment>
-      <main className='main-container'>
+      <main className="main-container">
         <Link to={'/'}>
           <Button type={'button'} title={'На главную'} className={''} />
         </Link>

@@ -8,7 +8,7 @@ import './SimilarFilms.scss';
 
 type Props = {
   similarMovies: ISimilarMovie[];
-}
+};
 
 const SimilarFilms = ({ similarMovies }: Props) => {
   const [isPending, startTransition] = useTransition();
@@ -18,26 +18,35 @@ const SimilarFilms = ({ similarMovies }: Props) => {
     if (isPending) return;
 
     startTransition(() => {
-      setIndex(selectedIndex)
+      setIndex(selectedIndex);
     });
   };
 
   const chunkedMovies = chunkArray(similarMovies, DEFAULT_ITEMS_PER_CAROUSEL);
 
   return (
-    <div className='similar-films'>
+    <div className="similar-films">
       <h2>Похожие фильмы:</h2>
-      <Carousel slide={false} touch={true} activeIndex={index} onSelect={handleSelect}>
+      <Carousel
+        slide={false}
+        touch={true}
+        activeIndex={index}
+        onSelect={handleSelect}
+      >
         {chunkedMovies.map((chunk, index) => (
           <Carousel.Item key={JSON.stringify(chunk)}>
-              <div className='carousel-row'>
-              {chunk.map(movie => (
-                <Link to={`/film/${movie.id}`} className="film-container" key={movie.id}>
+            <div className="carousel-row">
+              {chunk.map((movie) => (
+                <Link
+                  to={`/film/${movie.id}`}
+                  className="film-container"
+                  key={movie.id}
+                >
                   <div>
-                    <img 
-                      className="film-img" 
-                      src={movie.poster.url} 
-                      alt={movie.name} 
+                    <img
+                      className="film-img"
+                      src={movie.poster.url}
+                      alt={movie.name}
                     />
                   </div>
                 </Link>

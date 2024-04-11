@@ -24,7 +24,7 @@ const ReviewsList = ({ reviews }: Props) => {
   });
 
   return (
-    <div className='review-container'>
+    <div className="review-container">
       <h2>Отзывы</h2>
       {reviews.docs.map((review) => (
         <div key={review.id} className="review-item">

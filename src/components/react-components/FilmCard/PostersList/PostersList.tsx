@@ -4,7 +4,10 @@ import { chunkArray } from '../../../../helpers/chunkArray';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
 import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 import type { PostersResponse } from '../../../../store/types';
-import { DEFAULT_ITEMS_PER_CAROUSEL, DEFAULT_POSTERS_PER_PAGE } from '../../../../utils/constants';
+import {
+  DEFAULT_ITEMS_PER_CAROUSEL,
+  DEFAULT_POSTERS_PER_PAGE,
+} from '../../../../utils/constants';
 import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import './PostersList.scss';
 
@@ -20,7 +23,7 @@ const PostersList = ({ posters }: Props) => {
     if (isPending) return;
 
     startTransition(() => {
-      setIndex(selectedIndex)
+      setIndex(selectedIndex);
     });
   };
 
@@ -32,7 +35,7 @@ const PostersList = ({ posters }: Props) => {
         <Carousel activeIndex={index} onSelect={handleSelect}>
           {chunkedPosters.map((chunk, chunkIndex) => (
             <Carousel.Item key={chunkIndex}>
-              <div className='posters-row'>
+              <div className="posters-row">
                 {chunk.map((poster) => (
                   <div key={poster.id} className="poster-item">
                     <img

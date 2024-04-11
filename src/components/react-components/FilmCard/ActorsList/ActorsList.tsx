@@ -1,7 +1,5 @@
 import Pagination from 'react-bootstrap/Pagination';
-import {
-  DEFAULT_ACTORS_PER_PAGE
-} from '../../../../utils/constants';
+import { DEFAULT_ACTORS_PER_PAGE } from '../../../../utils/constants';
 import type { FilmPersonType } from '../../../../store/types';
 import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
@@ -31,11 +29,11 @@ const ActorsList: React.FC<Props> = ({ actors }) => {
   return (
     <div className="actors-container">
       <h2>Актеры</h2>
-      <ul className='actors-row'>
+      <ul className="actors-row">
         {actors.slice(startIndex, endIndex).map((actor) => (
           <li key={actor.id} className="actor-container">
             <img className="actors-image" src={actor.photo} alt={actor.name} />
-            <p className='actor-name'>{actor.name}</p>
+            <p className="actor-name">{actor.name}</p>
           </li>
         ))}
       </ul>
