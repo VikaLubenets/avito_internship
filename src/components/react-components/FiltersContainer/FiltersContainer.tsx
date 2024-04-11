@@ -15,10 +15,10 @@ const FiltersContainer = () => {
   const onSelect = useCallback(
     (value: string) => {
       if (value === 'reset') {
-          setSearchParams((prev) => ({
-            ...Object.fromEntries(prev),
-            limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
-          }));
+        setSearchParams((prev) => ({
+          ...Object.fromEntries(prev),
+          limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
+        }));
         dispatch(
           filmsSlice.actions.setLimitPerPage(DEFAULT_LIMIT_FILMS_PER_PAGE)
         );

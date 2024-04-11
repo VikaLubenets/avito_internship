@@ -50,7 +50,8 @@ export const filmsSlice = createSlice({
     },
     setSearchHistory(state, action: PayloadAction<string>) {
       const updatedHistory = [...state.searchHistory, action.payload];
-      const limitedHistory = updatedHistory.length > 20 ? updatedHistory.slice(-20) : updatedHistory;
+      const limitedHistory =
+        updatedHistory.length > 20 ? updatedHistory.slice(-20) : updatedHistory;
       return { ...state, searchHistory: limitedHistory };
     },
     setSearchSuggestions(state, action: PayloadAction<string[]>) {

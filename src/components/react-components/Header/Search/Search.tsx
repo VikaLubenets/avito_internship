@@ -6,6 +6,7 @@ import {
   useTransition,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useDebounce } from '../../../../hooks/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
 import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 import {
@@ -18,17 +19,22 @@ import './Search.scss';
 const Search = () => {
   const dispatch = useAppDispatch();
   const [search, setSearch] = useState('');
+  const debouncedValue = useDebounce(search, 1000);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchHistory = useAppSelector(state => state.films.searchHistory);
-  const suggestions = useAppSelector(state => state.films.searchSuggestions);
+  const searchHistory = useAppSelector((state) => state.films.searchHistory);
+  const suggestions = useAppSelector((state) => state.films.searchSuggestions);
 
   const onChangeSearch = (searchValue: string) => {
     setSearch(searchValue);
-    const suggestions = searchHistory.filter((item) =>
-      item.toLowerCase().startsWith(searchValue.toLowerCase())
-    );
-    dispatch(filmsSlice.actions.setSearchSuggestions(suggestions));
   };
+
+  useEffect(() => {
+    if (debouncedValue) {
+        handleSearch(debouncedValue);
+    } else {
+        handleSearch('');
+    }
+  }, [debouncedValue]);
 
   const handleSuggestionClick = (value: string) => {
     setSearch(value);
@@ -51,18 +57,24 @@ const Search = () => {
           limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
         }));
       }
+      
       dispatch(filmsSlice.actions.setSearch(value));
       
       if (value && !searchHistory.includes(value)) {
         dispatch(filmsSlice.actions.setSearchHistory(value));
       }
+      
+      const suggestions = searchHistory.filter((item) =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      dispatch(filmsSlice.actions.setSearchSuggestions(suggestions));
     },
-    [dispatch, setSearchParams]
+    [dispatch, setSearchParams, searchHistory]
   );
 
   return (
     <div className="search__line">
-      <div className='input-container'>
+      <div className="input-container">
         <input
           className="input"
           type="search"
@@ -79,16 +91,18 @@ const Search = () => {
         />
         {suggestions.length > 0 && search && (
           <ul className="suggestions">
-            {suggestions.map((suggestion) => (
-              suggestion.toLowerCase() !== search.toLowerCase() && 
-              <li
-                className='suggestions-row'
-                key={suggestion}
-                onClick={() => handleSuggestionClick(suggestion)}
-              >
-                {suggestion}
-              </li>
-            ))}
+            {suggestions.map(
+              (suggestion) =>
+                suggestion.toLowerCase() !== search.toLowerCase() && (
+                  <li
+                    className="suggestions-row"
+                    key={suggestion}
+                    onClick={() => handleSuggestionClick(suggestion)}
+                  >
+                    {suggestion}
+                  </li>
+                )
+            )}
           </ul>
         )}
       </div>
