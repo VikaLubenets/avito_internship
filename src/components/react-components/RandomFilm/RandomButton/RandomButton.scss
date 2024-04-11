@@ -1,0 +1,19 @@
+.random-button {
+  cursor: pointer;
+  height: 150px;
+  width: 250px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-primery-color);
+  color: var(--light-text-color);
+  font: var(--font-xl);
+}
+
+.random-button:hover {
+  background-color: var(--button-hover-color);
+  color: var(--dark-text-color);
+}
+
+.random-button:active {
+  background-color: var(--button-active-color);
+  color: var(--button-active-text-color);
+}

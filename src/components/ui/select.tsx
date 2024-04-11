@@ -5,7 +5,7 @@ type Props = {
   options: string[];
   onSelect: (selectedValue: string) => void;
   className?: string;
-  selectedValue: string;
+  selectedValue?: string;
 };
 
 const Select: React.FC<Props> = ({
@@ -13,7 +13,7 @@ const Select: React.FC<Props> = ({
   options,
   onSelect,
   className,
-  selectedValue,
+  selectedValue = '',
 }) => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;

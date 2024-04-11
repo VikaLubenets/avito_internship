@@ -160,6 +160,22 @@ export const api = createApi({
         };
       },
     }),
+    getRandomFilm: builder.query<
+      FilmSearchResponse,
+      {
+        params?: { [key: string]: string };
+      }
+    >({
+      query: ({ params }) => {
+        return {
+          url: 'v1.4/movie/random',
+          params: {
+            type: ['movie', 'tv-series'],
+            ...params,
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -170,4 +186,5 @@ export const {
   useGetReviewsQuery,
   useGetPostersQuery,
   useGetSeasonsQuery,
+  useGetRandomFilmQuery,
 } = api;

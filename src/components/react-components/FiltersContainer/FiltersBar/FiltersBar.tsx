@@ -7,9 +7,9 @@ import {
   selectNormalizedFilterOptions,
 } from '../../../../store/reducers/filmsReducer';
 import './FiltersBar.scss';
-import { ageRanking } from './configs/AgeRanking';
-import { countries } from './configs/Countries';
-import { years } from './configs/Years';
+import { ageRanking } from '../../../../utils/filterConfigs/AgeRanking';
+import { countries } from '../../../../utils/filterConfigs/Countries';
+import { years } from '../../../../utils/filterConfigs/Years';
 import { FilterString } from '../../../../store/types';
 import { X } from 'lucide-react';
 import { Tooltip } from 'react-tooltip';

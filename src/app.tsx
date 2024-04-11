@@ -23,7 +23,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route element={<PrivateRoutes isAuthenticated={!!isAuth} />}>
-          <Route path='randomFilm' element={<RandomFilmPage />} />
+          <Route path="randomFilm" element={<RandomFilmPage />} />
         </Route>
         <Route path="film/:id" element={<FilmPage />} />
         <Route path="*" element={<Page404 />} />

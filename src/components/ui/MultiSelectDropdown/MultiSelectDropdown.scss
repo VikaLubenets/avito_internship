@@ -1,0 +1,17 @@
+.multy-select-container{
+  position: relative;
+}
+
+.multy-select-options{
+  position: absolute;
+  top: 100%;
+  left: 0; 
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 5;
+}
+
+.multy-select-label{
+  display: flex;
+  grid-template: 5px;
+}
