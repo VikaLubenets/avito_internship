@@ -38,7 +38,7 @@ const FilmCard = ({ data }: Props) => {
   });
 
   const currentPagePosters = useAppSelector((state) => state.films.pagePosters);
-  const { data: filmPosters, isLoading: postersLoading  } = useGetPostersQuery({
+  const { data: filmPosters, isLoading: postersLoading } = useGetPostersQuery({
     page: currentPagePosters,
     movieId: id!,
   });
@@ -75,15 +75,15 @@ const FilmCard = ({ data }: Props) => {
         </>
       )}
       {reviewsLoading ? (
-              <Loader />
-            ) : (
-              <>
-                {filmReviews ? (
-                  <ReviewsList reviews={filmReviews} />
-                ) : (
-                  <Placeholder message="Нет отзывов" />
-                )}
-              </>
+        <Loader />
+      ) : (
+        <>
+          {filmReviews ? (
+            <ReviewsList reviews={filmReviews} />
+          ) : (
+            <Placeholder message="Нет отзывов" />
+          )}
+        </>
       )}
       {postersLoading ? (
         <Loader />

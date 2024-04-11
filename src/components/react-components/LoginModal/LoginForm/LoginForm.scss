@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 
-.login-container{
+.login-container {
   gap: 15px;
   display: flex;
   flex-direction: column;
@@ -29,10 +29,10 @@
 }
 
 .login-input:focus {
-  border-color: #007BFF;
+  border-color: #007bff;
 }
 
-.login-btn{
+.login-btn {
   cursor: pointer;
   height: 40px;
   width: 70px;

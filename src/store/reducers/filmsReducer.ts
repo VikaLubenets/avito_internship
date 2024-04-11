@@ -1,11 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
 import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../utils/constants';
-import {
-  filmsState,
-  FilterPayload,
-  FilterType,
-} from '../types';
+import { filmsState, FilterPayload, FilterType } from '../types';
 
 const initialState: filmsState = {
   totalCount: 10,

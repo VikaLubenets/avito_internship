@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loginByUserName } from "../../auth/loginByUserName";
-import { LoginState } from "../types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { loginByUserName } from '../../auth/loginByUserName';
+import { LoginState } from '../types';
 
 const initialState: LoginState = {
   loginName: '',
@@ -28,12 +28,12 @@ export const loginSlice = createSlice({
       state.error = undefined;
       state.isLoading = true;
     }),
-    builder.addCase(loginByUserName.fulfilled, (state, action) => {
-      state.isLoading = false;
-    }),
-    builder.addCase(loginByUserName.rejected, (state, action) => {
-      state.error = String(action.payload);
-      state.isLoading = false;
-    })
+      builder.addCase(loginByUserName.fulfilled, (state, action) => {
+        state.isLoading = false;
+      }),
+      builder.addCase(loginByUserName.rejected, (state, action) => {
+        state.error = String(action.payload);
+        state.isLoading = false;
+      });
   },
 });

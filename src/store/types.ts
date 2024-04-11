@@ -359,9 +359,9 @@ export type User = {
   id: number;
   age: number;
   lastWatched: IFilm[];
-}
+};
 
 export type LoginByUserNameProps = {
   username: string;
   password: string;
-}
+};

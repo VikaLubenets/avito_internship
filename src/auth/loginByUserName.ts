@@ -3,7 +3,6 @@ import { userSlice } from '../store/reducers/userReducer';
 import { LoginByUserNameProps, User } from '../store/types';
 import { USER_LOCALSTORAGE_KEY } from '../utils/constants';
 
-
 export const loginByUserName = createAsyncThunk<User, LoginByUserNameProps>(
   'login/loginByUserName',
   async ({ username, password }: LoginByUserNameProps, thunkAPI) => {
@@ -31,16 +30,17 @@ export const loginByUserName = createAsyncThunk<User, LoginByUserNameProps>(
       }
       const data = await response.json();
       const users = data.users;
-      const user = users.find((user: User) => user.username === username && user.password === password);
+      const user = users.find(
+        (user: User) => user.username === username && user.password === password
+      );
 
       if (user) {
         localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
-        thunkAPI.dispatch(userSlice.actions.setAuthData(user))
+        thunkAPI.dispatch(userSlice.actions.setAuthData(user));
         return user;
       } else {
         throw new Error('Invalid username or password');
       }
-
     } catch (unknownError) {
       let error: Error;
       if (unknownError instanceof Error) {
@@ -49,6 +49,6 @@ export const loginByUserName = createAsyncThunk<User, LoginByUserNameProps>(
         error = new Error('Unknown error occurred');
       }
       return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
-
+);

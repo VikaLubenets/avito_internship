@@ -38,7 +38,7 @@ const MainPage = () => {
       page: String(currentPage),
       limit: String(limitPerPage),
     }));
-    console.log(limitPerPage)
+    console.log(limitPerPage);
   }, [currentPage, limitPerPage, setSearchParams]);
 
   useEffect(() => {

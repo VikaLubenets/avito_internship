@@ -5,7 +5,7 @@ import LoginForm from './LoginForm/LoginForm';
 type Props = {
   show: boolean;
   onHide: () => void;
-}
+};
 
 function AuthModal(props: Props) {
   return (

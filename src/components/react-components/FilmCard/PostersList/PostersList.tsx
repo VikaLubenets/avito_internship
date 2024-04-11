@@ -22,11 +22,14 @@ const PostersList = ({ posters }: Props) => {
     startTransition(() => {
       setIndex(selectedIndex);
     });
-    console.log(posters.docs)
-    console.log(chunkedPosters)
+    console.log(posters.docs);
+    console.log(chunkedPosters);
   };
 
-  const chunkedPosters = chunkArray(posters.docs, DEFAULT_ITEMS_PER_CAROUSEL_POSTERS);
+  const chunkedPosters = chunkArray(
+    posters.docs,
+    DEFAULT_ITEMS_PER_CAROUSEL_POSTERS
+  );
 
   return (
     <div className="posters-container">

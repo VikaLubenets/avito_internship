@@ -6,11 +6,7 @@ type PlaceholderProps = {
 };
 
 const Placeholder = ({ message, className }: PlaceholderProps) => {
-  return (
-    <div className={`placeholder-text ${className}`}>
-      {message}
-    </div>
-  );
+  return <div className={`placeholder-text ${className}`}>{message}</div>;
 };
 
 export default Placeholder;
