@@ -9,6 +9,13 @@ button,
 textarea,
 select {
   margin: 0;
-
+  border: none;
+  outline: none;
   font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
 }

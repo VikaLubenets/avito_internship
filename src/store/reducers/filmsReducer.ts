@@ -1,7 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
 import { DEFAULT_LIMIT_FILMS_PER_PAGE } from '../../utils/constants';
-import { filmsState, FilterPayload, FilterType } from '../types';
+import { filmsState, FilterPayload, FilterType, RandomFilmType, RandomFilterString } from '../types';
 
 const initialState: filmsState = {
   totalCount: 10,
@@ -18,6 +18,7 @@ const initialState: filmsState = {
   pageReviews: 1,
   pageSeasons: 1,
   pagePosters: 1,
+  randomFilmFilters: []
 };
 
 export const filmsSlice = createSlice({
@@ -77,6 +78,45 @@ export const filmsSlice = createSlice({
       return {
         ...state,
         filters: [],
+      };
+    },
+    addOrUpdateRandomFilter(state, action: PayloadAction<RandomFilterString>) {
+      const newFilter = action.payload;
+      const filterHasValues = Object.values(newFilter).some(
+        (values) => values.length > 0
+      );
+    
+      if (!filterHasValues) {
+        const filterType = Object.keys(newFilter)[0];
+        state.randomFilmFilters = state.randomFilmFilters.filter(
+          (filter) => Object.keys(filter)[0] !== filterType
+        );
+        return;
+      }
+    
+      const existingIndex = state.randomFilmFilters.findIndex(
+        (filter) => Object.keys(filter)[0] === Object.keys(newFilter)[0]
+      );
+    
+      if (existingIndex !== -1) {
+        state.randomFilmFilters[existingIndex] = newFilter;
+      } else {
+        state.randomFilmFilters.push(newFilter);
+      }
+    },
+
+    removeRandomFilter(state, action: PayloadAction<RandomFilmType>) {
+      const typeToRemove = action.payload;
+
+      return { ...state, randomFilmFilters: [...state.randomFilmFilters.filter(
+        (filter) => Object.keys(filter)[0] !== typeToRemove
+      )] };
+    },
+
+    resetRandomFilters(state) {
+      return {
+        ...state,
+        randomFilmFilters: [],
       };
     },
   },

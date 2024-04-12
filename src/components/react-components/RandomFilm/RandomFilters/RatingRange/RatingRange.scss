@@ -1,0 +1,29 @@
+.random-filter-label{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 20vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.range-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rating-kp-input{
+  width: 20vw;
+}
+
+.range-values{
+  display: flex;
+  justify-content: space-between;
+}
+
+.min-value,
+.max-value {
+    font-size: 0.8em;
+}

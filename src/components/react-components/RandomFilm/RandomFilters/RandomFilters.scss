@@ -1,7 +1,22 @@
-.random-film-filters__container{
+.random-film-filters__container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
+}
+.random-film-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+}
+
+.random-filter-select{
+  position: relative;
+  border: 1px var(--bg-header-color) solid;
+  padding: 3px 5px;
+  font: var(--font-s);
+  width: 20vw;
+  background-color: inherit;
 }

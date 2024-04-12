@@ -14,8 +14,6 @@ import {
   ReviewResponse,
   SeasonsResponse,
 } from '../store/types';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const token = process.env.TOKEN || '';
 
@@ -161,7 +159,7 @@ export const api = createApi({
       },
     }),
     getRandomFilm: builder.query<
-      FilmSearchResponse,
+      IFilm,
       {
         params?: { [key: string]: string };
       }
@@ -170,7 +168,6 @@ export const api = createApi({
         return {
           url: 'v1.4/movie/random',
           params: {
-            type: ['movie', 'tv-series'],
             ...params,
           },
         };
@@ -186,5 +183,5 @@ export const {
   useGetReviewsQuery,
   useGetPostersQuery,
   useGetSeasonsQuery,
-  useGetRandomFilmQuery,
+  useLazyGetRandomFilmQuery
 } = api;

@@ -1,0 +1,19 @@
+.random-film-card{
+  max-width: 80vw;
+
+  .first-row-film-container {
+    display: flex;
+    gap: 40px;
+  
+    .film-image {
+      width: 300px;
+      height: 400px;
+    }
+  
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

@@ -1,17 +1,35 @@
-.multy-select-container{
+.multy-select-container {
   position: relative;
+  border: 1px var(--bg-header-color) solid;
+  padding: 3px 5px;
+  font: var(--font-s);
+  width: 20vw;
 }
 
-.multy-select-options{
+.multy-select-button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.multy-select-options {
   position: absolute;
   top: 100%;
-  left: 0; 
+  left: 0;
   border: 1px solid #ccc;
   background-color: white;
   z-index: 5;
+  padding: 3px 5px;
+  width: 100%;
 }
 
-.multy-select-label{
+.multy-select-label {
   display: flex;
   grid-template: 5px;
+  gap: 5px;
+}
+
+.multy-selector-icon{
+  color: var(--bg-header-color);
 }

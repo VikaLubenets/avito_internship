@@ -10,10 +10,14 @@
   margin: 0 auto;
   padding: 10px 5vw;
   font: var(--font-l);
+  text-decoration: none;
+  outline: none;
 }
 
 .logo-text {
   color: var(--light-text-color);
+  text-decoration: none;
+  outline: none;
 }
 
 .login-button {

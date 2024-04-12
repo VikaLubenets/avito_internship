@@ -3,6 +3,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import webpack from 'webpack';
 
 export function buildPlugins(
@@ -21,5 +22,8 @@ export function buildPlugins(
       chunkFilename: 'css/[name].[contenthash:8].css',
     }),
     new NodePolyfillPlugin(),
+    new Dotenv({
+      systemvars: true
+  })
   ];
 }

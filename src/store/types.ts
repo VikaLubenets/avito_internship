@@ -321,6 +321,10 @@ export type FilterPayload = {
 };
 
 export type FilterState = FilterPayload[] | [];
+export type RandomFilterString = Partial<Record<RandomFilmType, string[]>>;
+export type RandomFilmFiltersPayload = RandomFilterString[];
+
+export type RandomFilmType = FilterType | 'networks.items.name' | 'genres.name';
 
 export type FilterType = 'year' | 'countries.name' | 'ageRating';
 export type FilterString = Record<FilterType, string> | null;
@@ -340,6 +344,7 @@ export interface filmsState {
   pageReviews: number;
   pageSeasons: number;
   pagePosters: number;
+  randomFilmFilters: RandomFilmFiltersPayload;
 }
 
 export interface LoginState {

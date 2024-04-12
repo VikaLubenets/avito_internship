@@ -27,7 +27,9 @@ const Header = () => {
   if (authData) {
     return (
       <header className="header">
-        <h1 className="logo-text">ФИЛЬМОТЕКА</h1>
+        <Link className="logo-text" to={'/'}>
+          <h1 className="logo-text">ФИЛЬМОТЕКА</h1>
+        </Link>
         <Search />
         <Button
           onClick={onLogout}

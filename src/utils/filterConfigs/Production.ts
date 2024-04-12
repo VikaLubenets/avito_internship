@@ -1,3 +1,1 @@
-export const productionNames = [
-  "HBO", "Netflix", "Amazon"
-]
+export const productionNames = ['HBO', 'Netflix', 'Amazon'];
