@@ -1,3 +1,8 @@
+.filters-bar-container-row{
+  display: flex;
+  gap: 10px;
+}
+
 .filters-bar {
   display: flex;
   gap: 7px;
@@ -10,6 +15,7 @@
     border: 1px var(--bg-header-color) solid;
     padding: 4px;
     font: var(--font-l);
+    cursor: pointer;
   }
 
   .no-filter {
@@ -20,6 +26,6 @@
 
   .no-filter:hover,
   .no-filter:active {
-    color: black;
+    color: var(--button-active-color);
   }
 }

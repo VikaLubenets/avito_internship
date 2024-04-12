@@ -1,0 +1,48 @@
+@use "../../../../styles/index.scss" as s;
+
+.login-button {
+  cursor: pointer;
+  height: 50px;
+  width: 70px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-primery-color);
+  color: var(--light-text-color);
+}
+
+.header-buttons-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  @include s.sm {
+    flex-direction: column;
+  };
+}
+
+.random-film-button {
+  cursor: pointer;
+  height: 50px;
+  width: 130px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-primery-color);
+  color: var(--light-text-color);
+  font: var(--font-s);
+}
+
+.login-button:hover,
+.random-film-button:hover {
+  background-color: var(--button-hover-color);
+  color: var(--button-hover-text-color);
+
+  @include s.sm {
+    background-color: var(--bg-header-color);
+    color: var(--light-text-color);
+  };
+}
+
+.login-button:active,
+.random-film-button:active {
+  background-color: var(--button-active-color);
+  color: var(--button-active-text-color);
+}

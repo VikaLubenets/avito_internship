@@ -4,6 +4,8 @@ import { useGetFilmDataByIdQuery } from '../../api/api';
 import FilmCard from '../../components/react-components/FilmCard/FilmCard';
 import Header from '../../components/react-components/Header/Header';
 import Loading from '../../components/react-components/Loader/Loader';
+import NoResults from '../../components/react-components/NoResults/NoResults';
+import ReturnButton from '../../components/react-components/ReturnButton/ReturnButton';
 import { Button } from '../../components/ui/button';
 
 const FilmPage = () => {
@@ -13,27 +15,21 @@ const FilmPage = () => {
     parseInt(id!, 10)
   );
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (!filmData) {
-    return (
-      <>
-        <Header />
-        <div className="no-results">No such film</div>;
-      </>
-    );
-  }
-
   return (
     <React.Fragment>
-      <main className="main-container">
-        <Link to={'/'}>
-          <Button type={'button'} title={'На главную'} className={''} />
-        </Link>
-        <FilmCard data={filmData} />
-      </main>
+      <Header key={'header'}/>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        filmData ? (
+          <main className="main-container">
+            <ReturnButton />
+            <FilmCard data={filmData} />
+          </main>
+        ) : (
+          <NoResults />
+        )
+      )}
     </React.Fragment>
   );
 };

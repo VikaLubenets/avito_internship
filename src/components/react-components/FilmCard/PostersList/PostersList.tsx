@@ -4,7 +4,6 @@ import { chunkArray } from '../../../../helpers/chunkArray';
 import type { PostersResponse } from '../../../../store/types';
 import {
   DEFAULT_ITEMS_PER_CAROUSEL_POSTERS,
-  DEFAULT_POSTERS_PER_PAGE,
 } from '../../../../utils/constants';
 import './PostersList.scss';
 
@@ -22,8 +21,6 @@ const PostersList = ({ posters }: Props) => {
     startTransition(() => {
       setIndex(selectedIndex);
     });
-    console.log(posters.docs);
-    console.log(chunkedPosters);
   };
 
   const chunkedPosters = chunkArray(
@@ -44,8 +41,6 @@ const PostersList = ({ posters }: Props) => {
                       src={poster.url}
                       className="poster-item"
                       alt={poster.type}
-                      width={Math.ceil(poster.width / 4)}
-                      height={Math.ceil(poster.height / 4)}
                     />
                   </div>
                 ))}

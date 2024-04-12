@@ -183,5 +183,5 @@ export const {
   useGetReviewsQuery,
   useGetPostersQuery,
   useGetSeasonsQuery,
-  useLazyGetRandomFilmQuery
+  useLazyGetRandomFilmQuery,
 } = api;

@@ -16,4 +16,6 @@ export const DEFAULT_ITEMS_PER_CAROUSEL_POSTERS = 2;
 
 export const DEFAULT_ITEMS_PER_CAROUSEL = 4;
 
+export const DEFAULT_ITEMS_PER_CAROUSEL_MOBILE = 2;
+
 export const USER_LOCALSTORAGE_KEY = 'user';

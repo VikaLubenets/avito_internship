@@ -1,14 +1,22 @@
+@use "../../../../styles/index.scss" as s;
+
 .actors-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   justify-content: center;
   align-items: center;
+  gap: 15px;
+  width: 90vw;
+  overflow: hidden;
 }
 
 .actors-row {
   display: flex;
   gap: 15px;
+  padding: 0;
+  @include s.sm {
+    gap: 5px;
+  };
 }
 
 .actor-container {
@@ -17,15 +25,24 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  max-width: 100px;
+  width: 100px;
   font: var(--font-s);
+  @include s.sm {
+    width: 40px;
+  };
 }
 
 .actors-image {
   width: 100px;
-  height: 150px;
+  height: auto;
+  @include s.sm {
+    width: 25px;
+  };
 }
 
 .actor-name {
   text-align: center;
+  @include s.sm {
+    font-size: 8px;
+  };
 }

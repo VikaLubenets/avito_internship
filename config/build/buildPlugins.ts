@@ -23,7 +23,7 @@ export function buildPlugins(
     }),
     new NodePolyfillPlugin(),
     new Dotenv({
-      systemvars: true
-  })
+      systemvars: true,
+    }),
   ];
 }

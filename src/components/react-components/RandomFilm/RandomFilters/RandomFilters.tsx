@@ -16,30 +16,45 @@ import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 const RandomFilters = () => {
   const dispatch = useAppDispatch();
 
-  const handleYearSelect = useCallback((selectedYears: string[]) => {
-      const newFilter = { 'year': selectedYears };
+  const handleYearSelect = useCallback(
+    (selectedYears: string[]) => {
+      const newFilter = { year: selectedYears };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
-  const handleCountrySelect = useCallback((selectedCountries: string[]) => {
+  const handleCountrySelect = useCallback(
+    (selectedCountries: string[]) => {
       const newFilter = { 'countries.name': selectedCountries };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
-  const handleAgeRatingSelect = useCallback((selectedAgeRatings: string[]) => {
-      const newFilter = { 'ageRating': selectedAgeRatings };
+  const handleAgeRatingSelect = useCallback(
+    (selectedAgeRatings: string[]) => {
+      const newFilter = { ageRating: selectedAgeRatings };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
-  const handleProductionNameSelect = useCallback((selectedProductionNames: string[]) => {
+  const handleProductionNameSelect = useCallback(
+    (selectedProductionNames: string[]) => {
       const newFilter = { 'networks.items.name': selectedProductionNames };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
-  const handleGenreSelect = useCallback((selectedGenres: string[]) => {
+  const handleGenreSelect = useCallback(
+    (selectedGenres: string[]) => {
       const newFilter = { 'genres.name': selectedGenres };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   // const handleTypeSelect = useCallback((selectedType: string) => {
   //     const newFilter = { 'isSeries': selectedType === 'Сериал' };
@@ -50,14 +65,13 @@ const RandomFilters = () => {
     dispatch(filmsSlice.actions.resetRandomFilters());
   }, [dispatch]);
 
-
   return (
     <div className="random-film-filters__container">
       <Tooltip anchorSelect=".no-filter" place="top">
         Сбросить фильтры
       </Tooltip>
       <X onClick={handleResetFilters} className="no-filter" />
-      <div  className="random-film-filters">
+      <div className="random-film-filters">
         <MultiSelectDropdown
           title="По году"
           options={years}
@@ -84,7 +98,7 @@ const RandomFilters = () => {
           onSelect={handleGenreSelect}
         />
         <Select
-          className='random-filter-select'
+          className="random-filter-select"
           name="По типу"
           options={['Фильм', 'Сериал']}
           onSelect={() => {}}

@@ -9,26 +9,31 @@ import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const RandomFilm = () => {
-  const randomFilmFilters = useAppSelector((state) => state.films.randomFilmFilters);
-  const params = useMemo(() => normalizeRandomFilmFilters(randomFilmFilters), [randomFilmFilters]);
+  const randomFilmFilters = useAppSelector(
+    (state) => state.films.randomFilmFilters
+  );
+  const params = useMemo(
+    () => normalizeRandomFilmFilters(randomFilmFilters),
+    [randomFilmFilters]
+  );
   const [trigger, { data: FilmData, isLoading }] = useLazyGetRandomFilmQuery();
 
   const navigate = useNavigate();
 
   const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-      trigger({ params }, false)
+    trigger({ params }, false);
   };
 
   useEffect(() => {
     if (FilmData && FilmData.id) {
-        navigate(`/film/${FilmData.id}`);
+      navigate(`/film/${FilmData.id}`);
     }
-}, [FilmData, navigate]);
+  }, [FilmData, navigate]);
 
   return (
     <main className="main-container">
       <RandomFilters />
-      <RandomButton onClick={handleButtonClick}/>
+      <RandomButton onClick={handleButtonClick} />
     </main>
   );
 };

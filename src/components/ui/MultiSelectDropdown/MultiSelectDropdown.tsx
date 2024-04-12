@@ -23,9 +23,9 @@ function MultiSelectDropdown({ title, options, onSelect }: Props) {
         const newSelectedItems = isSelected
           ? prevSelectedItems.filter((item) => item !== option)
           : [...prevSelectedItems, option];
-          
+
         onSelect(newSelectedItems);
-        
+
         return newSelectedItems;
       });
     },
@@ -34,9 +34,9 @@ function MultiSelectDropdown({ title, options, onSelect }: Props) {
 
   return (
     <div className="multy-select-container">
-      <button className='multy-select-button' onClick={toggleDropdown}>
+      <button className="multy-select-button" onClick={toggleDropdown}>
         {title}
-        <ChevronDown className='multy-selector-icon'/>
+        <ChevronDown className="multy-selector-icon" />
       </button>
       {isOpen && (
         <div className="multy-select-options">

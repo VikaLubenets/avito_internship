@@ -1,4 +1,4 @@
-import { FilmPosterType, FilmRatingType, IFilm } from '../../../../store/types';
+import { FilmPosterType, FilmRatingType } from '../../../../store/types';
 import './FilmInfo.scss';
 
 type Props = {
@@ -12,14 +12,19 @@ type Props = {
 const FilmInfo = ({ name, description, rating, poster, isSeries }: Props) => {
   return (
     <div className="first-row-film-container">
-      {poster && <img src={poster.url} alt={name} className="film-image" />}
+      {poster && 
+      <img 
+          src={poster.url || './no-image.svg'} 
+          alt={name || 'no image'} 
+          className="film-image" 
+        />}
       <div className="text-container">
-        <h1>
+        <h1 className='film-info-name'>
           {isSeries ? 'Сериал ' : 'Фильм '}
-          {`"${name}"`}
+          {`"${name || 'Нет наименования'}"`}
         </h1>
-        <p>{description}</p>
-        <p>Рейтинг Кинопоиска: {rating.kp}</p>
+        <p>{description || 'Нет описания'}</p>
+        <p>Рейтинг Кинопоиска: {rating.kp || 'Нет рейтинга'}</p>
       </div>
     </div>
   );

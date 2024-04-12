@@ -1,4 +1,6 @@
-export function normalizeRandomFilmFilters(randomFilmFilters: Array<{ [key: string]: string[] }>): { [key: string]: string } {
+export function normalizeRandomFilmFilters(
+  randomFilmFilters: Array<{ [key: string]: string[] }>
+): { [key: string]: string } {
   const params: { [key: string]: string } = {};
 
   randomFilmFilters.forEach((filter: { [key: string]: string[] }) => {

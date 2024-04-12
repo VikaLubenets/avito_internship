@@ -1,24 +1,19 @@
-@use "../../../../styles/index.scss" as s;
-
-.random-button {
+.return-button{
   cursor: pointer;
-  height: 20vh;
-  width: 50vw;
+  height: 50px;
+  width: 130px;
   border-radius: var(--border-radius);
   background-color: var(--button-primery-color);
   color: var(--light-text-color);
-  font: var(--font-xl);
-  @include s.sm {
-    font: var(--font-xl);
-  }
+  font: var(--font-s);
 }
 
-.random-button:hover {
+.return-button:hover {
   background-color: var(--bg-header-color);
   color: var(--light-text-color);
 }
 
-.random-button:active {
+.return-button:active{
   background-color: var(--button-active-color);
   color: var(--button-active-text-color);
 }

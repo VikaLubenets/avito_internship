@@ -11,6 +11,8 @@ import Loading from '../../components/react-components/Loader/Loader';
 import CustomPagination from '../../components/react-components/CustomPagination/CustomPagination';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { filmsSlice } from '../../store/reducers/filmsReducer';
+import MobileHeader from '../../components/react-components/Header/MobileHeader/MobileHeader';
+import NoResults from '../../components/react-components/NoResults/NoResults';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
@@ -61,44 +63,47 @@ const MainPage = () => {
   }, [films, searchResults, dispatch, search]);
 
   return (
-    <main className="main-container">
-      <Header />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <FiltersContainer />
-          {search !== '' ? (
-            <>
-              {searchResults &&
-              searchResults.docs &&
-              searchResults.docs.length > 0 ? (
-                <>
-                  <FilmList
-                    films={searchResults.docs}
-                    total={searchResults.total}
-                  />
-                  <CustomPagination totalPages={searchResults.pages} />
-                </>
-              ) : (
-                <div className="no-results">No results</div>
-              )}
-            </>
-          ) : (
-            <>
-              {films && films.docs && films.docs.length > 0 ? (
-                <>
-                  <FilmList films={films.docs} total={films.total} />
-                  <CustomPagination totalPages={films.pages} />
-                </>
-              ) : (
-                <div className="no-results">No results</div>
-              )}
-            </>
-          )}
-        </>
-      )}
-    </main>
+    <>
+      <Header key={'header'}/>
+      <main className="main-container">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <FiltersContainer />
+            {search !== '' ? (
+              <>
+                {searchResults &&
+                  searchResults.docs &&
+                  searchResults.docs.length > 0 ? (
+                  <>
+                    <FilmList
+                      films={searchResults.docs}
+                      total={searchResults.total}
+                    />
+                    <CustomPagination totalPages={searchResults.pages} />
+                  </>
+                ) : (
+                  <NoResults />
+                )}
+              </>
+            ) : (
+              <>
+                {films && films.docs && films.docs.length > 0 ? (
+                  <>
+                    <FilmList films={films.docs} total={films.total} />
+                    <CustomPagination totalPages={films.pages} />
+                  </>
+                ) : (
+                  <NoResults />
+                )}
+              </>
+            )}
+          </>
+        )}
+      </main>
+
+    </>
   );
 };
 

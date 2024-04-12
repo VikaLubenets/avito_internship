@@ -1,5 +1,5 @@
 import { Loader } from 'lucide-react';
-import './Loader.module.scss';
+import './Loader.scss';
 
 const Loading = () => {
   return (

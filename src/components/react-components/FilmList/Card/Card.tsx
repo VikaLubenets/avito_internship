@@ -12,7 +12,7 @@ const Card = ({ film }: Props) => {
       <div className="film-thumbnail">
         <img
           className="film-img"
-          src={film.poster.url || 'public\no_image.svg'}
+          src={film.poster.url || './no_image.svg'}
           alt={film.name}
         />
       </div>

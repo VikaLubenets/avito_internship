@@ -1,8 +1,22 @@
-@mixin breakpoint($point) {
-  @if $point == md {
-    // 768px
-    @media (min-width: 48em) {
-      @content;
-    }
+//mobile
+
+@mixin sm {
+  @media (max-width: $screen-sm-max) {
+    @content;
+  }
+}
+
+//laptop
+
+@mixin md {
+  @media (max-width: $screen-md-max) {
+    @content;
+  }
+}
+
+//desctop
+@mixin lg {
+  @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max){
+    @content;
   }
 }

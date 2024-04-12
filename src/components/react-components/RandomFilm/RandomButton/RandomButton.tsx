@@ -3,8 +3,8 @@ import './RandomButton.scss';
 
 type Props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
-const RandomButton = ({onClick}: Props) => {
+};
+const RandomButton = ({ onClick }: Props) => {
   return (
     <Button
       onClick={onClick}

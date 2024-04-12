@@ -83,29 +83,31 @@ const FiltersBar = () => {
   }, [dispatch]);
 
   return (
-    <div className="filters-bar">
-      <Select
-        name="По году"
-        options={years}
-        onSelect={handleYearSelect}
-        selectedValue={selectedYear}
-      />
-      <Select
-        name="По стране"
-        options={countries.map((country) => country.name)}
-        onSelect={handleCountrySelect}
-        selectedValue={selectedCountry}
-      />
-      <Select
-        name="По возрастному рейтингу"
-        options={ageRanking.map((opt) => opt.name)}
-        onSelect={(selectedValue: string) =>
-          handleAgeRatingSelect(
-            ageRanking.find((el) => el.name === selectedValue)?.ranking || ''
-          )
-        }
-        selectedValue={selectedAgeRating}
-      />
+    <div className='filters-bar-container-row'>
+      <div className="filters-bar">
+        <Select
+          name="По году"
+          options={years}
+          onSelect={handleYearSelect}
+          selectedValue={selectedYear}
+        />
+        <Select
+          name="По стране"
+          options={countries.map((country) => country.name)}
+          onSelect={handleCountrySelect}
+          selectedValue={selectedCountry}
+        />
+        <Select
+          name="По возрастному рейтингу"
+          options={ageRanking.map((opt) => opt.name)}
+          onSelect={(selectedValue: string) =>
+            handleAgeRatingSelect(
+              ageRanking.find((el) => el.name === selectedValue)?.ranking || ''
+            )
+          }
+          selectedValue={selectedAgeRating}
+        />
+      </div>
       <Tooltip anchorSelect=".no-filter" place="top">
         Сбросить фильтры
       </Tooltip>
