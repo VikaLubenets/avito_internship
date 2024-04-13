@@ -3,7 +3,7 @@ import './RandomButton.scss';
 
 type Props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  disabled: boolean;
+  disabled?: boolean;
 };
 const RandomButton = ({ onClick, disabled }: Props) => {
   return (

@@ -34,7 +34,7 @@ const ActorsList: React.FC<Props> = ({ actors }) => {
           <li key={actor.id} className="actor-container">
             <img
               className="actors-image"
-              src={actor.photo || './no-image.svg'}
+              src={actor.photo || './no_image.svg'}
               alt={actor.name || 'Имя отсутствует'}
             />
             <p className="actor-name">{actor.name}</p>

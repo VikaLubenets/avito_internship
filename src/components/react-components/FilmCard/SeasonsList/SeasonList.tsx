@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
 import { filmsSlice } from '../../../../store/reducers/filmsReducer';
@@ -14,25 +14,32 @@ const SeasonsList = ({ seasons }: Props) => {
   const currentPage = useAppSelector((state) => state.films.pageSeasons);
   const [paginationItems, setPaginationItems] = useState<JSX.Element[]>([]);
 
+  const onClick = useCallback(
+    (page: number) => {
+      dispatch(filmsSlice.actions.setPageSeasons(page));
+    },
+    [dispatch]
+  );
+
   useEffect(() => {
     const makePagination = (total: number) => {
       const items: JSX.Element[] = [];
       for (let number = 1; number <= total; number++) {
         items.push(
-            <Pagination.Item key={number} active={number === currentPage} onClick={() => onClick(number)}>
-                {total - number || 0}
-            </Pagination.Item>
+          <Pagination.Item
+            key={number}
+            active={number === currentPage}
+            onClick={() => onClick(number)}
+          >
+            {total - number ?? 0}
+          </Pagination.Item>
         );
-    }
+      }
       setPaginationItems(items.reverse());
     };
-    
-    makePagination(seasons.total);
-  }, [currentPage, seasons.total]);
 
-  const onClick = (page: number) => {
-    dispatch(filmsSlice.actions.setPageSeasons(page));
-  };
+    makePagination(seasons.total);
+  }, [currentPage, seasons.total, onClick]);
 
   return (
     <div>
@@ -47,23 +54,23 @@ const SeasonsList = ({ seasons }: Props) => {
             </div>
             <div key={season.number} className="seasons-container">
               <div>
-                {season.poster.url && (
+                {season.poster && season.poster.url && (
                   <img
                     className="season-poster"
-                    src={season.poster.url || './no_image.svg'}
-                    alt={season.enName || 'Название сезона отсутствует'} 
+                    src={season.poster.url ?? './no_image.svg'}
+                    alt={season.enName ?? 'Название сезона отсутствует'}
                   />
                 )}
               </div>
               <ul className="episodes-list">
                 {season.episodes.map((episode: IEpisode) => (
                   <li key={episode.number} className="season-item">
-                    <img
+                    { episode.still && <img
                       className="episode-poster"
-                      src={episode.still.url || './no_image.svg'}
-                      alt={episode.name || 'Название эпизода отсутствует'}
-                    />
-                    {`${episode.name || 'Название эпизода отсутствует'}`}
+                      src={episode.still.url ?? './no_image.svg'}
+                      alt={episode.name ?? 'Название эпизода отсутствует'}
+                    /> }
+                    {`${episode.name ?? 'Название эпизода отсутствует'}`}
                   </li>
                 ))}
               </ul>

@@ -44,7 +44,7 @@ const RandomFilm = () => {
       ) : (
         <>
           <RandomFilters />
-          <RandomButton onClick={handleButtonClick} disabled={isFetching} />
+          <RandomButton onClick={handleButtonClick} />
           {showNoResults && requestTriggered && (
             <NoResults message="with these filters. Try one more time" />
           )}

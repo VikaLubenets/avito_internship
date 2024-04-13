@@ -14,7 +14,7 @@ const FilmInfo = ({ name, description, rating, poster, isSeries }: Props) => {
     <div className="first-row-film-container">
       {poster && (
         <img
-          src={poster.url || './no-image.svg'}
+          src={poster.url || './no_image.svg'}
           alt={name || 'no image'}
           className="film-image"
         />
