@@ -1,9 +1,4 @@
-import {
-  ChangeEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../../../hooks/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
@@ -18,13 +13,13 @@ import './Search.scss';
 const Search = () => {
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get('query')  || '');
+  const [search, setSearch] = useState(searchParams.get('query') || '');
   const debouncedValue = useDebounce(search, 1000);
   const searchHistory = useAppSelector((state) => state.films.searchHistory);
   const suggestions = useAppSelector((state) => state.films.searchSuggestions);
 
   useEffect(() => {
-    if(search){
+    if (search) {
       setSearchParams((prev) => ({
         ...Object.fromEntries(prev),
         page: String(DEFAULT_PAGE),
@@ -37,7 +32,7 @@ const Search = () => {
         limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
       }));
     }
-  }, [search, setSearchParams])
+  }, [search, setSearchParams]);
 
   const onChangeSearch = useCallback((searchValue: string) => {
     setSearch(searchValue);
@@ -56,7 +51,7 @@ const Search = () => {
       );
       dispatch(filmsSlice.actions.setSearchSuggestions(suggestions));
     },
-    [dispatch, searchHistory, setSearchParams]
+    [dispatch, searchHistory]
   );
 
   const handleSuggestionClick = useCallback(
@@ -68,12 +63,15 @@ const Search = () => {
     [dispatch, handleSearch]
   );
 
-  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    onChangeSearch(event.target.value);
-    if (event.target.value === '') {
-      handleSearch('');
-    }
-  }, [onChangeSearch, handleSearch]);
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onChangeSearch(event.target.value);
+      if (event.target.value === '') {
+        handleSearch('');
+      }
+    },
+    [onChangeSearch, handleSearch]
+  );
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {

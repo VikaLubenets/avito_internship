@@ -68,7 +68,7 @@ const FilmCard = ({ data }: Props) => {
         <Loader />
       ) : (
         <>
-          {isSeries && filmSeason ? (
+          {filmSeason ? (
             <SeasonsList seasons={filmSeason} />
           ) : (
             <Placeholder message="Нет информации о сезонах" />

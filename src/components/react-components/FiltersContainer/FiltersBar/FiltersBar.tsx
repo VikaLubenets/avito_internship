@@ -70,7 +70,7 @@ const FiltersBar = () => {
         dispatch(
           filmsSlice.actions.addOrUpdateFilter({
             type: 'ageRating',
-            value: { 'ageRating': val } as FilterString,
+            value: { ageRating: val } as FilterString,
           })
         );
       }

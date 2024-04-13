@@ -12,7 +12,10 @@ import Header from '../../components/react-components/Header/Header';
 import Loading from '../../components/react-components/Loader/Loader';
 import CustomPagination from '../../components/react-components/CustomPagination/CustomPagination';
 import NoResults from '../../components/react-components/NoResults/NoResults';
-import { DEFAULT_LIMIT_FILMS_PER_PAGE, DEFAULT_PAGE } from '../../utils/constants';
+import {
+  DEFAULT_LIMIT_FILMS_PER_PAGE,
+  DEFAULT_PAGE,
+} from '../../utils/constants';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
@@ -27,17 +30,14 @@ const MainPage = () => {
   );
 
   const { data: searchResults, isLoading: isLoadingSearch } =
-    useGetSearchFilmsQuery(
-      {query: search },
-      { skip: search === '' }
-    );
+    useGetSearchFilmsQuery({ query: search }, { skip: search === '' });
 
   useEffect(() => {
-      setSearchParams((prev) => ({
-        ...Object.fromEntries(prev),
-        page: String(currentPage),
-        limit: String(limitPerPage),
-      }));
+    setSearchParams((prev) => ({
+      ...Object.fromEntries(prev),
+      page: String(currentPage),
+      limit: String(limitPerPage),
+    }));
   }, [currentPage, limitPerPage, setSearchParams]);
 
   useEffect(() => {

@@ -2,10 +2,10 @@ import { ChangeEvent, useCallback, useState } from 'react';
 import './RatingRange.scss';
 
 type Props = {
-  onSelect:(selectedValue: string) => void;
-}
+  onSelect: (selectedValue: string) => void;
+};
 
-const RatingRange = ({onSelect}: Props) => {
+const RatingRange = ({ onSelect }: Props) => {
   const [currentValue, setCurrentValue] = useState(0);
   const minRating = 0;
   const maxRating = 10;
@@ -21,7 +21,7 @@ const RatingRange = ({onSelect}: Props) => {
 
   return (
     <label htmlFor="rating-kp" className="random-filter-label">
-     Минимальный рейтинг на Кинопоиске
+      Минимальный рейтинг на Кинопоиске
       <div className="range-container">
         <div className="current-value">{currentValue}</div>
         <input

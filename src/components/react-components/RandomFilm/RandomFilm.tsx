@@ -20,11 +20,12 @@ const RandomFilm = () => {
     () => convertToQueryParams(randomFilmFilters),
     [randomFilmFilters]
   );
-  const [trigger, { data: FilmData, isLoading, isFetching }] = useLazyGetRandomFilmQuery();
+  const [trigger, { data: FilmData, isLoading, isFetching }] =
+    useLazyGetRandomFilmQuery();
 
   const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     setShowNoResults(false);
-    setRequestTriggered(true); 
+    setRequestTriggered(true);
     trigger({ params }, false);
   };
 
@@ -34,18 +35,21 @@ const RandomFilm = () => {
     } else if (requestTriggered) {
       setShowNoResults(true);
     }
-  }, [FilmData, navigate]);
+  }, [FilmData, requestTriggered, navigate]);
 
   return (
     <main className="main-container">
-      {isLoading ? 
-      <Loading /> : 
-      <>
-        <RandomFilters />
-        <RandomButton onClick={handleButtonClick} disabled={isFetching}/>
-        {showNoResults && requestTriggered && <NoResults message='with these filters. Try one more time' />}
-      </>
-    }
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <RandomFilters />
+          <RandomButton onClick={handleButtonClick} disabled={isFetching} />
+          {showNoResults && requestTriggered && (
+            <NoResults message="with these filters. Try one more time" />
+          )}
+        </>
+      )}
     </main>
   );
 };

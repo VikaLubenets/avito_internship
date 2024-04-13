@@ -56,15 +56,21 @@ const RandomFilters = () => {
     [dispatch]
   );
 
-  const handleTypeSelect = useCallback((selectedType: string) => {
-    const newFilter = { 'isSeries': [String(selectedType === 'Сериал')] };
-    dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+  const handleTypeSelect = useCallback(
+    (selectedType: string) => {
+      const newFilter = { isSeries: [String(selectedType === 'Сериал')] };
+      dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
+    },
+    [dispatch]
+  );
 
-  const handleRatingKPSelect = useCallback((selectedType: string) => {
-    const newFilter = { 'rating.kp': [`${selectedType}-10`] };
-    dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  }, [dispatch]);
+  const handleRatingKPSelect = useCallback(
+    (selectedType: string) => {
+      const newFilter = { 'rating.kp': [`${selectedType}-10`] };
+      dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
+    },
+    [dispatch]
+  );
 
   const handleResetFilters = useCallback(() => {
     dispatch(filmsSlice.actions.resetRandomFilters());
@@ -78,7 +84,7 @@ const RandomFilters = () => {
       <X onClick={handleResetFilters} className="no-filter" />
       <div className="random-film-filters">
         <Select
-          className='random-filter-select'
+          className="random-filter-select"
           name="По году"
           options={years}
           onSelect={handleYearSelect}
@@ -89,11 +95,13 @@ const RandomFilters = () => {
           onSelect={handleCountrySelect}
         />
         <Select
-          className='random-filter-select'
+          className="random-filter-select"
           name="По возрастному рейтингу"
           options={ageRating.map((opt) => opt.name)}
           onSelect={(selectedValue: string) => {
-            handleAgeRatingSelect(ageRating.find((el) => el.name === selectedValue)?.ranking || '')
+            handleAgeRatingSelect(
+              ageRating.find((el) => el.name === selectedValue)?.ranking || ''
+            );
           }}
         />
         <MultiSelectDropdown
@@ -113,9 +121,7 @@ const RandomFilters = () => {
           onSelect={handleTypeSelect}
         />
       </div>
-      <RatingRange 
-        onSelect={handleRatingKPSelect}
-      />
+      <RatingRange onSelect={handleRatingKPSelect} />
     </div>
   );
 };

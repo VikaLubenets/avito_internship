@@ -140,6 +140,7 @@ export const api = createApi({
       {
         page?: number;
         limit?: number;
+        number?: number;
         movieId: string;
       }
     >({
@@ -160,12 +161,12 @@ export const api = createApi({
     }),
     getRandomFilm: builder.query<IFilm, { params?: Record<string, string[]> }>({
       query: ({ params }) => {
-          return {
-              url: 'v1.4/movie/random',
-              params,
-          };
+        return {
+          url: 'v1.4/movie/random',
+          params,
+        };
       },
-  }),
+    }),
   }),
 });
 

@@ -51,7 +51,9 @@ export const filmsSlice = createSlice({
     },
     setSearchHistory(state, action: PayloadAction<string>) {
       const newSearch = action.payload.toLowerCase();
-      const updatedHistory = new Set(state.searchHistory.map(item => item.toLowerCase()));
+      const updatedHistory = new Set(
+        state.searchHistory.map((item) => item.toLowerCase())
+      );
       updatedHistory.add(newSearch);
       state.searchHistory = Array.from(updatedHistory);
       if (state.searchHistory.length > 20) {

@@ -16,7 +16,12 @@ export interface filmsState {
   randomFilmFilters: RandomFilmFiltersPayload;
 }
 
-export type FilterType = 'year' | 'countries.name' | 'ageRating' | 'isSeries' | 'rating.kp';
+export type FilterType =
+  | 'year'
+  | 'countries.name'
+  | 'ageRating'
+  | 'isSeries'
+  | 'rating.kp';
 export type FilterString = Record<FilterType, string> | null;
 export type FilterPayload = {
   type: FilterType;

@@ -15,7 +15,6 @@ const Select: React.FC<Props> = ({
   className,
   selectedValue = '',
 }) => {
-
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const selectedValue = event.target.value;

@@ -1,11 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks/redux';
 import { filmsSlice } from '../../../../store/reducers/filmsReducer';
 import { IEpisode, SeasonsResponse } from '../../../../store/types';
-import { DEFAULT_SEASONS_PER_PAGE } from '../../../../utils/constants';
-import { useRenderPaginationItems } from '../../CustomPagination/CustomPagination';
 import './SeasonsList.scss';
 
 type Props = {
@@ -15,15 +12,27 @@ type Props = {
 const SeasonsList = ({ seasons }: Props) => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((state) => state.films.pageSeasons);
-  const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
+  const [paginationItems, setPaginationItems] = useState<JSX.Element[]>([]);
 
-  const renderPaginationItems = useRenderPaginationItems({
-    currentPage: currentPage,
-    totalPages: seasons.pages,
-    onPageClick: (page: number) => {
-      dispatch(filmsSlice.actions.setPageSeasons(page));
-    },
-  });
+  useEffect(() => {
+    const makePagination = (total: number) => {
+      const items: JSX.Element[] = [];
+      for (let number = 1; number <= total; number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => onClick(number)}>
+                {total - number || 0}
+            </Pagination.Item>
+        );
+    }
+      setPaginationItems(items.reverse());
+    };
+    
+    makePagination(seasons.total);
+  }, [currentPage, seasons.total]);
+
+  const onClick = (page: number) => {
+    dispatch(filmsSlice.actions.setPageSeasons(page));
+  };
 
   return (
     <div>
@@ -33,7 +42,7 @@ const SeasonsList = ({ seasons }: Props) => {
             <div className="seasons-header-container">
               <h2>Season {season.number}</h2>
               <Pagination size="sm" className="pagination">
-                {renderPaginationItems()}
+                {paginationItems}
               </Pagination>
             </div>
             <div key={season.number} className="seasons-container">
@@ -41,8 +50,8 @@ const SeasonsList = ({ seasons }: Props) => {
                 {season.poster.url && (
                   <img
                     className="season-poster"
-                    src={season.poster.url}
-                    alt={season.enName}
+                    src={season.poster.url || './no_image.svg'}
+                    alt={season.enName || 'Название сезона отсутствует'} 
                   />
                 )}
               </div>
@@ -51,10 +60,10 @@ const SeasonsList = ({ seasons }: Props) => {
                   <li key={episode.number} className="season-item">
                     <img
                       className="episode-poster"
-                      src={episode.still.url}
-                      alt={episode.name}
+                      src={episode.still.url || './no_image.svg'}
+                      alt={episode.name || 'Название эпизода отсутствует'}
                     />
-                    {`${episode.number}. ${episode.name}`}
+                    {`${episode.name || 'Название эпизода отсутствует'}`}
                   </li>
                 ))}
               </ul>
