@@ -65,11 +65,13 @@ const SeasonsList = ({ seasons }: Props) => {
               <ul className="episodes-list">
                 {season.episodes.map((episode: IEpisode) => (
                   <li key={episode.number} className="season-item">
-                    { episode.still && <img
-                      className="episode-poster"
-                      src={episode.still.url ?? './no_image.svg'}
-                      alt={episode.name ?? 'Название эпизода отсутствует'}
-                    /> }
+                    {episode.still && (
+                      <img
+                        className="episode-poster"
+                        src={episode.still.url ?? './no_image.svg'}
+                        alt={episode.name ?? 'Название эпизода отсутствует'}
+                      />
+                    )}
                     {`${episode.name ?? 'Название эпизода отсутствует'}`}
                   </li>
                 ))}

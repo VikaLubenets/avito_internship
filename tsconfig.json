@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES5",                                 
-    "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,           
-    "strict": true,                                      
+    "target": "ES5",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
     "module": "ESNext", 
@@ -16,5 +16,12 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": [
+    "./config/jest/jest-setup.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ]
 }

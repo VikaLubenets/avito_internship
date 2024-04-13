@@ -83,7 +83,7 @@ export const filmsSlice = createSlice({
         (item) => item.type !== action.payload
       );
     },
-    resetFilters(state, action: PayloadAction<[]>) {
+    resetFilters(state) {
       state.filters = [];
     },
     addOrUpdateRandomFilter(state, action: PayloadAction<RandomFilterString>) {

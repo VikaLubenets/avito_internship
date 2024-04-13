@@ -1,7 +1,5 @@
-import {  fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
-import {
-  BASE_URL,
-} from '../../utils/constants';
+import { fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { BASE_URL } from '../../utils/constants';
 
 const token = process.env.TOKEN || '';
 

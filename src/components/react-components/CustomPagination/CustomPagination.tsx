@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks/redux';
 import { filmsSlice } from '../../../store/reducers/filmsReducer';
 import Pagination from 'react-bootstrap/Pagination';
-import { useCallback, memo } from 'react';
+import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   totalPages: number;
 };
-const CustomPagination = memo(({ totalPages }: Props) => {
+const CustomPagination = ({ totalPages }: Props) => {
   const { innerWidth: width } = window;
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,7 +30,7 @@ const CustomPagination = memo(({ totalPages }: Props) => {
       {renderPaginationItems()}
     </Pagination>
   );
-});
+};
 
 export default CustomPagination;
 

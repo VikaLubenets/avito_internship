@@ -20,8 +20,7 @@ const RandomFilm = () => {
     () => convertToQueryParams(randomFilmFilters),
     [randomFilmFilters]
   );
-  const [trigger, { data: FilmData, isLoading, isFetching }] =
-    useLazyGetRandomFilmQuery();
+  const [trigger, { data: FilmData, isLoading }] = useLazyGetRandomFilmQuery();
 
   const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     setShowNoResults(false);

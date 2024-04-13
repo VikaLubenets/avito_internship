@@ -79,7 +79,7 @@ const FiltersBar = () => {
   );
 
   const handleResetFilters = useCallback(() => {
-    dispatch(filmsSlice.actions.resetFilters([]));
+    dispatch(filmsSlice.actions.resetFilters());
   }, [dispatch]);
 
   return (
