@@ -1,7 +1,12 @@
+import { memo } from 'react';
 import './NoResults.scss';
 
-const NoResults = () => {
-  return <div className="no-results">No results</div>;
-};
+type Props = {
+  message?: string;
+}
+
+const NoResults = memo(({message}: Props) => {
+  return <div className="no-results">No results {message}</div>;
+});
 
 export default NoResults;

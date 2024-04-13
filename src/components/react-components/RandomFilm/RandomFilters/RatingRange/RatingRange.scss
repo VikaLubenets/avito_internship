@@ -2,7 +2,7 @@
   display: flex;
   gap: 10px;
   flex-direction: column;
-  width: 20vw;
+  width: 40vw;
   justify-content: center;
   align-items: center;
 }
@@ -15,10 +15,11 @@
 }
 
 .rating-kp-input {
-  width: 20vw;
+  width: 40vw;
 }
 
-.range-values {
+.min-max-values{
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

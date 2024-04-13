@@ -158,21 +158,14 @@ export const api = createApi({
         };
       },
     }),
-    getRandomFilm: builder.query<
-      IFilm,
-      {
-        params?: { [key: string]: string };
-      }
-    >({
+    getRandomFilm: builder.query<IFilm, { params?: Record<string, string[]> }>({
       query: ({ params }) => {
-        return {
-          url: 'v1.4/movie/random',
-          params: {
-            ...params,
-          },
-        };
+          return {
+              url: 'v1.4/movie/random',
+              params,
+          };
       },
-    }),
+  }),
   }),
 });
 

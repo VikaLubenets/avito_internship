@@ -2,7 +2,7 @@ import { X } from 'lucide-react';
 import { Tooltip } from 'react-tooltip';
 import { useCallback } from 'react';
 import { useAppDispatch } from '../../../../store/hooks/redux';
-import { ageRanking } from '../../../../utils/filterConfigs/AgeRanking';
+import { ageRating } from '../../../../utils/filterConfigs/AgeRanking';
 import { countries } from '../../../../utils/filterConfigs/Countries';
 import { genres } from '../../../../utils/filterConfigs/Genres';
 import { productionNames } from '../../../../utils/filterConfigs/Production';
@@ -17,8 +17,8 @@ const RandomFilters = () => {
   const dispatch = useAppDispatch();
 
   const handleYearSelect = useCallback(
-    (selectedYears: string[]) => {
-      const newFilter = { year: selectedYears };
+    (selectedYears: string) => {
+      const newFilter = { year: [selectedYears] };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
     },
     [dispatch]
@@ -33,8 +33,8 @@ const RandomFilters = () => {
   );
 
   const handleAgeRatingSelect = useCallback(
-    (selectedAgeRatings: string[]) => {
-      const newFilter = { ageRating: selectedAgeRatings };
+    (selectedAgeRatings: string) => {
+      const newFilter = { ageRating: [selectedAgeRatings] };
       dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
     },
     [dispatch]
@@ -56,10 +56,15 @@ const RandomFilters = () => {
     [dispatch]
   );
 
-  // const handleTypeSelect = useCallback((selectedType: string) => {
-  //     const newFilter = { 'isSeries': selectedType === 'Сериал' };
-  //     dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
-  // }, [dispatch]);
+  const handleTypeSelect = useCallback((selectedType: string) => {
+    const newFilter = { 'isSeries': [String(selectedType === 'Сериал')] };
+    dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
+  }, [dispatch]);
+
+  const handleRatingKPSelect = useCallback((selectedType: string) => {
+    const newFilter = { 'rating.kp': [`${selectedType}-10`] };
+    dispatch(filmsSlice.actions.addOrUpdateRandomFilter(newFilter));
+  }, [dispatch]);
 
   const handleResetFilters = useCallback(() => {
     dispatch(filmsSlice.actions.resetRandomFilters());
@@ -72,8 +77,9 @@ const RandomFilters = () => {
       </Tooltip>
       <X onClick={handleResetFilters} className="no-filter" />
       <div className="random-film-filters">
-        <MultiSelectDropdown
-          title="По году"
+        <Select
+          className='random-filter-select'
+          name="По году"
           options={years}
           onSelect={handleYearSelect}
         />
@@ -82,10 +88,13 @@ const RandomFilters = () => {
           options={countries.map((country) => country.name)}
           onSelect={handleCountrySelect}
         />
-        <MultiSelectDropdown
-          title="По возрастному рейтингу"
-          options={ageRanking.map((opt) => opt.name)}
-          onSelect={handleAgeRatingSelect}
+        <Select
+          className='random-filter-select'
+          name="По возрастному рейтингу"
+          options={ageRating.map((opt) => opt.name)}
+          onSelect={(selectedValue: string) => {
+            handleAgeRatingSelect(ageRating.find((el) => el.name === selectedValue)?.ranking || '')
+          }}
         />
         <MultiSelectDropdown
           title="По компании производства"
@@ -101,10 +110,12 @@ const RandomFilters = () => {
           className="random-filter-select"
           name="По типу"
           options={['Фильм', 'Сериал']}
-          onSelect={() => {}}
+          onSelect={handleTypeSelect}
         />
       </div>
-      <RatingRange />
+      <RatingRange 
+        onSelect={handleRatingKPSelect}
+      />
     </div>
   );
 };

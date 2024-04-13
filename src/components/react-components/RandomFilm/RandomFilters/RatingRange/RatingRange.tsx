@@ -1,28 +1,43 @@
-import { useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import './RatingRange.scss';
 
-const RatingRange = () => {
-  const [currentValue, setCurrentValue] = useState(5);
+type Props = {
+  onSelect:(selectedValue: string) => void;
+}
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentValue(Number(event.target.value));
-  };
+const RatingRange = ({onSelect}: Props) => {
+  const [currentValue, setCurrentValue] = useState(0);
+  const minRating = 0;
+  const maxRating = 10;
+
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedValue = event.target.value;
+      setCurrentValue(Number(selectedValue));
+      onSelect(selectedValue);
+    },
+    [onSelect]
+  );
 
   return (
     <label htmlFor="rating-kp" className="random-filter-label">
-      По рейтингу Кинопоиска
+     Минимальный рейтинг на Кинопоиске
       <div className="range-container">
         <div className="current-value">{currentValue}</div>
         <input
           id="rating-kp"
           name="rating-kp"
           type="range"
-          min={0}
-          max={10}
+          min={minRating}
+          max={maxRating}
           value={currentValue}
           onChange={handleChange}
           className="rating-kp-input"
         />
+      </div>
+      <div className="min-max-values">
+        <span className="min-value">{minRating}</span>
+        <span className="max-value">{maxRating}</span>
       </div>
     </label>
   );

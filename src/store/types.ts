@@ -16,7 +16,7 @@ export interface filmsState {
   randomFilmFilters: RandomFilmFiltersPayload;
 }
 
-export type FilterType = 'year' | 'countries.name' | 'ageRating';
+export type FilterType = 'year' | 'countries.name' | 'ageRating' | 'isSeries' | 'rating.kp';
 export type FilterString = Record<FilterType, string> | null;
 export type FilterPayload = {
   type: FilterType;
@@ -59,7 +59,6 @@ export interface FilmSearchResponse {
   page: number;
   pages: number;
 }
-
 
 export type ReviewResponse = {
   docs: IReview[];
@@ -315,7 +314,7 @@ export type FilmPosterType = {
 
 export type FilmBackdropType = {
   url: string | null;
-  previewUrl: string | null; 
+  previewUrl: string | null;
 };
 
 export type FilmTrailerType = {
@@ -357,7 +356,6 @@ export type ISimilarMovie = {
   year: number;
 };
 
-
 export interface ActionType {
   type: string;
   payload: FilmSearchResponse;
@@ -368,9 +366,3 @@ export interface Genre {
   slug: string;
   title: string;
 }
-
-
-
-
-
-

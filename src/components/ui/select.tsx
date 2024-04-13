@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 
 type Props = {
   name: string;
@@ -15,10 +15,14 @@ const Select: React.FC<Props> = ({
   className,
   selectedValue = '',
 }) => {
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.target.value;
-    onSelect(selectedValue);
-  };
+
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      const selectedValue = event.target.value;
+      onSelect(selectedValue);
+    },
+    [onSelect]
+  );
 
   return (
     <select

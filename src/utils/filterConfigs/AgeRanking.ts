@@ -1,4 +1,4 @@
-export const ageRanking = [
+export const ageRating = [
   {
     name: '18+',
     ranking: '18',

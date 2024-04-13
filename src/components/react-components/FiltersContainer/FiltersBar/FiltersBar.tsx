@@ -7,7 +7,7 @@ import {
   selectNormalizedFilterOptions,
 } from '../../../../store/reducers/filmsReducer';
 import './FiltersBar.scss';
-import { ageRanking } from '../../../../utils/filterConfigs/AgeRanking';
+import { ageRating } from '../../../../utils/filterConfigs/AgeRanking';
 import { countries } from '../../../../utils/filterConfigs/Countries';
 import { years } from '../../../../utils/filterConfigs/Years';
 import { FilterString } from '../../../../store/types';
@@ -70,7 +70,7 @@ const FiltersBar = () => {
         dispatch(
           filmsSlice.actions.addOrUpdateFilter({
             type: 'ageRating',
-            value: { ageRating: val } as FilterString,
+            value: { 'ageRating': val } as FilterString,
           })
         );
       }
@@ -99,10 +99,10 @@ const FiltersBar = () => {
         />
         <Select
           name="По возрастному рейтингу"
-          options={ageRanking.map((opt) => opt.name)}
+          options={ageRating.map((opt) => opt.name)}
           onSelect={(selectedValue: string) =>
             handleAgeRatingSelect(
-              ageRanking.find((el) => el.name === selectedValue)?.ranking || ''
+              ageRating.find((el) => el.name === selectedValue)?.ranking || ''
             )
           }
           selectedValue={selectedAgeRating}

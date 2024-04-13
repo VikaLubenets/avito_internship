@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../ui/button';
 import './ReturnButton.scss';
 
-const ReturnButton = () => {
+const ReturnButton = memo(() => {
   return (
     <Link to={'/'}>
       <Button
@@ -12,6 +13,6 @@ const ReturnButton = () => {
       />
     </Link>
   );
-};
+});
 
 export default ReturnButton;

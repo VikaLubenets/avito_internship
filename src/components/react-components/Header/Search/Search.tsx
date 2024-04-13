@@ -3,7 +3,6 @@ import {
   useCallback,
   useEffect,
   useState,
-  useTransition,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../../../hooks/useDebounce';
@@ -18,38 +17,34 @@ import './Search.scss';
 
 const Search = () => {
   const dispatch = useAppDispatch();
-  const [search, setSearch] = useState('');
-  const debouncedValue = useDebounce(search, 1000);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('query')  || '');
+  const debouncedValue = useDebounce(search, 1000);
   const searchHistory = useAppSelector((state) => state.films.searchHistory);
   const suggestions = useAppSelector((state) => state.films.searchSuggestions);
 
-  const onChangeSearch = (searchValue: string) => {
-    setSearch(searchValue);
-  };
+  useEffect(() => {
+    if(search){
+      setSearchParams((prev) => ({
+        ...Object.fromEntries(prev),
+        page: String(DEFAULT_PAGE),
+        limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
+        query: search,
+      }));
+    } else {
+      setSearchParams(() => ({
+        page: String(DEFAULT_PAGE),
+        limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
+      }));
+    }
+  }, [search, setSearchParams])
 
-  const handleSuggestionClick = (value: string) => {
-    setSearch(value);
-    handleSearch(value);
-    dispatch(filmsSlice.actions.setSearchSuggestions([]));
-  };
+  const onChangeSearch = useCallback((searchValue: string) => {
+    setSearch(searchValue);
+  }, []);
 
   const handleSearch = useCallback(
     (value: string) => {
-      if (value) {
-        setSearchParams((prev) => ({
-          ...Object.fromEntries(prev),
-          page: String(DEFAULT_PAGE),
-          limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
-          query: value,
-        }));
-      } else {
-        setSearchParams(() => ({
-          page: String(DEFAULT_PAGE),
-          limit: String(DEFAULT_LIMIT_FILMS_PER_PAGE),
-        }));
-      }
-
       dispatch(filmsSlice.actions.setSearch(value));
 
       if (value && !searchHistory.includes(value)) {
@@ -61,7 +56,32 @@ const Search = () => {
       );
       dispatch(filmsSlice.actions.setSearchSuggestions(suggestions));
     },
-    [dispatch, setSearchParams, searchHistory]
+    [dispatch, searchHistory, setSearchParams]
+  );
+
+  const handleSuggestionClick = useCallback(
+    (value: string) => {
+      setSearch(value);
+      handleSearch(value);
+      dispatch(filmsSlice.actions.setSearchSuggestions([]));
+    },
+    [dispatch, handleSearch]
+  );
+
+  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    onChangeSearch(event.target.value);
+    if (event.target.value === '') {
+      handleSearch('');
+    }
+  }, [onChangeSearch, handleSearch]);
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        handleSearch(search);
+      }
+    },
+    [handleSearch, search]
   );
 
   useEffect(() => {
@@ -78,14 +98,8 @@ const Search = () => {
           type="search"
           placeholder="Поиск по названию"
           value={search}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            onChangeSearch(event.target.value);
-          }}
-          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-            if (event.key === 'Enter') {
-              handleSearch(search);
-            }
-          }}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
         />
         {suggestions.length > 0 && search && (
           <ul className="suggestions">

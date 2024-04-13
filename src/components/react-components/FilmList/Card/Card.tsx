@@ -15,6 +15,7 @@ const Card = ({ film }: Props) => {
           src={film.poster.url || './no_image.svg'}
           alt={film.name || film.names[0].name || 'Название отсутствует'}
         />
+        <p className='film-card__name'>{film.name || film.names[0].name || 'Название отсутствует'}</p>
       </div>
     </Link>
   );

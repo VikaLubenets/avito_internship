@@ -50,9 +50,12 @@ export const filmsSlice = createSlice({
       state.isLoading = action.payload;
     },
     setSearchHistory(state, action: PayloadAction<string>) {
-      state.searchHistory.push(action.payload);
+      const newSearch = action.payload.toLowerCase();
+      const updatedHistory = new Set(state.searchHistory.map(item => item.toLowerCase()));
+      updatedHistory.add(newSearch);
+      state.searchHistory = Array.from(updatedHistory);
       if (state.searchHistory.length > 20) {
-          state.searchHistory.shift();
+        state.searchHistory.shift();
       }
     },
     setSearchSuggestions(state, action: PayloadAction<string[]>) {
@@ -74,7 +77,9 @@ export const filmsSlice = createSlice({
       return { ...state, filters: [...state.filters, action.payload] };
     },
     removeFilter(state, action: PayloadAction<FilterType>) {
-      state.filters = state.filters.filter((item) => item.type !== action.payload);
+      state.filters = state.filters.filter(
+        (item) => item.type !== action.payload
+      );
     },
     resetFilters(state, action: PayloadAction<[]>) {
       state.filters = [];
@@ -106,7 +111,7 @@ export const filmsSlice = createSlice({
     removeRandomFilter(state, action: PayloadAction<RandomFilmType>) {
       state.randomFilmFilters = state.randomFilmFilters.filter(
         (filter) => Object.keys(filter)[0] !== action.payload
-    );
+      );
     },
     resetRandomFilters(state) {
       state.randomFilmFilters = [];
