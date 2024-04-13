@@ -23,6 +23,7 @@ type Props = {
 const FilmCard = ({ data }: Props) => {
   const {
     name,
+    names,
     description,
     rating,
     persons,
@@ -52,8 +53,8 @@ const FilmCard = ({ data }: Props) => {
   return (
     <div className="film-card-container">
       <FilmInfo
-        name={name}
-        description={description}
+        name={name || names[0].name}
+        description={description || 'Описание фильма отсутствует'}
         rating={rating}
         poster={poster}
         isSeries={isSeries}

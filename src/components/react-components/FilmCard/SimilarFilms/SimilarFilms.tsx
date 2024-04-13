@@ -52,7 +52,7 @@ const SimilarFilms = ({ similarMovies }: Props) => {
                   <div>
                     <img
                       className="film-img"
-                      src={movie.poster.url}
+                      src={movie.poster.url || './no-image.svg'}
                       alt={movie.name}
                     />
                   </div>

@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useGetFilmDataByIdQuery } from '../../api/api';
 import FilmCard from '../../components/react-components/FilmCard/FilmCard';
 import Header from '../../components/react-components/Header/Header';
 import Loading from '../../components/react-components/Loader/Loader';
 import NoResults from '../../components/react-components/NoResults/NoResults';
 import ReturnButton from '../../components/react-components/ReturnButton/ReturnButton';
-import { Button } from '../../components/ui/button';
 
 const FilmPage = () => {
   const { id } = useParams<{ id: string }>();

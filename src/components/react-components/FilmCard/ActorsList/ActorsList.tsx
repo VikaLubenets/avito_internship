@@ -32,7 +32,7 @@ const ActorsList: React.FC<Props> = ({ actors }) => {
       <ul className="actors-row">
         {actors.slice(startIndex, endIndex).map((actor) => (
           <li key={actor.id} className="actor-container">
-            <img className="actors-image" src={actor.photo} alt={actor.name} />
+            <img className="actors-image" src={actor.photo || './no-image.svg'} alt={actor.name || 'Имя отсутствует'} />
             <p className="actor-name">{actor.name}</p>
           </li>
         ))}

@@ -1,17 +1,16 @@
-import { useEffect, useTransition } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   useGetAllFilmsAndSeriesQuery,
   useGetSearchFilmsQuery,
 } from '../../api/api';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
+import { filmsSlice } from '../../store/reducers/filmsReducer';
 import FilmList from '../../components/react-components/FilmList/FilmList';
 import FiltersContainer from '../../components/react-components/FiltersContainer/FiltersContainer';
 import Header from '../../components/react-components/Header/Header';
 import Loading from '../../components/react-components/Loader/Loader';
 import CustomPagination from '../../components/react-components/CustomPagination/CustomPagination';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
-import { filmsSlice } from '../../store/reducers/filmsReducer';
-import MobileHeader from '../../components/react-components/Header/MobileHeader/MobileHeader';
 import NoResults from '../../components/react-components/NoResults/NoResults';
 
 const MainPage = () => {

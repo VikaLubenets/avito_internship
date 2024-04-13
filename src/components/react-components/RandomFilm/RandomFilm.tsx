@@ -1,12 +1,11 @@
 import RandomButton from './RandomButton/RandomButton';
-import RandomFilmCard from './RandomFilmCard/RandomFilmCard';
 import RandomFilters from './RandomFilters/RandomFilters';
-import './RandomFilm.scss';
 import { useLazyGetRandomFilmQuery } from '../../../api/api';
 import { useAppSelector } from '../../../store/hooks/redux';
 import { normalizeRandomFilmFilters } from '../../../helpers/normalizeRandomFilters';
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './RandomFilm.scss';
 
 const RandomFilm = () => {
   const randomFilmFilters = useAppSelector(

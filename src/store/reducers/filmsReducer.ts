@@ -32,59 +32,52 @@ export const filmsSlice = createSlice({
   initialState,
   reducers: {
     setTotalCount(state, action: PayloadAction<number>) {
-      return { ...state, totalCount: action.payload };
+      state.totalCount = action.payload;
     },
     setCurrentPage(state, action: PayloadAction<number>) {
-      return { ...state, currentPage: action.payload };
+      state.currentPage = action.payload;
     },
     setLimitPerPage(state, action: PayloadAction<number>) {
-      return { ...state, limitPerPage: action.payload };
+      state.limitPerPage = action.payload;
     },
     setTotalPages(state, action: PayloadAction<number>) {
-      return { ...state, totalPages: action.payload };
+      state.totalPages = action.payload;
     },
     setSearch(state, action: PayloadAction<string>) {
-      return { ...state, search: action.payload };
+      state.search = action.payload;
     },
     setIsLoading(state, action: PayloadAction<boolean>) {
-      return { ...state, isLoading: action.payload };
+      state.isLoading = action.payload;
     },
     setSearchHistory(state, action: PayloadAction<string>) {
-      const updatedHistory = [...state.searchHistory, action.payload];
-      const limitedHistory =
-        updatedHistory.length > 20 ? updatedHistory.slice(-20) : updatedHistory;
-      return { ...state, searchHistory: limitedHistory };
+      state.searchHistory.push(action.payload);
+      if (state.searchHistory.length > 20) {
+          state.searchHistory.shift();
+      }
     },
     setSearchSuggestions(state, action: PayloadAction<string[]>) {
-      return { ...state, searchSuggestions: action.payload };
+      state.searchSuggestions = action.payload;
     },
     setPageActors(state, action: PayloadAction<number>) {
-      return { ...state, pageActors: action.payload };
+      state.pageActors = action.payload;
     },
     setPageReviews(state, action: PayloadAction<number>) {
-      return { ...state, pageReviews: action.payload };
+      state.pageReviews = action.payload;
     },
     setPageSeasons(state, action: PayloadAction<number>) {
-      return { ...state, pageSeasons: action.payload };
+      state.pageSeasons = action.payload;
     },
     setPagePosters(state, action: PayloadAction<number>) {
-      return { ...state, pagePosters: action.payload };
+      state.pagePosters = action.payload;
     },
     addOrUpdateFilter(state, action: PayloadAction<FilterPayload>) {
       return { ...state, filters: [...state.filters, action.payload] };
     },
     removeFilter(state, action: PayloadAction<FilterType>) {
-      const type = action.payload;
-      return {
-        ...state,
-        filters: [...state.filters.filter((item) => item.type !== type)],
-      };
+      state.filters = state.filters.filter((item) => item.type !== action.payload);
     },
     resetFilters(state, action: PayloadAction<[]>) {
-      return {
-        ...state,
-        filters: [],
-      };
+      state.filters = [];
     },
     addOrUpdateRandomFilter(state, action: PayloadAction<RandomFilterString>) {
       const newFilter = action.payload;
@@ -110,25 +103,13 @@ export const filmsSlice = createSlice({
         state.randomFilmFilters.push(newFilter);
       }
     },
-
     removeRandomFilter(state, action: PayloadAction<RandomFilmType>) {
-      const typeToRemove = action.payload;
-
-      return {
-        ...state,
-        randomFilmFilters: [
-          ...state.randomFilmFilters.filter(
-            (filter) => Object.keys(filter)[0] !== typeToRemove
-          ),
-        ],
-      };
+      state.randomFilmFilters = state.randomFilmFilters.filter(
+        (filter) => Object.keys(filter)[0] !== action.payload
+    );
     },
-
     resetRandomFilters(state) {
-      return {
-        ...state,
-        randomFilmFilters: [],
-      };
+      state.randomFilmFilters = [];
     },
   },
 });
