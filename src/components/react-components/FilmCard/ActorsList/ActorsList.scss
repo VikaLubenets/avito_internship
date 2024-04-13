@@ -1,4 +1,4 @@
-@use "../../../../styles/index.scss" as s;
+@use '../../../../styles/index.scss' as s;
 
 .actors-container {
   display: flex;
@@ -16,7 +16,7 @@
   padding: 0;
   @include s.sm {
     gap: 5px;
-  };
+  }
 }
 
 .actor-container {
@@ -29,7 +29,7 @@
   font: var(--font-s);
   @include s.sm {
     width: 40px;
-  };
+  }
 }
 
 .actors-image {
@@ -37,12 +37,12 @@
   height: auto;
   @include s.sm {
     width: 25px;
-  };
+  }
 }
 
 .actor-name {
   text-align: center;
   @include s.sm {
     font-size: 8px;
-  };
+  }
 }

@@ -26,31 +26,28 @@ const Header = () => {
   }, [dispatch]);
 
   useEffect(() => {
-      if (authData) {
-          onCloseModal();
-      }
+    if (authData) {
+      onCloseModal();
+    }
   }, [authData, onCloseModal]);
 
   return (
     <>
-        <MobileHeader 
-          onLogout={onLogout} 
-          isAuth={!!authData} 
+      <MobileHeader
+        onLogout={onLogout}
+        isAuth={!!authData}
+        onShowModal={onShowModal}
+      />
+      <header className="header">
+        <Logo />
+        <Search />
+        <HeaderButtons
+          onLogout={onLogout}
+          isAuth={!!authData}
           onShowModal={onShowModal}
         />
-        <header className="header">
-          <Logo />
-          <Search />
-          <HeaderButtons 
-            onLogout={onLogout} 
-            isAuth={!!authData} 
-            onShowModal={onShowModal}
-          />
-          <AuthModal 
-            show={isAuthModal} 
-            onHide={onCloseModal} 
-          />
-        </header>
+        <AuthModal show={isAuthModal} onHide={onCloseModal} />
+      </header>
     </>
   );
 };

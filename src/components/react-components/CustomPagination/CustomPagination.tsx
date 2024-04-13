@@ -8,7 +8,7 @@ type Props = {
   totalPages: number;
 };
 const CustomPagination = memo(({ totalPages }: Props) => {
-  const { innerWidth: width} = window;
+  const { innerWidth: width } = window;
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = useAppSelector((state) => state.films.currentPage);

@@ -17,18 +17,16 @@ const FilmPage = () => {
 
   return (
     <React.Fragment>
-      <Header key={'header'}/>
+      <Header key={'header'} />
       {isLoading ? (
         <Loading />
+      ) : filmData ? (
+        <main className="main-container">
+          <ReturnButton />
+          <FilmCard data={filmData} />
+        </main>
       ) : (
-        filmData ? (
-          <main className="main-container">
-            <ReturnButton />
-            <FilmCard data={filmData} />
-          </main>
-        ) : (
-          <NoResults />
-        )
+        <NoResults />
       )}
     </React.Fragment>
   );

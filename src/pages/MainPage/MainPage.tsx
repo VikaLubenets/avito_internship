@@ -64,7 +64,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Header key={'header'}/>
+      <Header key={'header'} />
       <main className="main-container">
         {isLoading ? (
           <Loading />
@@ -74,8 +74,8 @@ const MainPage = () => {
             {search !== '' ? (
               <>
                 {searchResults &&
-                  searchResults.docs &&
-                  searchResults.docs.length > 0 ? (
+                searchResults.docs &&
+                searchResults.docs.length > 0 ? (
                   <>
                     <FilmList
                       films={searchResults.docs}
@@ -102,7 +102,6 @@ const MainPage = () => {
           </>
         )}
       </main>
-
     </>
   );
 };

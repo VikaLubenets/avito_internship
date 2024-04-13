@@ -1,4 +1,4 @@
-@use "../../../styles/index.scss" as s;
+@use '../../../styles/index.scss' as s;
 
 .film-list {
   display: grid;
@@ -22,10 +22,9 @@
   @include s.sm {
     grid-template-columns: repeat(1, 1fr);
   }
-
 }
 
-.film-list-title{
+.film-list-title {
   font: var(--font-xl);
   text-align: center;
   width: 90%;

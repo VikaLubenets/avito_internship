@@ -3,7 +3,10 @@ import Carousel from 'react-bootstrap/esm/Carousel';
 import { Link } from 'react-router-dom';
 import { chunkArray } from '../../../../helpers/chunkArray';
 import { ISimilarMovie } from '../../../../store/types';
-import { DEFAULT_ITEMS_PER_CAROUSEL, DEFAULT_ITEMS_PER_CAROUSEL_MOBILE } from '../../../../utils/constants';
+import {
+  DEFAULT_ITEMS_PER_CAROUSEL,
+  DEFAULT_ITEMS_PER_CAROUSEL_MOBILE,
+} from '../../../../utils/constants';
 import './SimilarFilms.scss';
 
 type Props = {
@@ -13,7 +16,7 @@ type Props = {
 const SimilarFilms = ({ similarMovies }: Props) => {
   const [isPending, startTransition] = useTransition();
   const [index, setIndex] = useState(0);
-  const { innerWidth: width} = window;
+  const { innerWidth: width } = window;
 
   const handleSelect = (selectedIndex: number) => {
     if (isPending) return;
@@ -24,10 +27,8 @@ const SimilarFilms = ({ similarMovies }: Props) => {
   };
 
   const chunkedMovies = chunkArray(
-    similarMovies, 
-    width > 768 ? 
-    DEFAULT_ITEMS_PER_CAROUSEL : 
-    DEFAULT_ITEMS_PER_CAROUSEL_MOBILE
+    similarMovies,
+    width > 768 ? DEFAULT_ITEMS_PER_CAROUSEL : DEFAULT_ITEMS_PER_CAROUSEL_MOBILE
   );
 
   return (

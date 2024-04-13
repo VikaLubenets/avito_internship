@@ -3,11 +3,15 @@ import { Button } from '../../ui/button';
 import './ReturnButton.scss';
 
 const ReturnButton = () => {
-  return(
+  return (
     <Link to={'/'}>
-        <Button type={'button'} title={'На главную'} className={'return-button'} />
+      <Button
+        type={'button'}
+        title={'На главную'}
+        className={'return-button'}
+      />
     </Link>
-  )
+  );
 };
 
 export default ReturnButton;

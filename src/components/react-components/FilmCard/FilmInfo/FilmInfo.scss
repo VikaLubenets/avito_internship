@@ -1,15 +1,15 @@
-@use "../../../../styles/index.scss" as s;
+@use '../../../../styles/index.scss' as s;
 
 .first-row-film-container {
   display: flex;
   gap: 40px;
 
-  .film-info-name{
+  .film-info-name {
     font: var(--font-xl);
     font-weight: bold;
     @include s.sm {
       font: var(--font-l);
-    };
+    }
   }
 
   .film-image {
@@ -18,7 +18,7 @@
     @include s.sm {
       width: 150px;
       height: 200px;
-    };
+    }
   }
 
   .text-container {
@@ -28,6 +28,6 @@
     font: var(--font-l);
     @include s.sm {
       font: var(--font-s);
-    };
+    }
   }
 }

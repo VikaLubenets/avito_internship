@@ -12,14 +12,15 @@ type Props = {
 const FilmInfo = ({ name, description, rating, poster, isSeries }: Props) => {
   return (
     <div className="first-row-film-container">
-      {poster && 
-      <img 
-          src={poster.url || './no-image.svg'} 
-          alt={name || 'no image'} 
-          className="film-image" 
-        />}
+      {poster && (
+        <img
+          src={poster.url || './no-image.svg'}
+          alt={name || 'no image'}
+          className="film-image"
+        />
+      )}
       <div className="text-container">
-        <h1 className='film-info-name'>
+        <h1 className="film-info-name">
           {isSeries ? 'Сериал ' : 'Фильм '}
           {`"${name || 'Нет наименования'}"`}
         </h1>

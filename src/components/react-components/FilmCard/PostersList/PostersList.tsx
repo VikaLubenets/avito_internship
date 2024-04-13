@@ -2,9 +2,7 @@ import { useState, useTransition } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { chunkArray } from '../../../../helpers/chunkArray';
 import type { PostersResponse } from '../../../../store/types';
-import {
-  DEFAULT_ITEMS_PER_CAROUSEL_POSTERS,
-} from '../../../../utils/constants';
+import { DEFAULT_ITEMS_PER_CAROUSEL_POSTERS } from '../../../../utils/constants';
 import './PostersList.scss';
 
 type Props = {

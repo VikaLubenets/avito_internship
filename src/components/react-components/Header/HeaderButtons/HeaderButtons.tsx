@@ -6,41 +6,37 @@ type Props = {
   onLogout: () => void;
   isAuth: boolean;
   onShowModal: () => void;
-}
+};
 
-const HeaderButtons = ({
-  onLogout, 
-  isAuth,
-  onShowModal
-}: Props) => {
+const HeaderButtons = ({ onLogout, isAuth, onShowModal }: Props) => {
   return (
     <>
-      { isAuth ? 
-      <div className='header-buttons-container'>
-        <Button
-          onClick={onLogout}
-          type={'button'}
-          title={'Выйти'}
-          className={'login-button'}
-        /> 
-        <Link to={'/randomFilm'}>
+      {isAuth ? (
+        <div className="header-buttons-container">
           <Button
+            onClick={onLogout}
             type={'button'}
-            title={'Случайный фильм'}
-            className={'random-film-button'}
+            title={'Выйти'}
+            className={'login-button'}
           />
-        </Link>
-      </div>
-      :
-      <Button
-        type={'button'}
-        title={'Войти'}
-        className={'login-button'}
-        onClick={onShowModal}
-      />
-      }
+          <Link to={'/randomFilm'}>
+            <Button
+              type={'button'}
+              title={'Случайный фильм'}
+              className={'random-film-button'}
+            />
+          </Link>
+        </div>
+      ) : (
+        <Button
+          type={'button'}
+          title={'Войти'}
+          className={'login-button'}
+          onClick={onShowModal}
+        />
+      )}
     </>
-  )
+  );
 };
 
 export default HeaderButtons;

@@ -83,7 +83,7 @@ const FiltersBar = () => {
   }, [dispatch]);
 
   return (
-    <div className='filters-bar-container-row'>
+    <div className="filters-bar-container-row">
       <div className="filters-bar">
         <Select
           name="По году"

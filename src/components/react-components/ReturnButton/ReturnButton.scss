@@ -1,4 +1,4 @@
-.return-button{
+.return-button {
   cursor: pointer;
   height: 50px;
   width: 130px;
@@ -13,7 +13,7 @@
   color: var(--light-text-color);
 }
 
-.return-button:active{
+.return-button:active {
   background-color: var(--button-active-color);
   color: var(--button-active-text-color);
 }

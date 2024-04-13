@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import './Logo.scss';
 
 const Logo = () => {
@@ -8,7 +8,7 @@ const Logo = () => {
         <h1 className="logo-text">ФИЛЬМОТЕКА</h1>
       </Link>
     </div>
-  )
+  );
 };
 
 export default Logo;

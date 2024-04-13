@@ -1,4 +1,4 @@
-@use "../../../../styles/index.scss" as s;
+@use '../../../../styles/index.scss' as s;
 
 .login-button {
   cursor: pointer;
@@ -9,7 +9,7 @@
   color: var(--light-text-color);
 }
 
-.header-buttons-container{
+.header-buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
 
   @include s.sm {
     flex-direction: column;
-  };
+  }
 }
 
 .random-film-button {
@@ -38,7 +38,7 @@
   @include s.sm {
     background-color: var(--bg-header-color);
     color: var(--light-text-color);
-  };
+  }
 }
 
 .login-button:active,
