@@ -40,5 +40,6 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'error',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-unused-vars': 'off',
+        'react-refresh/only-export-components': 'off',
     },
 }
