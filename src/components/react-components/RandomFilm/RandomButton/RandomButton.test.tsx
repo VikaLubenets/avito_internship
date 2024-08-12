@@ -6,7 +6,9 @@ describe('RandomButton component', () => {
     const handleClick = jest.fn();
 
     render(<RandomButton onClick={handleClick} disabled={false} />);
-    const buttonElement = screen.getByRole('button', { name: 'Случайный фильм' });
+    const buttonElement = screen.getByRole('button', {
+      name: 'Случайный фильм',
+    });
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveAttribute('type', 'submit');
     expect(buttonElement).toHaveClass('random-button');
@@ -17,7 +19,9 @@ describe('RandomButton component', () => {
 
   it('renders a disabled button when disabled prop is true', () => {
     render(<RandomButton onClick={jest.fn()} disabled={true} />);
-    const buttonElement = screen.getByRole('button', { name: 'Случайный фильм' });
+    const buttonElement = screen.getByRole('button', {
+      name: 'Случайный фильм',
+    });
     expect(buttonElement).toBeDisabled();
   });
 });

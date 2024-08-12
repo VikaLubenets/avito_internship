@@ -64,7 +64,7 @@ const MainPage = () => {
           <Loading />
         ) : (
           <>
-            <FiltersContainer data-testid="filters-container"/>
+            <FiltersContainer data-testid="filters-container" />
             {search !== '' ? (
               <>
                 {searchResults &&
@@ -76,7 +76,10 @@ const MainPage = () => {
                       films={searchResults.docs}
                       total={searchResults.total}
                     />
-                    <CustomPagination totalPages={searchResults.pages} data-testid="main-pagination"/>
+                    <CustomPagination
+                      totalPages={searchResults.pages}
+                      data-testid="main-pagination"
+                    />
                   </>
                 ) : (
                   <NoResults />
@@ -86,8 +89,15 @@ const MainPage = () => {
               <>
                 {films && films.docs && films.docs.length > 0 ? (
                   <>
-                    <FilmList films={films.docs} total={films.total} data-testid="film-list"/>
-                    <CustomPagination totalPages={films.pages} data-testid="main-pagination"/>
+                    <FilmList
+                      films={films.docs}
+                      total={films.total}
+                      data-testid="film-list"
+                    />
+                    <CustomPagination
+                      totalPages={films.pages}
+                      data-testid="main-pagination"
+                    />
                   </>
                 ) : (
                   <NoResults />

@@ -1,10 +1,21 @@
-import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  act,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import MainPage from './MainPage';
 import '../../utils/mockData';
-import { mockInitialState, mockFilmsData, mockAuthData, userMockData } from '../../utils/mockData';
+import {
+  mockInitialState,
+  mockFilmsData,
+  mockAuthData,
+  userMockData,
+} from '../../utils/mockData';
 import { filmsSlice } from '../../store/reducers/filmsReducer';
 
 const mockStore = configureStore();

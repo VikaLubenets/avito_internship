@@ -32,11 +32,7 @@ describe('chunkArray', () => {
   it('handles arrays with different types of elements', () => {
     const array = [1, 'a', true, { key: 'value' }, [5, 6]];
     const size = 2;
-    const expected = [
-      [1, 'a'],
-      [true, { key: 'value' }],
-      [[5, 6]],
-    ];
+    const expected = [[1, 'a'], [true, { key: 'value' }], [[5, 6]]];
     const result = chunkArray(array, size);
     expect(result).toEqual(expected);
   });
@@ -44,11 +40,7 @@ describe('chunkArray', () => {
   it('handles cases where the last chunk may have fewer elements than the specified size', () => {
     const array = [1, 2, 3, 4, 5];
     const size = 2;
-    const expected = [
-      [1, 2],
-      [3, 4],
-      [5],
-    ];
+    const expected = [[1, 2], [3, 4], [5]];
     const result = chunkArray(array, size);
     expect(result).toEqual(expected);
   });

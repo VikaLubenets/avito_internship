@@ -21,8 +21,8 @@ const FilmPage = () => {
         <Loading />
       ) : filmData ? (
         <main className="main-container">
-          <ReturnButton data-testid="return-button"/>
-          <FilmCard data={filmData} data-testid="film-card"/>
+          <ReturnButton data-testid="return-button" />
+          <FilmCard data={filmData} data-testid="film-card" />
         </main>
       ) : (
         <NoResults />
