@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713071220386" clover="3.2.0">
-  <project timestamp="1713071220386" name="All files">
-    <metrics statements="611" coveredstatements="250" conditionals="187" coveredconditionals="30" methods="156" coveredmethods="46" elements="954" coveredelements="326" complexity="0" loc="611" ncloc="611" packages="36" files="39" classes="39"/>
+<coverage generated="1723471175874" clover="3.2.0">
+  <project timestamp="1723471175875" name="All files">
+    <metrics statements="612" coveredstatements="251" conditionals="204" coveredconditionals="37" methods="156" coveredmethods="46" elements="972" coveredelements="334" complexity="0" loc="612" ncloc="612" packages="36" files="39" classes="39"/>
     <package name="src">
       <metrics statements="25" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="app.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\avito_internship\src\app.tsx">
@@ -286,14 +286,15 @@
       </file>
     </package>
     <package name="src.components.react-components.FilmList.Card">
-      <metrics statements="5" coveredstatements="5" conditionals="8" coveredconditionals="3" methods="1" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="6" conditionals="25" coveredconditionals="10" methods="1" coveredmethods="1"/>
       <file name="Card.tsx" path="C:\Users\THINKPAD-I5 Pro EVO\Desktop\Software developtment\avito_internship\src\components\react-components\FilmList\Card\Card.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="8" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="6" conditionals="25" coveredconditionals="10" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="9" count="6" type="stmt"/>
-        <line num="10" count="6" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="11" count="6" type="cond" truecount="1" falsecount="4"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.react-components.FiltersContainer">

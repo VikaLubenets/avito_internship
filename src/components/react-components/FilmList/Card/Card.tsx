@@ -7,19 +7,21 @@ type Props = {
 };
 
 const Card = ({ film }: Props) => {
-  const filmName = film.name || film.alternativeName || (film.names && film.names[0]?.name) || 'Название отсутствует';
+  const filmName =
+    film.name ||
+    film.alternativeName ||
+    (film.names && film.names[0]?.name) ||
+    'Название отсутствует';
 
   return (
     <Link to={`/film/${film.id}`} className="film-container">
       <div className="film-thumbnail">
         <img
           className="film-img"
-          src={film.logo?.url ?? film.poster?.url ?? './no_image.svg'}
+          src={film.logo?.url ?? film.poster?.url ?? 'no_image.svg'}
           alt={filmName}
         />
-        <p className="film-card__name">
-          {filmName}
-        </p>
+        <p className="film-card__name">{filmName}</p>
       </div>
     </Link>
   );
