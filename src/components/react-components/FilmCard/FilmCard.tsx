@@ -23,13 +23,11 @@ type Props = {
 const FilmCard = ({ data }: Props) => {
   const {
     name,
-    names,
+    alternativeName,
     description,
     rating,
     persons,
-    poster,
     isSeries,
-    similarMovies,
   } = data;
   const { id } = useParams<{ id: string }>();
   const currentPageReviews = useAppSelector((state) => state.films.pageReviews);
@@ -53,10 +51,10 @@ const FilmCard = ({ data }: Props) => {
   return (
     <div className="film-card-container">
       <FilmInfo
-        name={name || names[0].name}
+        name={name ?? alternativeName ?? ''}
         description={description || 'Описание фильма отсутствует'}
         rating={rating}
-        poster={poster}
+        poster={data?.poster ?? {url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGJY82_orZH-Uhffb4PttFzSq1em-X9ZAE2g&s'}}
         isSeries={isSeries}
       />
       {persons ? (
@@ -79,7 +77,7 @@ const FilmCard = ({ data }: Props) => {
         <Loader />
       ) : (
         <>
-          {filmReviews ? (
+          {(filmReviews && filmReviews.total > 0) ? (
             <ReviewsList reviews={filmReviews} />
           ) : (
             <Placeholder message="Нет отзывов" />
@@ -90,15 +88,15 @@ const FilmCard = ({ data }: Props) => {
         <Loader />
       ) : (
         <>
-          {filmPosters ? (
+          {filmPosters && filmPosters.total > 0 ? (
             <PostersList posters={filmPosters} />
           ) : (
             <Placeholder message="Нет постеров" />
           )}
         </>
       )}
-      {similarMovies.length > 0 ? (
-        <SimilarFilms similarMovies={similarMovies} />
+      {data.similarMovies && data.similarMovies?.length > 0 ? (
+        <SimilarFilms similarMovies={data.similarMovies} />
       ) : (
         <Placeholder message="Нет похожих фильмов" />
       )}

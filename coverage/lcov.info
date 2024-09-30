@@ -1,5 +1,5 @@
 TN:
-SF:src\app.tsx
+SF:src/app.tsx
 FN:12,(anonymous_1)
 FN:15,(anonymous_2)
 FN:19,(anonymous_3)
@@ -30,7 +30,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\index.tsx
+SF:src/index.tsx
 FNF:0
 FNH:0
 DA:1,0
@@ -48,7 +48,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\CustomPagination\CustomPagination.tsx
+SF:src/components/react-components/CustomPagination/CustomPagination.tsx
 FN:10,(anonymous_3)
 FN:14,(anonymous_4)
 FN:19,(anonymous_5)
@@ -128,7 +128,7 @@ BRF:6
 BRH:2
 end_of_record
 TN:
-SF:src\components\react-components\ErrorBoundary\ErrorBoundary.tsx
+SF:src/components/react-components/ErrorBoundary/ErrorBoundary.tsx
 FN:4,(anonymous_6)
 FN:8,ErrorBoundary
 FN:13,(anonymous_8)
@@ -166,7 +166,7 @@ BRF:3
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\ErrorBoundary\ErrorMessage.tsx
+SF:src/components/react-components/ErrorBoundary/ErrorMessage.tsx
 FN:3,ErrorMessage
 FNF:1
 FNH:0
@@ -180,7 +180,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\FilmCard.tsx
+SF:src/components/react-components/FilmCard/FilmCard.tsx
 FN:23,(anonymous_1)
 FN:35,(anonymous_2)
 FN:41,(anonymous_3)
@@ -242,7 +242,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\ActorsList\ActorsList.tsx
+SF:src/components/react-components/FilmCard/ActorsList/ActorsList.tsx
 FN:13,(anonymous_1)
 FN:16,(anonymous_2)
 FN:24,(anonymous_3)
@@ -280,7 +280,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\FilmInfo\FilmInfo.tsx
+SF:src/components/react-components/FilmCard/FilmInfo/FilmInfo.tsx
 FN:12,(anonymous_0)
 FNF:1
 FNH:0
@@ -309,7 +309,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\PostersList\PostersList.tsx
+SF:src/components/react-components/FilmCard/PostersList/PostersList.tsx
 FN:12,(anonymous_1)
 FN:16,(anonymous_2)
 FN:19,(anonymous_3)
@@ -346,7 +346,7 @@ BRF:1
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\ReviewsList\ReviewsList.tsx
+SF:src/components/react-components/FilmCard/ReviewsList/ReviewsList.tsx
 FN:14,(anonymous_1)
 FN:16,(anonymous_2)
 FN:21,(anonymous_3)
@@ -378,7 +378,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\SeasonsList\SeasonList.tsx
+SF:src/components/react-components/FilmCard/SeasonsList/SeasonList.tsx
 FN:12,(anonymous_7)
 FN:14,(anonymous_8)
 FN:18,(anonymous_9)
@@ -455,7 +455,7 @@ BRF:29
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmCard\SimilarFilms\SimilarFilms.tsx
+SF:src/components/react-components/FilmCard/SimilarFilms/SimilarFilms.tsx
 FN:16,(anonymous_1)
 FN:21,(anonymous_2)
 FN:24,(anonymous_3)
@@ -498,7 +498,7 @@ BRF:5
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmList\FilmList.tsx
+SF:src/components/react-components/FilmList/FilmList.tsx
 FN:10,(anonymous_1)
 FN:17,(anonymous_2)
 FNF:2
@@ -517,7 +517,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FilmList\Card\Card.tsx
+SF:src/components/react-components/FilmList/Card/Card.tsx
 FN:9,(anonymous_0)
 FNF:1
 FNH:1
@@ -527,7 +527,7 @@ DA:3,1
 DA:9,6
 DA:11,6
 DA:16,6
-DA:30,1
+DA:34,1
 LF:6
 LH:6
 BRDA:11,0,0,6
@@ -539,27 +539,27 @@ BRDA:13,1,0,0
 BRDA:13,1,1,0
 BRDA:13,2,0,0
 BRDA:13,2,1,0
-BRDA:21,3,0,6
-BRDA:21,3,1,0
-BRDA:21,4,0,6
-BRDA:21,4,1,6
-BRDA:21,5,0,6
-BRDA:21,5,1,0
-BRDA:21,6,0,6
-BRDA:21,6,1,6
-BRDA:21,7,0,0
-BRDA:21,7,1,6
-BRDA:21,8,0,6
-BRDA:21,8,1,6
-BRDA:21,9,0,0
-BRDA:21,9,1,0
-BRDA:21,10,0,0
-BRDA:21,10,1,0
+BRDA:22,3,0,6
+BRDA:22,3,1,0
+BRDA:22,4,0,6
+BRDA:22,4,1,6
+BRDA:22,5,0,6
+BRDA:22,5,1,0
+BRDA:22,6,0,6
+BRDA:22,6,1,6
+BRDA:22,7,0,0
+BRDA:22,7,1,6
+BRDA:22,8,0,6
+BRDA:22,8,1,6
+BRDA:23,9,0,0
+BRDA:23,9,1,0
+BRDA:23,10,0,0
+BRDA:23,10,1,0
 BRF:25
 BRH:10
 end_of_record
 TN:
-SF:src\components\react-components\FiltersContainer\FiltersContainer.tsx
+SF:src/components/react-components/FiltersContainer/FiltersContainer.tsx
 FN:10,(anonymous_3)
 FN:13,(anonymous_4)
 FN:16,(anonymous_5)
@@ -600,7 +600,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\FiltersContainer\FiltersBar\FiltersBar.tsx
+SF:src/components/react-components/FiltersContainer/FiltersBar/FiltersBar.tsx
 FN:17,(anonymous_3)
 FN:27,(anonymous_4)
 FN:28,(anonymous_5)
@@ -689,7 +689,7 @@ BRF:18
 BRH:6
 end_of_record
 TN:
-SF:src\components\react-components\Header\Header.tsx
+SF:src/components/react-components/Header/Header.tsx
 FN:11,(anonymous_1)
 FN:13,(anonymous_2)
 FN:16,(anonymous_3)
@@ -735,7 +735,7 @@ BRF:1
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\Header\HeaderButtons\HeaderButtons.tsx
+SF:src/components/react-components/Header/HeaderButtons/HeaderButtons.tsx
 FN:11,(anonymous_0)
 FNF:1
 FNH:1
@@ -754,7 +754,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src\components\react-components\Header\Logo\Logo.tsx
+SF:src/components/react-components/Header/Logo/Logo.tsx
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -770,7 +770,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\Header\MobileHeader\MobileHeader.tsx
+SF:src/components/react-components/Header/MobileHeader/MobileHeader.tsx
 FN:13,(anonymous_1)
 FNF:1
 FNH:1
@@ -789,7 +789,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\Header\Search\Search.tsx
+SF:src/components/react-components/Header/Search/Search.tsx
 FN:13,(anonymous_2)
 FN:18,(anonymous_3)
 FN:19,(anonymous_4)
@@ -892,7 +892,7 @@ BRF:15
 BRH:4
 end_of_record
 TN:
-SF:src\components\react-components\Loader\Loader.tsx
+SF:src/components/react-components/Loader/Loader.tsx
 FN:4,(anonymous_0)
 FNF:1
 FNH:0
@@ -908,7 +908,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\LoginModal\AuthModal.tsx
+SF:src/components/react-components/LoginModal/AuthModal.tsx
 FN:10,AuthModal
 FNF:1
 FNH:1
@@ -924,7 +924,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\LoginModal\LoginForm\LoginForm.tsx
+SF:src/components/react-components/LoginModal/LoginForm/LoginForm.tsx
 FN:9,(anonymous_1)
 FN:11,(anonymous_2)
 FN:12,(anonymous_3)
@@ -978,7 +978,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\NoResults\NoResults.tsx
+SF:src/components/react-components/NoResults/NoResults.tsx
 FN:8,(anonymous_0)
 FNF:1
 FNH:0
@@ -994,7 +994,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\PrivateRoutes\PrivateRoutes.tsx
+SF:src/components/react-components/PrivateRoutes/PrivateRoutes.tsx
 FN:8,(anonymous_0)
 FNF:1
 FNH:0
@@ -1014,7 +1014,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\RandomFilm\RandomFilm.tsx
+SF:src/components/react-components/RandomFilm/RandomFilm.tsx
 FN:12,(anonymous_1)
 FN:17,(anonymous_2)
 FN:20,(anonymous_3)
@@ -1073,7 +1073,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\RandomFilm\RandomButton\RandomButton.tsx
+SF:src/components/react-components/RandomFilm/RandomButton/RandomButton.tsx
 FN:8,(anonymous_0)
 FNF:1
 FNH:1
@@ -1089,7 +1089,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\RandomFilm\RandomFilters\RandomFilters.tsx
+SF:src/components/react-components/RandomFilm/RandomFilters/RandomFilters.tsx
 FN:16,(anonymous_1)
 FN:20,(anonymous_2)
 FN:28,(anonymous_3)
@@ -1178,7 +1178,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\RandomFilm\RandomFilters\RatingRange\RatingRange.tsx
+SF:src/components/react-components/RandomFilm/RandomFilters/RatingRange/RatingRange.tsx
 FN:8,(anonymous_0)
 FN:14,(anonymous_1)
 FNF:2
@@ -1203,7 +1203,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\react-components\ReturnButton\ReturnButton.tsx
+SF:src/components/react-components/ReturnButton/ReturnButton.tsx
 FN:6,(anonymous_0)
 FNF:1
 FNH:1
@@ -1221,7 +1221,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\ui\button.tsx
+SF:src/components/ui/button.tsx
 FN:11,(anonymous_0)
 FNF:1
 FNH:1
@@ -1239,7 +1239,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\components\ui\select.tsx
+SF:src/components/ui/select.tsx
 FN:11,(anonymous_0)
 FN:19,(anonymous_1)
 FN:36,(anonymous_2)
@@ -1271,7 +1271,7 @@ BRF:4
 BRH:3
 end_of_record
 TN:
-SF:src\components\ui\MultiSelectDropdown\MultiSelectDropdown.tsx
+SF:src/components/ui/MultiSelectDropdown/MultiSelectDropdown.tsx
 FN:11,MultiSelectDropdown
 FN:15,(anonymous_2)
 FN:20,(anonymous_3)
@@ -1317,7 +1317,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src\components\ui\Placeholder\placeholder.tsx
+SF:src/components/ui/Placeholder/placeholder.tsx
 FN:8,(anonymous_0)
 FNF:1
 FNH:1
@@ -1332,7 +1332,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\pages\FilmPage\FilmPage.tsx
+SF:src/pages/FilmPage/FilmPage.tsx
 FN:10,(anonymous_1)
 FNF:1
 FNH:0
@@ -1360,7 +1360,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src\pages\MainPage\MainPage.tsx
+SF:src/pages/MainPage/MainPage.tsx
 FN:16,(anonymous_3)
 FN:18,(anonymous_4)
 FN:19,(anonymous_5)
@@ -1448,7 +1448,7 @@ BRF:23
 BRH:11
 end_of_record
 TN:
-SF:src\pages\Page404\Page404.tsx
+SF:src/pages/Page404/Page404.tsx
 FN:3,Page404
 FNF:1
 FNH:1
@@ -1462,7 +1462,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\pages\RandomFilmPage\RandomFilmPage.tsx
+SF:src/pages/RandomFilmPage/RandomFilmPage.tsx
 FN:4,(anonymous_1)
 FNF:1
 FNH:0
