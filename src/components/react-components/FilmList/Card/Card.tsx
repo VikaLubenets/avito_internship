@@ -8,10 +8,7 @@ type Props = {
 
 const Card = ({ film }: Props) => {
   const filmName =
-    film.name ||
-    film.alternativeName ||
-    (film.names && film.names[0]?.name) ||
-    'Название отсутствует';
+    film.name ?? film.alternativeName ?? film.enName ?? 'Название отсутствует';
 
   return (
     <Link to={`/film/${film.id}`} className="film-container">

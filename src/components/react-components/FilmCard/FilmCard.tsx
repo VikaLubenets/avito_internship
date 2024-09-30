@@ -21,14 +21,8 @@ type Props = {
 };
 
 const FilmCard = ({ data }: Props) => {
-  const {
-    name,
-    alternativeName,
-    description,
-    rating,
-    persons,
-    isSeries,
-  } = data;
+  const { name, alternativeName, description, rating, persons, isSeries } =
+    data;
   const { id } = useParams<{ id: string }>();
   const currentPageReviews = useAppSelector((state) => state.films.pageReviews);
   const { data: filmReviews, isLoading: reviewsLoading } = useGetReviewsQuery({
@@ -54,7 +48,11 @@ const FilmCard = ({ data }: Props) => {
         name={name ?? alternativeName ?? ''}
         description={description || 'Описание фильма отсутствует'}
         rating={rating}
-        poster={data?.poster ?? {url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGJY82_orZH-Uhffb4PttFzSq1em-X9ZAE2g&s'}}
+        poster={
+          data?.poster ?? {
+            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGJY82_orZH-Uhffb4PttFzSq1em-X9ZAE2g&s',
+          }
+        }
         isSeries={isSeries}
       />
       {persons ? (
@@ -77,7 +75,7 @@ const FilmCard = ({ data }: Props) => {
         <Loader />
       ) : (
         <>
-          {(filmReviews && filmReviews.total > 0) ? (
+          {filmReviews && filmReviews.total > 0 ? (
             <ReviewsList reviews={filmReviews} />
           ) : (
             <Placeholder message="Нет отзывов" />
